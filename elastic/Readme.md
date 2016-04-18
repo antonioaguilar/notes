@@ -37,3 +37,8 @@ http.cors.allow-headers: "X-Requested-With, X-Auth-Token, Content-Type, Content-
 
 ```
 
+## Run ElasticSearch as Root
+
+```bash
+bin/elasticsearch -Des.insecure.allow.root=true
+```
