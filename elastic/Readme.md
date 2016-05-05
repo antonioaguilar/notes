@@ -42,3 +42,15 @@ http.cors.allow-headers: "X-Requested-With, X-Auth-Token, Content-Type, Content-
 ```bash
 bin/elasticsearch -Des.insecure.allow.root=true
 ```
+
+## List available indices in ES server
+
+```bash 
+GET /_stats/indices
+```
+
+## List 1000 data items in ES server
+
+```bash
+GET /_search/?size=1000&pretty=1
+```
