@@ -38,3 +38,12 @@ sudo /Applications/Install\ OS\ X\ El\ Capitan.app/Contents/Resources/createinst
 
 * press ⌘ ⇥ (Command-Tab) to select the app you want to unhide
 * press the ⌥ (Option) key, and let go of the ⌘ key, that should unminimized the app window
+
+## Disable the Dashboard
+
+Type or paste the following exactly into the Terminal window:
+
+```defaults write com.apple.dashboard mcx-disabled -boolean YES```
+
+```killall Dock```
+
