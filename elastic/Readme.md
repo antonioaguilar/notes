@@ -14,6 +14,8 @@ echo 'Done';
 
 ```
 
+Note: If ```add-apt-repository``` command is not found. You need to install: ```apt-get install software-properties-common```
+
 ## Install ElasticSearch
 
 * Download the Official [ElasticSearch](https://www.elastic.co/downloads/elasticsearch) Distribution

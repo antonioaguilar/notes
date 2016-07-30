@@ -1,5 +1,13 @@
 # Bash scripts
 
+## Command line tools to copy to clipboard
+
+```bash
+sudo apt-get install xsel
+alias pbcopy='xsel --clipboard --input'
+alias pbpaste='xsel --clipboard --output'
+```
+
 ## Count files in directory by extension
 
 ```bash
