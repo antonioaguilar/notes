@@ -18,11 +18,7 @@ Note: If ```add-apt-repository``` command is not found. You need to install: ```
 
 ## Install ElasticSearch
 
-* Download the Official [ElasticSearch](https://www.elastic.co/downloads/elasticsearch) Distribution
-	- [Elasticsearch 2.3.1](https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/2.3.1/elasticsearch-2.3.1.tar.gz)
-
-* Unzip platform files: 
-	- ```tar -zxvf elasticsearch-2.3.1.tar.gz```
+Download the Official [ElasticSearch](https://www.elastic.co/downloads/elasticsearch) Distribution
 
 
 ## ElasticSearch Network Settings
@@ -36,7 +32,6 @@ http.cors.enabled: true
 http.cors.allow-origin: "*"
 http.cors.allow-methods: "OPTIONS, HEAD, GET, POST, PUT, DELETE"
 http.cors.allow-headers: "X-Requested-With, X-Auth-Token, Content-Type, Content-Lenght, Authorization"
-
 ```
 
 ## Run ElasticSearch as Root
@@ -55,4 +50,22 @@ GET /_stats/indices
 
 ```bash
 GET /_search/?size=1000&pretty=1
+```
+
+## Download or upload an index to ElasticSearch 
+
+```bash
+npm install -g elasticdump@1.1.4
+```
+
+Upload an index:
+
+```bash
+elasticdump --bulk=true --input=data.json --output=http://localhost:9200/
+```
+
+Download an index:
+
+```bash
+elasticdump --all=true --input=http://localhost:9200 --output=backup.json
 ```
