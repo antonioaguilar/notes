@@ -1,5 +1,25 @@
 # Nginx scripts
 
+## Reverse Proxy configuration
+
+```bash
+server {
+  listen 80;
+
+  server_name localhost;
+
+  location / {
+      proxy_pass http://localhost:9200;
+      proxy_http_version 1.1;
+      proxy_set_header Upgrade $http_upgrade;
+      proxy_set_header Connection 'upgrade';
+      proxy_set_header Host $host;
+      proxy_cache_bypass $http_upgrade;
+  }
+}
+```
+
+
 ## Configure Basic Auth (htaccess) in nginx
 
 ```sudo sh -c "echo -n 'sammy:' >> /etc/nginx/.htpasswd"```
