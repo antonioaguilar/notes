@@ -1,5 +1,18 @@
 ## Mac OS Tips
 
+## Turn On/OFF iTunes sync auto backup
+
+Type or paste the following exactly into the Terminal:
+```bash
+
+# to disable auto backup
+defaults write com.apple.iTunes DeviceBackupsDisabled -bool true
+
+
+# to re-enable auto backup
+defaults write com.apple.iTunes DeviceBackupsDisabled -bool false
+```
+
 ## Increase Key Repeat rate
 
 You can also change the preference keys directly:
