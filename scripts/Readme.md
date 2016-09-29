@@ -45,3 +45,9 @@ jq .events file.json
 jq '.events[] | select(.channel | contains("SETTINGS"))' file.json
 ```
 where ```events``` is the array and ```channel``` is the inner attribute, e.g. ```event[0].channel```
+
+## Count the number of elements in array (length)
+
+```bash
+jq '.events | length' file.json
+```
