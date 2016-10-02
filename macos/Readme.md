@@ -1,5 +1,41 @@
 ## Mac OS Tips
 
+## Take screenshot without shadow behind
+
+To take a screenshot of specific window:
+
+* CMD + SHIFT + 4 + SPACE
+
+You can disable the shadow added when capturing an entire window by executing the following command from the Terminal:
+
+```bash
+defaults write com.apple.screencapture disable-shadow -bool TRUE
+```
+You'll need to reboot or restart the UIServer for the changes to take effect:
+
+```bash
+killall SystemUIServer
+```
+You can undo this preference and re-enable shadows by executing the following:
+
+```bash
+defaults write com.apple.screencapture disable-shadow -bool FALSE; killall SystemUIServer
+```
+
+
+## Turn On/OFF iTunes sync auto backup
+
+Type or paste the following exactly into the Terminal:
+```bash
+
+# to disable auto backup
+defaults write com.apple.iTunes DeviceBackupsDisabled -bool true
+
+
+# to re-enable auto backup
+defaults write com.apple.iTunes DeviceBackupsDisabled -bool false
+```
+
 ## Increase Key Repeat rate
 
 You can also change the preference keys directly:
