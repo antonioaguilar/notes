@@ -1,5 +1,12 @@
 # Bash scripts
 
+## Find and rename list of files (multiple file rename)
+
+```bash
+find . -type f -name '*.spec.js' -execdir mv {} {}_renamed ';'
+```
+this will find and rename all files with ```.spec.js``` extension to ```<file>.spec.js_renamed```
+
 ## Command line tools to copy to clipboard
 
 ```bash
