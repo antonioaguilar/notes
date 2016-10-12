@@ -1,5 +1,14 @@
 # Bash scripts
 
+## Run command every N seconds
+
+Install ```watch``` command in terminal (e.g. ```brew install watch```)
+
+Example: Run ```tree``` command every second:
+```bash
+watch -n1 tree -h ./some-dir
+```
+
 ## Find and rename list of files (multiple file rename)
 
 ```bash
