@@ -1,5 +1,30 @@
 # Security
 
+## Installing root/CA Certificates (Ubuntu)
+
+Create a directory for extra CA certificates in /usr/share/ca-certificates:
+
+```bash
+sudo mkdir /usr/share/ca-certificates/extra
+```
+
+**Note: The CA certificate needs to be in .CRT format**
+
+Copy the CA .crt file to this directory:
+
+```bash
+sudo cp mycert.crt /usr/share/ca-certificates/extra/mycert.crt
+```
+
+Ubuntu will automatically detect the added certificate in ```/usr/share/ca-certificates``` and configure ```/etc/ca-certificates.conf```:
+
+**Note: You still have to select your CA .crt certificate from the list**
+
+```bash
+sudo dpkg-reconfigure ca-certificates
+```
+
+
 ## Create SSL/X509 Self-signed Certificates
 
 ### Generate Private Key (key.pem) and Certificate (cert.pem):

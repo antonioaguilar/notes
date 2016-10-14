@@ -1,6 +1,4 @@
-Sublime Editor
-==============
-
+# Sublime export settings
 
 ### Default (OSX).sublime-keymap
 ```

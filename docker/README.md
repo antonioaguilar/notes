@@ -64,3 +64,4 @@ pkgutil --forget io.boot2dockeriso.pkg.boot2dockeriso
 echo "All Done!"
 ```
 
+ƒ
