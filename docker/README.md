@@ -1,5 +1,13 @@
 # Docker Engine & Docker Compose
 
+### Running Docker in Ubuntu
+
+When running Docker in Ubuntu, it is neccesary add user to docker group:
+
+```
+sudo usermod -aG docker $(whoami)
+```
+
 ### Remove all containers
 
 ```bash
