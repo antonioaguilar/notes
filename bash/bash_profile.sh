@@ -4,18 +4,14 @@
 export PS1="\u@\h:\W\\$ "
 
 # Set Paths
-export PATH="/usr/local/git/bin:/sw/bin/:/usr/local/bin:/usr/local/:/usr/local/sbin:$PATH"
+export PATH="/usr/local/git/bin:/sw/bin/:/usr/local/bin:/usr/local/sbin:$PATH"
 
 # Java environment
 export JAVA_HOME=$(/usr/libexec/java_home);
 
-export NPM_PACKAGES="${HOME}/.npm-packages"
-
 # Front-end development tools and shortcuts
 alias chrome-webrtc='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --use-fake-ui-for-media-stream --use-fake-device-for-media-stream'
-
-alias gl='grunt livereload'
-alias gc='grunt clean'
+alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
 
 #   Set Default Editor (change 'Nano' to the editor of your choice)
 export EDITOR=/usr/bin/nano
@@ -33,12 +29,12 @@ export LSCOLORS=ExFxBxDxCxegedabagacad
 #   -----------------------------
 #   2.  MAKE TERMINAL BETTER
 #   -----------------------------
-alias fl='du -hsx * | sort | head -50'	    # Find largest files recursively
+alias fl='du -hsx * | sort | head -50'      # Find largest files recursively
 alias cp='cp -iv'                           # Preferred 'cp' implementation
 alias mv='mv -iv'                           # Preferred 'mv' implementation
 alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
 alias ll='ls -FGlAhp'                       # Preferred 'ls' implementation
-alias  l='ll'
+alias l='ll'
 alias less='less -FSRXc'                    # Preferred 'less' implementation
 alias cd..='cd ../'                         # Go back 1 directory level (for fast typers)
 alias ..='cd ../'                           # Go back 1 directory level
@@ -50,7 +46,6 @@ alias .6='cd ../../../../../../'            # Go back 6 directory levels
 alias f='open -a Finder ./'                 # f:            Opens current directory in MacOS Finder
 alias ~="cd ~"                              # ~:            Go Home
 alias c='clear'                             # c:            Clear terminal display
-
 alias path='echo -e ${PATH//:/\\n}'         # path:         Echo all executable Paths
 alias show_options='shopt'                  # Show_options: display bash options settings
 alias fix_stty='stty sane'                  # fix_stty:     Restore terminal settings when screwed up
@@ -63,6 +58,15 @@ alias DT='tee ~/Desktop/terminalOut.txt'    # DT:           Pipe content to file
 
 # edit: Opens any file in sublime editor
 #ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/sub
+
+# JSON utils, underscore-cli
+alias json='underscore print --color'
+
+# http server
+alias serve='serve --compress -C'
+
+# Curl and WGET utils
+alias curl='curl -s'
 
 # Open Markdown files
 alias md='open /Applications/MacDown.app/'
@@ -214,4 +218,3 @@ PATH=$PATH:$NVM_DIR/nvm.sh
 if [ -f `brew --prefix`/etc/bash_completion ]; then
     . `brew --prefix`/etc/bash_completion
 fi
-
