@@ -1,5 +1,11 @@
 # Bash scripts
 
+## Copy all files and folders but ```exclude``` other
+
+```bash
+rsync -av --progress sourcefolder /destinationfolder --exclude thefoldertoexclude
+```
+
 ## Run command every N seconds
 
 Install ```watch``` command in terminal (e.g. ```brew install watch```)
