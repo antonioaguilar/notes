@@ -1,5 +1,19 @@
 # Security
 
+## Installing NodeJS in corporate networks
+
+Installing NVM without certificate check:
+
+```
+wget --no-check-certificate -qO- https://raw.githubusercontent.com/creationix/nvm/v0.32.0/install.sh | bash
+```
+
+Install Node packages over http:
+
+```
+npm config set registry http://registry.npmjs.org/
+```
+
 ## Installing root/CA Certificates (Ubuntu)
 
 Create a directory for extra CA certificates in /usr/share/ca-certificates:
