@@ -1,5 +1,11 @@
 ## Mac OS Tips
 
+## Flush and DNS cache
+
+```
+sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder; 
+```
+
 ## Take screenshot without shadow behind
 
 To take a screenshot of specific window:
