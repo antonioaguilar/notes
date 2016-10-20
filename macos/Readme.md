@@ -2,7 +2,7 @@
 
 ## Enable color highlighting via ccat
 
-Install Phyton's pygments package:
+Install python's pygments package:
 
 ```
 sudo easy_install Pygments
