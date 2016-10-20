@@ -8,6 +8,13 @@ When running Docker in Ubuntu, it is neccesary add user to docker group:
 sudo usermod -aG docker $(whoami)
 ```
 
+### Stop all running containers
+
+```bash
+# stop all containers
+docker stop $(docker ps -aq)
+```
+
 ### Remove all containers
 
 ```bash
