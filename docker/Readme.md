@@ -11,23 +11,29 @@ sudo usermod -aG docker $(whoami)
 ### Remove all containers
 
 ```bash
-# Remove all containers
+# remove all containers
 docker rm $(docker ps -a -q)
 ```
 
 ### Remove all images
 
 ```bash
-# Delete all images
+# remove all images
 docker rmi $(docker images -q)
 ```
 
 ### Remove all images and containers
 
 ```bash
-#!/bin/bash
-docker rm $(docker ps -a -q)
-docker rmi $(docker images -q)
+# remove everything
+docker rm $(docker ps -a -q); docker rmi $(docker images -q);
+```
+
+### Remove all untagged images
+
+``` bash
+# removes all untagged <none> images
+docker rmi $(docker images | grep "^<none>" | awk '{print $3}')
 ```
 
 ### Remove previous Docker Machine installations
