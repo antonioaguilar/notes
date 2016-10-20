@@ -2,10 +2,22 @@
 
 ### Running Docker in Ubuntu
 
-When running Docker in Ubuntu, it is neccesary add user to docker group:
+When running Docker in Ubuntu, it is neccesary add users to docker group:
 
 ```
 sudo usermod -aG docker $(whoami)
+```
+
+### Run and auto remove a container
+
+```
+docker run -it --privileged --rm --net=host <container-name>
+```
+
+### Connect to a container via ```bash```:
+
+```
+docker exec -it <container-name> bash
 ```
 
 ### Stop all running containers
