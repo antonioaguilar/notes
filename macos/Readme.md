@@ -1,5 +1,18 @@
 ## Mac OS Tips
 
+## Enable color highlighting via ccat
+
+Install Phyton's pygments package:
+
+```
+sudo easy_install Pygments
+```
+Add an alias in ```.bash_profile``` to ```ccat``` using ```pygmentize -g```:
+
+```
+alias ccat='pygmentize -g'
+```
+
 ## Flush and DNS cache
 
 ```
