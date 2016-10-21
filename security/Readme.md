@@ -47,10 +47,28 @@ sudo dpkg-reconfigure ca-certificates
 openssl req -new -newkey rsa:2048 -days 3650 -nodes -x509 -keyout key.pem -out cert.pem
 ```
 
-### View Contents of Certificate (cert.pem):
+### View PEM / DER encoded certificates
 
 ```bash
-openssl x509 -in cert.pem -text
+# view der/cer type certificates
+openssl x509 -in cert.cer -inform der -text
+```
+
+```bash
+# view pem/crt type certificates
+openssl x509 -in cert.pem -inform pem -text
+```
+
+### Convert PEM / DER certificates
+
+```bash
+# convert PEM to DER
+openssl x509 -in cert.crt -outform der -out cert.der
+```
+
+```bash
+# convert DER to PEM
+openssl x509 -in cert.crt -inform der -outform pem -out cert.pem
 ```
 
 ### Combine Private Key and Certificate:
