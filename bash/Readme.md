@@ -1,5 +1,15 @@
 # Bash scripts
 
+## Syntax highlight in bash (Ubuntu)
+
+```bash
+sudo apt-get install python-pygments
+```
+
+```bash
+alias ccat='pygmentize'
+```
+
 ## Copy all files and folders but ```exclude``` other
 
 ```bash
