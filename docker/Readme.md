@@ -60,7 +60,7 @@ docker rm $(docker ps -a -q); docker rmi $(docker images -q);
 
 ``` bash
 # removes all untagged <none> images
-docker rmi $(docker images | grep "^<none>" | awk '{print $3}')
+docker rmi -f $(docker images | grep "^<none>" | awk '{print $3}');
 ```
 
 ### Remove previous Docker Machine installations
