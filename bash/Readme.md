@@ -13,7 +13,7 @@ sudo apt-get install python-pygments
 ```
 
 ```bash
-alias ccat='pygmentize'
+alias ccat='pygmentize -g'
 ```
 
 ## Copy all files and folders but ```exclude``` other
