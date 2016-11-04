@@ -51,6 +51,22 @@ alias vm='VBoxManage'
 
 ```bash
 
+# create the VM instance
+vm createvm --name "owc-release" --register
 
+# configure VM settings
+vm modifyvm "owc-release" --memory 2048 --acpi on --cpus 4 --vrde on --boot1 dvd --nic1 bridged --bridgeadapter1 eno1 --cableconnected1 on
+
+# create hard drive
+vm createhd --filename ~/VirtualBox\ VMs/owc-release/owc-release.vdi --size 20000
+
+# select the controller
+vm storagectl "owc-release" --name "IDE Controller" --add ide
+
+# attach created drive
+vm storageattach "owc-release" --storagectl "IDE Controller" --port 0 --device 0 --type hdd --medium ~/VirtualBox\ VMs/owc-release/owc-release.vdi
+
+# attach ISO image
+vm storageattach "owc-release" --storagectl "IDE Controller" --port 1 --device 0 --type dvddrive --medium ~/ubuntu-16.04.1-server-amd64.iso
 
 ```
