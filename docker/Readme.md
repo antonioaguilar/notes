@@ -1,5 +1,13 @@
 # Docker Engine & Docker Compose
 
+### Enable Docker Remote API
+
+You need to enable Docker Remote API. To do so you need to:
+
+* Include this line: ```DOCKER_OPTS='-H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock'``` to your ```/etc/default/docker``` config file in Ubuntu
+* Restart the Docker service using: ```sudo service docker restart```
+* Open your browser and verify you can connect to http://localhost:2375/_ping
+
 ### Running Docker in Ubuntu
 
 When running Docker in Ubuntu, it is neccesary add users to docker group:
