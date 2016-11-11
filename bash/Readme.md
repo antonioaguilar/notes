@@ -1,5 +1,19 @@
 # Bash scripts
 
+## Capture all terminal output
+
+```bash
+script terminal-session.txt
+Script started, file is terminal-session.txt
+```
+
+the ```script``` command will start logging all the terminal output to the ```terminal-session.txt``` file. To save the session, just type ```exit```:
+
+```bash
+exit
+Script done, file is terminal-session.txt
+```
+
 ## Get primary IP address 
 
 ```bash
