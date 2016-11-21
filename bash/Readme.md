@@ -45,6 +45,12 @@ Example: Run ```tree``` command every second:
 watch -n1 tree -h ./some-dir
 ```
 
+## Create Zip folder with password
+
+```
+zip -er archive.zip /path/to/directory/
+```
+
 ## Find and rename list of files (multiple file rename)
 
 ```bash
