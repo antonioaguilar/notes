@@ -1,5 +1,11 @@
 ## Mac OS Tips
 
+## Enable git / bash completion
+
+```bash
+brew install bash-completion
+```
+
 ## Enable color highlighting via ccat
 
 Install python's pygments package:
