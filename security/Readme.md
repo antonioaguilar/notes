@@ -43,6 +43,25 @@ sudo dpkg-reconfigure ca-certificates
 ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 ```
 
+## Copy public SSH key to server and enable SSH key only access
+
+```bash
+ssh-copy-id username@remote_host
+```
+Disable Password Authentication on your Server:
+
+```bash
+# edit ssh config
+sudo nano /etc/ssh/sshd_config
+
+# edit this line
+PasswordAuthentication no
+
+# restart SSH service
+sudo service ssh restart
+```
+
+
 ## Create SSL/X509 Self-signed Certificates
 
 ### Generate Private Key (key.pem) and Certificate (cert.pem):
