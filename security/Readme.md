@@ -37,7 +37,11 @@ Ubuntu will automatically detect the added certificate in ```/usr/share/ca-certi
 ```bash
 sudo dpkg-reconfigure ca-certificates
 ```
+## Generating a new SSH key
 
+```bash
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+```
 
 ## Create SSL/X509 Self-signed Certificates
 
