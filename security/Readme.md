@@ -43,6 +43,19 @@ sudo dpkg-reconfigure ca-certificates
 ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 ```
 
+## Check failed SSH auth attempts on your server
+
+```bash
+# list brute-force attempts
+grep sshd.\*Failed /var/log/auth.log
+
+# number of failed ssh login attempts
+grep sshd.\*Failed /var/log/auth.log | wc -l
+
+# list failed connections (i.e. no login attempted, could be a port scanner, etc)
+grep sshd.*Did /var/log/auth.log
+```
+
 ## Copy public SSH key to server and enable SSH key only access
 
 ```bash
