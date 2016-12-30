@@ -68,6 +68,13 @@ server {
 ```
 Note: This example is configured for ElasticSearch
 
+## Re-direct any error 404 page to a default domain
+
+```
+# include this in /etc/nginx/sites-available/default
+error_page 404 =301 http://example.com/;
+```
+
 ## Configure Basic Auth (htaccess) in nginx
 
 ```sudo sh -c "echo -n 'sammy:' >> /etc/nginx/.htpasswd"```
