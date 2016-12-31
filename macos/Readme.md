@@ -1,5 +1,11 @@
 ## Mac OS Tips
 
+## Mac Navigation Shortcuts
+
+Google Chrome
+* Use TAB +/- UP/DOWN keys to navigate between page results
+* Use CTRL+CMD+ENTER to open link in a tab (background)
+
 ## Enable git / bash completion
 
 ```bash
