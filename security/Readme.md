@@ -64,6 +64,9 @@ grep sshd.\*Failed /var/log/auth.log | wc -l
 
 # list failed connections (i.e. no login attempted, could be a port scanner, etc)
 grep sshd.*Did /var/log/auth.log
+
+# view failed attempts in real-time
+tail -f /var/log/auth.log | grep sshd.\*Failed
 ```
 Note: you can improve security by installing ```fail2ban```:
 ```bash
