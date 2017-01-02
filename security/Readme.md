@@ -1,5 +1,15 @@
 # Security
 
+## Mounting a remote file system over SSH
+
+In MacOS, install FUSE and SSHFS using brew:
+
+```bash
+brew cask install osxfuse
+brew install homebrew/fuse/sshfs
+```
+
+
 ## Installing NodeJS in corporate networks
 
 Installing NVM without certificate check:
