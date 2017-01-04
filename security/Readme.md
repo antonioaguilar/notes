@@ -98,7 +98,7 @@ sudo service ssh restart
 ### Generate Private Key (key.pem) and Certificate (cert.pem):
 
 ```bash
-openssl req -new -newkey rsa:2048 -days 3650 -nodes -x509 -keyout key.pem -out cert.pem
+openssl req -new -newkey rsa:4096 -days 3650 -nodes -x509 -keyout key.pem -out cert.pem
 ```
 
 ### View PEM / DER encoded certificates
