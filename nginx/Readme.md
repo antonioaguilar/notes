@@ -1,5 +1,48 @@
 # Nginx scripts
 
+## Simple server config with CORS enabled
+
+```bash
+server {
+  listen 8080 default_server;
+  server_name localhost;
+
+  root /home/user/website;
+  index index.html index.htm;
+
+  location / {
+    autoindex on;
+    try_files $uri $uri/ =404;
+
+    # Wide-open CORS config for nginx
+    # Configuration from: http://enable-cors.org/server_nginx.html
+    if ($request_method = 'OPTIONS') {
+      add_header 'Access-Control-Allow-Origin' '*';
+      add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';
+      add_header 'Access-Control-Allow-Headers' 'DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type';
+      add_header 'Access-Control-Max-Age' 1728000;
+      add_header 'Content-Type' 'text/plain charset=UTF-8';
+      add_header 'Content-Length' 0;
+      return 204;
+    }
+    
+    if ($request_method = 'POST') {
+      add_header 'Access-Control-Allow-Origin' '*';
+      add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';
+      add_header 'Access-Control-Allow-Headers' 'DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type';
+    }
+    
+    if ($request_method = 'GET') {
+      add_header 'Access-Control-Allow-Origin' '*';
+      add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';
+      add_header 'Access-Control-Allow-Headers' 'DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type';
+    }
+
+  }
+}
+
+```
+
 ## HTTP and HTTPS server  
 
 ```bash
