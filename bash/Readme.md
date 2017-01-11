@@ -1,5 +1,10 @@
 # Bash scripts
 
+## Get the size of a directory
+```
+du -sh
+```
+
 ## Capture all terminal output
 
 ```bash
