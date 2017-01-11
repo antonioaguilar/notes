@@ -1,5 +1,33 @@
 # Security
 
+## Capturing network packets from a remote host
+
+Run tcpdump over ssh and use wireshark listen on the pipe
+
+First, you need to run this script as ```sudo``` on the remote machine to enable tcpdump permissions:
+
+```bash
+#!/bin/bash
+groupadd pcap
+usermod -a -G pcap root
+chgrp pcap /usr/sbin/tcpdump
+chmod 750 /usr/sbin/tcpdump
+setcap cap_net_raw,cap_net_admin=eip /usr/sbin/tcpdump
+```
+
+Then, create the named pipe:
+```
+mkfifo /tmp/remote
+```
+Start wireshark from the command line
+```
+wireshark -k -i /tmp/remote
+```
+Run tcpdump over ssh on your remote machine and redirect the packets to the named pipe:
+```
+ssh root@192.168.0.1 "tcpdump -s 0 -U -n -w - -i eth0 not port 22" > /tmp/remote
+```
+
 ## Mounting a remote file system over SSH
 
 In MacOS, install FUSE and SSHFS using brew:
