@@ -1,5 +1,16 @@
 # Security
 
+## Wireshark filters
+
+Capture HTTP GET and POST requests
+```
+# captures both
+http.request
+
+# captures POST requests only
+http.request.method == "POST"
+```
+
 ## Capturing network packets from a remote host
 
 Run tcpdump over ssh and use wireshark listen on the pipe
