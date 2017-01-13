@@ -148,3 +148,39 @@ server {
 
 }
 ```
+
+## Custom HTTPS redirect
+
+```bash
+server {
+  listen 9443;
+  server_name localhost;
+
+  ssl on;
+  ssl_session_timeout 5m;
+
+  ssl_certificate /etc/nginx/sites-available/cert.pem;
+  ssl_certificate_key /etc/nginx/sites-available/key.pem;
+
+  ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+  ssl_prefer_server_ciphers on;
+  ssl_ciphers "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH";
+  ssl_ecdh_curve secp384r1;
+  ssl_session_cache shared:SSL:10m;
+  ssl_stapling on;
+  ssl_stapling_verify on;
+
+  add_header Strict-Transport-Security "max-age=63072000; includeSubDomains; preload";
+  add_header X-Frame-Options DENY;
+  add_header X-Content-Type-Options nosniff;
+
+  location / {
+      proxy_pass http://localhost:9090/;
+      proxy_http_version 1.1;
+      proxy_set_header Upgrade $http_upgrade;
+      proxy_set_header Connection 'upgrade';
+      proxy_set_header Host $host;
+      proxy_cache_bypass $http_upgrade;
+  }
+}
+```
