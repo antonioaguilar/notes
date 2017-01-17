@@ -1,5 +1,22 @@
 # Bash scripts
 
+## Print string multiple times
+
+Print message multiple times:
+
+```bash
+perl -E 'say "Hola mundo!\n" x 1000'
+```
+
+Print message with increment: 
+
+```bash
+for i in {01..09} {11..100}
+do
+  echo "Your user id: $(printf "%02d" $i)"
+done
+```
+
 ## Get the size of a directory
 ```
 du -sh
