@@ -64,3 +64,10 @@ where ```events``` is the array and ```channel``` is the inner attribute, e.g. `
 ```bash
 jq '.events | length' file.json
 ```
+
+### Sorting items
+
+```bash
+jq 'sort_by(.event.name)' file.json
+
+```
