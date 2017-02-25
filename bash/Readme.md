@@ -1,5 +1,12 @@
 # Bash scripts
 
+## Compress folder into multiple zip files
+
+```bash
+# compress folder into several 64MB zip files
+zip -r -s 64 archive.zip folder-name
+```
+
 ## Print string multiple times
 
 Print message multiple times:
