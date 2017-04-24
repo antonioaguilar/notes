@@ -52,7 +52,14 @@ You can undo this preference and re-enable shadows by executing the following:
 ```bash
 defaults write com.apple.screencapture disable-shadow -bool FALSE; killall SystemUIServer
 ```
+## Take screenshot and save as different image format
 
+You can use the following file types: tiff, pdf, png, bmp or pict.
+
+```
+defaults write com.apple.screencapture type pdf
+killall SystemUIServer
+```
 
 ## Turn On/OFF iTunes sync auto backup
 
