@@ -1,5 +1,13 @@
 # Bash scripts
 
+## Get current IP from system
+
+```bash
+#!/usr/bin/env bash
+/sbin/ifconfig $0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'
+```
+use ```./getIP eth0```, this should return: ```192.168.10.33```
+
 ## Compress folder into multiple zip files
 
 ```bash
