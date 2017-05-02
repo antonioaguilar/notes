@@ -1,5 +1,26 @@
 # Nginx scripts
 
+## Simple Load Balancer for Docker Containers
+
+```bash
+http {
+
+	upstream webapp {
+		server CONTAINER_APP0_IP:PORT;
+		server CONTAINER_APP1_IP:PORT;
+		server CONTAINER_APP2_IP:PORT;
+	}
+
+	server {
+		listen 80;
+		location / {
+			proxy_pass http://webapp;
+		}
+	}
+	
+}
+```
+
 ## Simple server config with CORS enabled
 
 ```bash
