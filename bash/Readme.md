@@ -1,10 +1,20 @@
 # Bash scripts
 
+## Useful ```screen``` commands:
+
+* ctrl + a c - This command **c**reates a new screen session.
+* ctrl + a n - Switch to the **n**ext screen session.
+* ctrl + a p - Switch to the **p**revious screen session.
+* ctrl + a d - This command **d**etaches a screen session (without killing the processes).
+* screen -r <session> - Reconnect to an existing screen session.
+* screen -ls - Lists the current screen sessions.
+* exit - Closes a screen session.
+
 ## Get current IP from system
 
 ```bash
 #!/usr/bin/env bash
-/sbin/ifconfig $0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'
+/sbin/ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'
 ```
 use ```./getIP eth0```, this should return: ```192.168.10.33```
 
