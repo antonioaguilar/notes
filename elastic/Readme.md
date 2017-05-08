@@ -43,7 +43,7 @@ bin/elasticsearch -Des.insecure.allow.root=true
 ## List available indices in ES server
 
 ```bash 
-GET /_stats/indices
+GET /_cat/indices
 ```
 
 ## List 1000 data items in ES server
