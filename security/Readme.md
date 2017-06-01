@@ -2,16 +2,52 @@
 
 ## Create SSL/X509 Self-signed Certificates
 
-### Generate Private Key (key.pem) and Certificate (cert.pem):
+### Generate key and cert using single command:
 
 ```bash
 openssl req -new -newkey rsa:4096 -days 3650 -nodes -x509 -sha256 -keyout key.pem -out cert.pem
+```
+
+### Generate cert using config file
+
+Create a ```server.cnf``` configuration file:
+
+```
+[req]
+distinguished_name = req_distinguished_name
+x509_extensions = v3_req
+prompt = no
+[req_distinguished_name]
+C = US
+ST = State
+L = City
+O = Company Ltd
+OU = Unit
+CN = company.com
+[v3_req]
+keyUsage = keyEncipherment, dataEncipherment
+extendedKeyUsage = serverAuth
+subjectAltName = @alt_names
+[alt_names]
+DNS.1 = company.com
+```
+
+Generate the cert using the config file as option
+
+```bash
+openssl req -newkey rsa:4096 -days 3650 -nodes -x509 -sha256 -keyout key.pem -out cert.pem -config server.cnf
 ```
 
 ## Check Linux OS distro version
 
 ```bash
 lsb_release -a
+```
+
+## View certificate details
+
+```bash
+openssl x509 -in cert.pem -text -noout
 ```
 
 ## Wireshark filters
