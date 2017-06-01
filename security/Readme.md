@@ -1,5 +1,19 @@
 # Security
 
+## Create SSL/X509 Self-signed Certificates
+
+### Generate Private Key (key.pem) and Certificate (cert.pem):
+
+```bash
+openssl req -new -newkey rsa:4096 -days 3650 -nodes -x509 -sha256 -keyout key.pem -out cert.pem
+```
+
+## Check Linux OS distro version
+
+```bash
+lsb_release -a
+```
+
 ## Wireshark filters
 
 Capture HTTP GET and POST requests
@@ -131,14 +145,7 @@ PasswordAuthentication no
 sudo service ssh restart
 ```
 
-
-## Create SSL/X509 Self-signed Certificates
-
-### Generate Private Key (key.pem) and Certificate (cert.pem):
-
-```bash
-openssl req -new -newkey rsa:4096 -days 3650 -nodes -x509 -sha256 -keyout key.pem -out cert.pem
-```
+## Encoding/Decoding Self-signed Certificates
 
 ### View PEM / DER encoded certificates
 
