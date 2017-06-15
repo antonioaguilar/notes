@@ -13,10 +13,13 @@
 ## Get current IP from system
 
 ```bash
-#!/usr/bin/env bash
-/sbin/ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'
+hostname -i
 ```
-use ```./getIP eth0```, this should return: ```192.168.10.33```
+
+```bash
+hostname --ip-address
+```
+Note: this works for all linux boxes (exluding Mac OS)
 
 ## Compress folder into multiple zip files
 
