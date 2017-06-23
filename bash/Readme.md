@@ -28,6 +28,13 @@ Note: this works for all linux boxes (exluding Mac OS)
 zip -r -s 64 archive.zip folder-name
 ```
 
+## Secure copy files over SSH and exclude some files
+
+```
+scp -r [!.]* user@server:~
+```
+this will exclude files and folders starting with ```.*```
+
 ## Print string multiple times
 
 Print message multiple times:
