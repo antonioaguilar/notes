@@ -16,6 +16,12 @@ When running Docker in Ubuntu, it is neccesary add users to docker group:
 sudo usermod -aG docker $(whoami)
 ```
 
+### Get the size of all containers, images and volumes
+
+```
+docker system df -v
+```
+
 ### Run and auto remove a container
 
 ```
