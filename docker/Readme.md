@@ -1,5 +1,12 @@
 # Docker Engine & Docker Compose
 
+### Remove all untagged images
+
+``` bash
+# removes all untagged <none> images
+docker rmi -f $(docker images | grep "^<none>" | awk '{print $3}');
+```
+
 ### Enable Docker Remote API
 
 You need to enable Docker Remote API. To do so you need to:
@@ -60,13 +67,6 @@ docker rmi $(docker images -q)
 ```bash
 # remove everything
 docker rm $(docker ps -a -q); docker rmi $(docker images -q);
-```
-
-### Remove all untagged images
-
-``` bash
-# removes all untagged <none> images
-docker rmi -f $(docker images | grep "^<none>" | awk '{print $3}');
 ```
 
 ### Remove previous Docker Machine installations
