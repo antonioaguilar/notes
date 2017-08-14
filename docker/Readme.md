@@ -7,6 +7,19 @@
 docker rmi -f $(docker images | grep "^<none>" | awk '{print $3}');
 ```
 
+### Import / Export container images
+
+```
+#for not running docker, use save:
+docker save <dockernameortag> | gzip > mycontainer.tgz
+
+#for running or paused docker, use export:
+docker export <dockernameortag> | gzip > mycontainer.tgz
+
+#load
+gunzip -c mycontainer.tgz | docker load
+```
+
 ### Enable Docker Remote API
 
 You need to enable Docker Remote API. To do so you need to:
