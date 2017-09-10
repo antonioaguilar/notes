@@ -1,5 +1,11 @@
 # Docker Engine & Docker Compose
 
+### Docker Stats with Container Names
+
+```bash
+docker stats $(docker ps --format '{{.Names}}')
+```
+
 ### Remove all untagged images
 
 ``` bash
