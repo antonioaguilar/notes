@@ -1,5 +1,11 @@
 ## Mac OS Tips
 
+### Get IP address from terminal CLI
+
+```
+ifconfig | grep "inet " | grep -Fv 127.0.0.1 | awk '{print $2}'
+```
+
 ## Mac Navigation Shortcuts
 
 Google Chrome
