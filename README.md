@@ -1,2 +1,2 @@
-# Collection of Developer Notes and Scripts
+# Developer Notes and Scripts
 
