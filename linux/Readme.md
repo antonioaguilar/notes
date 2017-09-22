@@ -82,3 +82,13 @@ $ figlet "Antonio"
  / ___ \| | | | || (_) | | | | | (_) |
 /_/   \_\_| |_|\__\___/|_| |_|_|\___/
 ```
+
+### Get the hostname 
+
+```
+hostname --fqdn
+```
+
+```
+hostname -i
+```
