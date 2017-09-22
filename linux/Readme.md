@@ -17,13 +17,13 @@ ulimit -n
 *Note: ```systemd``` has a standard limit of 1024 and regardless of what you set at the system level the ```systemd``` level will always take precedence. The fix for this is to change the systemd open file limit by editing ```/etc/systemd/system.conf```*
 
 
-Edit ```/etc/systemd/system.conf``` (sudo nano /etc/systemd/system.conf) and add:
+Edit ````sudo nano /etc/systemd/system.conf``` and add:
 
 ```
 DefaultLimitNOFILE=65000
 ```
 
-Edit ```/etc/security/limits.conf``` (sudo nano /etc/security/limits.conf) and add:
+Edit ```sudo nano /etc/security/limits.conf``` and add:
 
 ```
 *    soft nofile 65000
@@ -32,13 +32,13 @@ root soft nofile 65000
 root hard nofile 65000
 ```
 
-Edit ```/etc/pam.d/common-session``` (sudo nano /etc/pam.d/common-session) and add:
+Edit ```sudo nano /etc/pam.d/common-session``` and add:
 
 ```
 session required pam_limits.so
 ```
 
-Edit ```/etc/pam.d/common-session-noninteractive``` (sudo nano /etc/pam.d/common-session-noninteractive) and add:
+Edit ```sudo nano /etc/pam.d/common-session-noninteractive``` and add:
 
 ```
 session required pam_limits.so
@@ -50,7 +50,7 @@ Run the following command:
 sudo sysctl -w net.core.somaxconn=65000
 ```
 
-Edit ```/etc/sysctl.conf``` (sudo nano /etc/sysctl.conf) and add:
+Edit ```sudo nano /etc/sysctl.conf``` and add:
 
 ```
 vm.overcommit_memory = 1
@@ -71,7 +71,7 @@ events {
 ### Create ASCII text banner
 
 ```
-$ sudo apt-get install figlet
+$ sudo apt-get install -f figlet
 ```
 
 ```
