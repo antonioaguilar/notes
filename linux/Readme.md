@@ -17,7 +17,7 @@ ulimit -n
 *Note: ```systemd``` has a standard limit of 1024 and regardless of what you set at the system level the ```systemd``` level will always take precedence. The fix for this is to change the systemd open file limit by editing ```/etc/systemd/system.conf```*
 
 
-Edit ````sudo nano /etc/systemd/system.conf``` and add:
+Edit ```sudo nano /etc/systemd/system.conf``` and add:
 
 ```
 DefaultLimitNOFILE=65000
