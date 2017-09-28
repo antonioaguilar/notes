@@ -21,6 +21,16 @@ hostname --ip-address
 ```
 Note: this works for all linux boxes (exluding Mac OS)
 
+## Ping command with Timestamps
+
+```bash
+// outputs ping + timestamp
+ping www.google.com | while read pong; do echo "$(date): $pong"; done;
+
+// outputs ping + timestamp to a piped file
+ping www.google.com | while read pong; do echo "$(date): $pong" >> ~/logs.txt; done;
+```
+
 ## Compress folder into multiple zip files
 
 ```bash
