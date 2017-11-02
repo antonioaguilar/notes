@@ -12,6 +12,26 @@ On the local machine:
 pv file.tar | nc $REMOTE_IP 7000
 ```
 
+## Copy large files or folders between two machines (faster than ```scp```)
+
+On remote machine run:
+
+```
+nc -l -p 7000 | tar -xpf -
+```
+
+On local machine run:
+
+```
+tar -cf - * | nc $REMOTE_IP 7000
+```
+
+You can also use ```pv``` to monitor the progress of data through a pipe:
+
+```
+tar -cf - * | pv | nc $REMOTE_IP 7000
+```
+
 ## Useful ```screen``` commands:
 
 * ctrl + a c - This command **c**reates a new screen session.
