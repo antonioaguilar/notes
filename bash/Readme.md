@@ -1,5 +1,17 @@
 # Bash scripts
 
+## Copy a large file between two linux machines (using ```pv``` and ```netcat```)
+
+On the remote machine:
+```
+nc -l -p 7000 | pv > file.tar
+```
+
+On the local machine:
+```
+pv file.tar | nc $REMOTE_IP 7000
+```
+
 ## Useful ```screen``` commands:
 
 * ctrl + a c - This command **c**reates a new screen session.
