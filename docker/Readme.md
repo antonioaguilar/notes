@@ -1,5 +1,23 @@
 # Docker CE
 
+### Disable the default Docker proxy service
+
+Create a file named ```/etc/docker/daemon.json``` if it does not exist, and add the "userland-proxy": false setting.
+
+```json
+{
+  "userland-proxy": false
+}
+```
+
+After saving the file, restart the daemon using:
+
+```
+sudo service docker restart
+```
+
+>_Note: Disabling the default docker proxy service allows faster port mapping (when using large port ranges in containers)._
+
 ### Docker Stats with Container Names
 
 ```bash
