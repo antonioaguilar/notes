@@ -9,7 +9,8 @@ Vagrantfile:
 
 Vagrant.configure("2") do |config|
 
-  (11..11).each do |i|
+  # this will create a range of vagrant machines from 11 to 15 (5 total)
+  (11..15).each do |i|
     config.vm.define "vexo-#{i}" do |machine|
       
       machine.vm.box = "minimal/xenial64"
@@ -20,7 +21,7 @@ Vagrant.configure("2") do |config|
       machine.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "~/.ssh/id_rsa.pub"
       machine.vm.provision "shell", inline: "cat ~vagrant/.ssh/id_rsa.pub >> ~vagrant/.ssh/authorized_keys"
 
-      machine.vm.provision "shell", path: "script.sh"
+      # machine.vm.provision "shell", path: "script.sh"
 
       # machine.vm.box_check_update = false
 
@@ -28,7 +29,7 @@ Vagrant.configure("2") do |config|
         vm.name = "vexo-#{i}"
         vm.gui = false
         vm.cpus = 4
-        vm.memory = "2048"
+        vm.memory = "1024"
       end
     end
   end  
@@ -36,7 +37,8 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-Provisioning Script:
+Include any provisioning script (```script.sh```):
+
 ```bash
 #!/bin/bash
 
@@ -44,7 +46,8 @@ apt-get update
 apt-get install -y htop tree
 ```
 
-Machine HOSTS file
+Include the vagrant hosts in the HOSTS file (```/etc/hosts```)
+
 ```bash
 127.0.0.1       localhost
 255.255.255.255 broadcasthost
@@ -61,4 +64,10 @@ Include this line in the ```Vagrantfile`` configuration:
 
 ```ruby
 config.vm.network :forwarded_port, guest: 22, host: 2222, host_ip: "0.0.0.0", id: "ssh", auto_correct: true
+```
+
+Then access the vagrant instance using: 
+
+```
+ssh vagrant@192.168.33.11
 ```
