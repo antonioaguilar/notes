@@ -22,6 +22,9 @@ sudo service docker restart
 
 ```bash
 docker stats $(docker ps --format '{{.Names}}')
+
+# setup as alias
+alias ds='docker stats $(docker ps --format {{.Names}})'
 ```
 
 ### Remove all untagged images
