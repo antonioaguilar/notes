@@ -7,6 +7,7 @@
 * Create a new project with SASS with the following: ```ng new my-sassy-app --style=scss```
 * Make a ```production build```: ```ng build --target=production```
 * Creating services, ```ng generate service random --module=app```, this will create the ```random``` service and include it automatically in the ```AppModule```
+* Useful [blog post](https://coursetro.com/posts/code/59/Angular-4-Event-Binding) showing all the possible binding events in Angular
 
 ### Importing ```LoDash``` in Angular:
 
