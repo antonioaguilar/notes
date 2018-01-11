@@ -1,7 +1,21 @@
-# Angular 4 idiosyncrasies
+# Angular 4
 
+### Angular idiosyncrasies
 * For using ```[(ngModel)]``` in Angular 2, 4 & 5, You need to import FormsModule from ```'@angular/forms'```
 * Angular CLI, create components in different folders instead of the default ```src/app``` folder: ```ng generate component my-folder/hello-world```
 * CDK is the short form of component dev kit. This signifies that these are general-purpose tools for building components that are not coupled to Material Design
 * Create a new project with SASS with the following: ```ng new my-sassy-app --style=scss```
 * Make a ```production build```: ```ng build --target=production```
+* Creating services, ```ng generate service random --module=app```, this will create the ```random``` service and include it automatically in the ```AppModule```
+
+### Importing ```LoDash``` in Angular 4:
+
+```bash
+$ npm install --save lodash
+
+# needed for the typings 
+$ npm install --save @types/lodash
+
+# then in your component import LoDash
+import * as _ from 'lodash';
+```
