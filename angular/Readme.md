@@ -1,4 +1,4 @@
-# Angular 4
+# Angular 4 - Notes
 
 ### Angular idiosyncrasies
 * For using ```[(ngModel)]``` in Angular 2, 4 & 5, You need to import FormsModule from ```'@angular/forms'```
@@ -8,14 +8,26 @@
 * Make a ```production build```: ```ng build --target=production```
 * Creating services, ```ng generate service random --module=app```, this will create the ```random``` service and include it automatically in the ```AppModule```
 
-### Importing ```LoDash``` in Angular 4:
+### Importing ```LoDash``` in Angular:
 
 ```bash
-$ npm install --save lodash
+npm install --save lodash
 
 # needed for the typings 
-$ npm install --save @types/lodash
+npm install --save @types/lodash
 
 # then in your component import LoDash
 import * as _ from 'lodash';
+```
+
+### Importing ```jQuery``` in Angular:
+
+```bash
+npm install --save jquery
+
+# needed for the typings 
+npm install --save @types/jquery
+
+# then in your component import jQuery
+import * as $ from 'jquery';
 ```
