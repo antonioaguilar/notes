@@ -36,3 +36,7 @@ npm install --save @types/jquery
 # then in your component import jQuery
 import * as $ from 'jquery';
 ```
+
+## Useful Links
+
+* [Angular Stories](https://github.com/angular/angular-cli/wiki/stories)
