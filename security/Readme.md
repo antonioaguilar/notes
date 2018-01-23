@@ -38,6 +38,32 @@ Generate the cert using the config file as option
 openssl req -newkey rsa:4096 -days 3650 -nodes -x509 -sha256 -keyout key.pem -out cert.pem -config server.cnf
 ```
 
+## Check for Meltdown And Spectre Vulnerabilities (Ubuntu)
+
+Find if your Ubuntu systems are patched or not patched using any one of the following commands:
+
+```
+grep CONFIG_PAGE_TABLE_ISOLATION=y /boot/config-`uname -r` && echo "patched :)" || echo "unpatched :("
+```
+
+```
+grep cpu_insecure /proc/cpuinfo && echo "patched :)" || echo "unpatched :("
+```
+
+```
+dmesg | grep "Kernel/User page tables isolation: enabled" && echo "patched :)" || echo "unpatched :(
+```
+
+If your Ubuntu system is not patched, you can install the latest dist upgrade:
+
+```
+sudo apt-get update
+sudo apt-get dist-upgrade
+
+# reboot your system for changes to take effect
+sudo reboot
+```
+
 ## Check Linux OS distro version
 
 ```bash
@@ -209,7 +235,7 @@ openssl x509 -in cert.crt -inform der -outform pem -out cert.pem
 
 ### Combine Private Key and Certificate:
 
-```bash 
+```bash
 openssl req -new -newkey rsa:1024 -days 365 -nodes -x509 -keyout server.pem -out server.pem
 ```
 
@@ -219,7 +245,7 @@ openssl req -new -newkey rsa:1024 -days 365 -nodes -x509 -keyout server.pem -out
 echo -n 'Hello World!' | sha256sum
 ```
 
-In Mac OS: 
+In Mac OS:
 ```bash
 echo -n 'Hello World!' | shasum -a 256
 ```
