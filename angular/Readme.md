@@ -9,6 +9,9 @@
 * Creating services, ```ng generate service random --module=app```, this will create the ```random``` service and include it automatically in the ```AppModule```
 * Useful [blog post](https://coursetro.com/posts/code/59/Angular-4-Event-Binding) showing all the possible binding events in Angular
 * The ```HttpClient``` in Angular 4 returns an observable instead of the a promise as in previous versions.
+* Enable Angular CLI Autocomplete (Mac OS):
+  - `ng completion --bash >> ~/.bash_profile`
+  - `source ~/.bash_profile`
 
 ### Importing ```LoDash``` in Angular:
 
@@ -38,3 +41,7 @@ import * as $ from 'jquery';
 
 * Good intro [video](https://www.youtube.com/watch?v=kHbMm7psBag)
 * Look inside the theming [folder](https://github.com/angular/material2/tree/master/src/lib/core/theming)
+
+## Useful Links
+
+* [Angular Stories](https://github.com/angular/angular-cli/wiki/stories)
