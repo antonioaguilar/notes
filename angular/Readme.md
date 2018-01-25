@@ -8,14 +8,14 @@
 * Make a ```production build```: ```ng build --target=production```
 * Creating services, ```ng generate service random --module=app```, this will create the ```random``` service and include it automatically in the ```AppModule```
 * Useful [blog post](https://coursetro.com/posts/code/59/Angular-4-Event-Binding) showing all the possible binding events in Angular
-* The ```HttpClient``` in Angular 4 returns an observable instead of the a promise as in previous versions. 
+* The ```HttpClient``` in Angular 4 returns an observable instead of the a promise as in previous versions.
 
 ### Importing ```LoDash``` in Angular:
 
 ```bash
 npm install --save lodash
 
-# needed for the typings 
+# needed for the typings
 npm install --save @types/lodash
 
 # then in your component import LoDash
@@ -27,9 +27,14 @@ import * as _ from 'lodash';
 ```bash
 npm install --save jquery
 
-# needed for the typings 
+# needed for the typings
 npm install --save @types/jquery
 
 # then in your component import jQuery
 import * as $ from 'jquery';
 ```
+
+### Customizing Angular Material Themes
+
+* Good intro [video](https://www.youtube.com/watch?v=kHbMm7psBag)
+* Look inside the theming [folder](https://github.com/angular/material2/tree/master/src/lib/core/theming)

@@ -1,5 +1,18 @@
 # Linux Performance Tips
 
+### Get disk space (find largest files)
+
+```
+# install the program
+sudo apt-get install ncdu
+
+# scan the home folder
+ncdu ~
+
+# scan the disk remotely
+ssh -C user@system.com ncdu -o- / | ./ncdu -f-
+```
+
 ### Configuring ```ulimit``` on Ubuntu
 
 Find the max number of open files in your system:
@@ -94,7 +107,7 @@ _|    _|  _|    _|      _|_|    _|_|    _|    _|  _|    _|_|
 
 ```
 
-### Get the hostname 
+### Get the hostname
 
 ```
 hostname --fqdn
