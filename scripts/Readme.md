@@ -8,7 +8,7 @@
 MIN=5
 MAX=10
 
-jot -r 1 $min $max
+jot -r 1 $MIN $MAX
 ```
 
 ## jq - JSON processor
