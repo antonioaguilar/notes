@@ -1,16 +1,14 @@
 # Command line tools and tips 
 
-## VirtualBox
+## Generate Random numbers
 
-### Resize virtualbox disk image
+```
+# generate simple random integers
 
-```bash
-# Clone the .vmdk image to a .vdi.
-VBoxManage clonehd virtualdisk.vmdk new-virtualdisk.vdi --format vdi
-# Resize the new .vdi image (30720 == 30 GB).
-VBoxManage modifyhd new-virtualdisk.vdi --resize 30720
-# Optional; switch back to a .vmdk.
-VBoxManage clonehd new-virtualdisk.vdi resized.vmdk --format vmdk
+MIN=5
+MAX=10
+
+jot -r 1 $min $max
 ```
 
 ## jq - JSON processor
@@ -70,4 +68,17 @@ jq '.events | length' file.json
 ```bash
 jq 'sort_by(.event.name)' file.json
 
+```
+
+## VirtualBox
+
+### Resize virtualbox disk image
+
+```bash
+# Clone the .vmdk image to a .vdi.
+VBoxManage clonehd virtualdisk.vmdk new-virtualdisk.vdi --format vdi
+# Resize the new .vdi image (30720 == 30 GB).
+VBoxManage modifyhd new-virtualdisk.vdi --resize 30720
+# Optional; switch back to a .vmdk.
+VBoxManage clonehd new-virtualdisk.vdi resized.vmdk --format vmdk
 ```
