@@ -1,5 +1,11 @@
 # InfluxDB
 
+### Run InfluxDB in Docker
+
+```
+docker run -it --rm --name="influxdb" -p 8086:8086 -v influxdb:/var/lib/influxdb influxdb
+```
+
 ### Measure query execution time using CLI
 
 ```bash
