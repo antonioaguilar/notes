@@ -3,7 +3,13 @@
 ### Run InfluxDB in Docker
 
 ```
+# use default configuration
 docker run -it --rm --name="influxdb" -p 8086:8086 -v influxdb:/var/lib/influxdb influxdb
+```
+
+```
+# use extended configuration
+docker run -it --rm --name="influxdb" -p 8086:8086 -v $(pwd)/influxdb.conf:/etc/influxdb/influxdb.conf:ro -v influxdb:/var/lib/influxdb influxdb
 ```
 
 ### Measure query execution time using CLI
