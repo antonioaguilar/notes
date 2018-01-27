@@ -18,11 +18,11 @@ influxdb
 ### Utility scripts for InfluxDB
 
 ```
-alias influx-query='http://localhost:8086/query --data-urlencode'
+alias influx-query='curl -i -k -XPOST http://localhost:8086/query --data-urlencode'
 ```
 
 ```
-alias influx-write="http://localhost:8086/write?$1 --data-binary $2"
+alias influx-write="curl -i -k -XPOST http://localhost:8086/write?$1 --data-binary $2"
 ```
 
 ### Measure query execution time using CLI
