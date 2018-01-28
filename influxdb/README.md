@@ -15,6 +15,20 @@ docker run -it -d --rm --name="influxdb" -p 8086:8086 \
 influxdb
 ```
 
+### Run Kapacitor in Docker
+```
+docker run -it -d --rm --name="kapacitor" -p 9092:9092 \
+-v influxdb:/var/lib/influxdb \
+kapacitor
+```
+
+```
+docker run -it -d --rm --name="kapacitor" -p 9092:9092 \
+-v $(pwd)/kapacitor.conf:/etc/kapacitor/kapacitor.conf:ro \
+-v influxdb:/var/lib/influxdb \
+kapacitor
+```
+
 ### Utility scripts for InfluxDB
 
 ```
