@@ -18,8 +18,12 @@ influxdb
 ### Utility scripts for InfluxDB
 
 ```
-alias influx-query='curl -s -k -XPOST http://localhost:8086/query --data-urlencode'
+alias influx-query='_query() { curl -s -k -XPOST http://localhost:8086/query --data-urlencode "$1" | jq; }; _query'
+alias influx-write='_write() { curl -s -k -XPOST http://localhost:8086/write?$1 --data-binary "$2" | jq; }; _write'
 ```
+
+
+
 
 ```
 alias influx-write="curl -s -k -XPOST http://localhost:8086/write?$1 --data-binary $2"
