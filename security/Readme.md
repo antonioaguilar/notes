@@ -38,7 +38,7 @@ Generate the cert using the config file as option
 openssl req -newkey rsa:4096 -days 3650 -nodes -x509 -sha256 -keyout key.pem -out cert.pem -config server.cnf
 ```
 
-### Encrypt / Decrypt files with OpenSSL
+## Encrypt / Decrypt files with OpenSSL
 
 ```
 # encrypt file
