@@ -1,5 +1,12 @@
 # Git commands and scripts
 
+### Bundle a repo
+
+```
+# bundle the develop branch
+git bundle create repo-name.bundle -b develop
+```
+
 ### Store user credentails 
 
 ```
