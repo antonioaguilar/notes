@@ -3,6 +3,7 @@
 ## Custom Editor Settings
 
 ```json
+// Place your settings in this file to overwrite the default settings
 {
   "editor.fontSize": 14,
   "editor.tabSize": 2,
@@ -14,7 +15,7 @@
     "**/.idea": true,
     "**/.vscode": true,
     "**/node_modules": true,
-    "**/dist": true,
+    // "**/dist": true,
     "**/production": true,
     "**/public": true,
     "**/vendor": true,
@@ -41,7 +42,6 @@
   "html.format.extraLiners": "",
   "html-css-class-completion.includeGlobPattern": "**/*.{css,scss,html}"
 }
-
 ```
 
 ## Custom Keybindings
@@ -85,7 +85,10 @@
   {
     "key": "cmd+k f",
     "command": "workbench.action.closeFolder"
+  },
+  {
+    "key": "cmd+k w",
+    "command": "workbench.action.closeFolder"
   }
 ]
-
 ```
