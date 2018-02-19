@@ -1,4 +1,22 @@
-# Command line tools and tips 
+# Command line tools and tips
+
+## Passing Bash variables in CURL command
+
+```
+# example 
+SENSOR_VALUE=$(jot -r 1 1 100)
+DEVICE_ID=$(openssl rand -hex 4)
+curl -H "Content-Type: application-json" -X POST http://localhost:8080/ \
+-d '{"id": "'"$DEVICE_ID"'", "temperature": '"$SENSOR_VALUE"' }'
+```
+
+## Generate Random Strings
+
+```
+openssl rand -hex 12
+
+openssl rand -base64 12
+```
 
 ## Generate Random numbers
 
