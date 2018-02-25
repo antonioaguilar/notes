@@ -3,8 +3,9 @@
 ## Custom Editor Settings
 
 ```json
+// Place your settings in this file to overwrite the default settings
 {
-  "editor.fontSize": 12,
+  "editor.fontSize": 14,
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
   "files.exclude": {
@@ -14,6 +15,8 @@
     "**/.idea": true,
     "**/.vscode": true,
     "**/node_modules": true,
+    // "**/dist": true,
+    "**/production": true,
     "**/public": true,
     "**/vendor": true,
     "**/.DS_Store": true
@@ -26,7 +29,7 @@
   "workbench.activityBar.visible": true,
   "workbench.editor.showIcons": false,
   "workbench.editor.enablePreview": false,
-  "workbench.startupEditor": "welcomePage",
+  "workbench.startupEditor": "newUntitledFile",
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
@@ -34,7 +37,10 @@
   "zenMode.fullScreen": false,
   "telemetry.enableCrashReporter": false,
   "telemetry.enableTelemetry": false,
-  "workbench.colorTheme": "Monokai"
+  "workbench.colorTheme": "Monokai",
+
+  "html.format.extraLiners": "",
+  "html-css-class-completion.includeGlobPattern": "**/*.{css,scss,html}"
 }
 ```
 
@@ -79,7 +85,10 @@
   {
     "key": "cmd+k f",
     "command": "workbench.action.closeFolder"
+  },
+  {
+    "key": "cmd+k w",
+    "command": "workbench.action.closeFolder"
   }
 ]
-
 ```

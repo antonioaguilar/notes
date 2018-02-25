@@ -1,16 +1,32 @@
-# Command line tools and tips 
+# Command line tools and tips
 
-## VirtualBox
+## Passing Bash variables in CURL command
 
-### Resize virtualbox disk image
+```
+# example 
+SENSOR_VALUE=$(jot -r 1 1 100)
+DEVICE_ID=$(openssl rand -hex 4)
+curl -H "Content-Type: application-json" -X POST http://localhost:8080/ \
+-d '{"id": "'"$DEVICE_ID"'", "temperature": '"$SENSOR_VALUE"' }'
+```
 
-```bash
-# Clone the .vmdk image to a .vdi.
-VBoxManage clonehd virtualdisk.vmdk new-virtualdisk.vdi --format vdi
-# Resize the new .vdi image (30720 == 30 GB).
-VBoxManage modifyhd new-virtualdisk.vdi --resize 30720
-# Optional; switch back to a .vmdk.
-VBoxManage clonehd new-virtualdisk.vdi resized.vmdk --format vmdk
+## Generate Random Strings
+
+```
+openssl rand -hex 12
+
+openssl rand -base64 12
+```
+
+## Generate Random numbers
+
+```
+# generate simple random integers
+
+MIN=5
+MAX=10
+
+jot -r 1 $MIN $MAX
 ```
 
 ## jq - JSON processor
@@ -70,4 +86,17 @@ jq '.events | length' file.json
 ```bash
 jq 'sort_by(.event.name)' file.json
 
+```
+
+## VirtualBox
+
+### Resize virtualbox disk image
+
+```bash
+# Clone the .vmdk image to a .vdi.
+VBoxManage clonehd virtualdisk.vmdk new-virtualdisk.vdi --format vdi
+# Resize the new .vdi image (30720 == 30 GB).
+VBoxManage modifyhd new-virtualdisk.vdi --resize 30720
+# Optional; switch back to a .vmdk.
+VBoxManage clonehd new-virtualdisk.vdi resized.vmdk --format vmdk
 ```

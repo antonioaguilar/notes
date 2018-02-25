@@ -38,6 +38,16 @@ Generate the cert using the config file as option
 openssl req -newkey rsa:4096 -days 3650 -nodes -x509 -sha256 -keyout key.pem -out cert.pem -config server.cnf
 ```
 
+## Encrypt / Decrypt files with OpenSSL
+
+```
+# encrypt file
+openssl enc -blowfish -in file.txt -out file.blowfish
+
+#decrypt the file
+openssl enc -d -blowfish -in file.blowfish -out file.txt
+```
+
 ## Check for Meltdown And Spectre Vulnerabilities (Ubuntu)
 
 Find if your Ubuntu systems are patched or not patched using any one of the following commands:
