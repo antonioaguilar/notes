@@ -1,5 +1,12 @@
 # Golang Notes
 
+## Cross-compilation of Go programs
+
+```
+# compiles a linux executable
+export GOOS=linux; export GOARCH=amd64; go build
+```
+
 ## Install Go in Mac OS
 
 ### Install [gvm](https://github.com/moovweb/gvm)
