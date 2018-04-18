@@ -10,6 +10,11 @@ docker stop $(docker ps -q -f "name=client*")
 ### Remove all untagged images
 
 ``` bash
+# better way!
+docker system prune -f
+```
+
+``` bash
 # removes all untagged <none> images
 docker rmi -f $(docker images | grep "^<none>" | awk '{print $3}');
 ```
