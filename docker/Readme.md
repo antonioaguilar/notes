@@ -1,5 +1,33 @@
 # Docker CE
 
+### Docker stop with glob patterns
+
+```bash
+# this will stop containers called: client-01, client-02 and so on ...
+docker stop $(docker ps -q -f "name=client*")
+```
+
+### Remove all untagged images
+
+``` bash
+# better way!
+docker system prune -f
+```
+
+``` bash
+# removes all untagged <none> images
+docker rmi -f $(docker images | grep "^<none>" | awk '{print $3}');
+```
+
+### Docker Stats with Container Names
+
+```bash
+docker stats $(docker ps --format '{{.Names}}')
+
+# setup as alias
+alias ds='docker stats $(docker ps --format {{.Names}})'
+```
+
 ### Disable the default Docker proxy service
 
 Create a file named ```/etc/docker/daemon.json``` if it does not exist, and add the "userland-proxy": false setting.
@@ -17,22 +45,6 @@ sudo service docker restart
 ```
 
 >_Note: Disabling the default docker proxy service allows faster port mapping (when using large port ranges in containers)._
-
-### Docker Stats with Container Names
-
-```bash
-docker stats $(docker ps --format '{{.Names}}')
-
-# setup as alias
-alias ds='docker stats $(docker ps --format {{.Names}})'
-```
-
-### Remove all untagged images
-
-``` bash
-# removes all untagged <none> images
-docker rmi -f $(docker images | grep "^<none>" | awk '{print $3}');
-```
 
 ### Import / Export container images
 

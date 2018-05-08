@@ -1,5 +1,21 @@
 # Golang Notes
 
+## Go enviroment variables
+
+```
+# if using gvm
+export GOPATH=$HOME/.go
+export GOBIN=$GOPATH/bin
+
+```
+
+## Cross-compilation of Go programs
+
+```
+# compiles a linux executable
+export GOOS=linux; export GOARCH=amd64; go build
+```
+
 ## Install Go in Mac OS
 
 ### Install [gvm](https://github.com/moovweb/gvm)
@@ -32,9 +48,9 @@ export CGO_ENABLED=0
 - Check the latest releases of Go: 
   - `gvm listall`
 - Install the latest version (use the `-B` binary flag):
-  - `gvm install go1.9.2 -B`
+  - `gvm install go1.10.1 -B`
 - Set it as default version:
-  - `gvm use go1.9.2 --default`
+  - `gvm use go1.10.1 --default`
 - Check if go is installed correctly:
   - `gvm list`
   - `go version` or `go help`
@@ -69,12 +85,14 @@ export GOROOT_BOOTSTRAP=$GOROOT
 - Check the latest releases of Go: 
   - `gvm listall`
 - Install the latest version (use the `-B` binary flag):
-  - `gvm install go1.9.2 -B`
+  - `gvm install go1.10.1 -B`
 - Set it as default version:
-  - `gvm use go1.9.2 --default`
+  - `gvm use go1.10.1 --default`
 - Check if go is installed correctly:
   - `gvm list`
   - `go version` or `go help`
+  - `go env`
+  
 
 
 ## Go code snippets
