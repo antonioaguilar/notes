@@ -94,6 +94,15 @@ sudo update-grub
 
 ```
 
+### Start the Docker daemon
+
+```
+# using systemctl
+sudo systemctl start docker
+
+# using a service
+sudo service docker start
+```
 
 ### Enable Docker Remote API
 
