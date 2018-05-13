@@ -16,6 +16,24 @@ brew update
 brew cask install minishift
 ```
 
+#### User account management
+
+```
+# login as system admin
+oc login -u system:admin
+
+# list users
+oc get identity
+
+# location of cluster (master) config file
+/var/lib/origin/openshift.local.config/master/master-config.yaml
+
+# install apache utils for htpasswd tool
+sudo apt-get install -y apache2-utils
+
+
+```
+
 ## Cloud Foundry
 
 #### Install Cloud Foundry CLI (via Brew)
