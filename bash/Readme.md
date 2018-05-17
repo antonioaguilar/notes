@@ -1,5 +1,11 @@
 # Bash scripts
 
+## Intercept network traffict 
+
+```
+sudo tcpflow -i any -C -g port 8080
+```
+
 ## Copy a large file between two linux machines (using ```pv``` and ```netcat```)
 
 On the remote machine:
