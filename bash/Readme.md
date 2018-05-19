@@ -1,5 +1,11 @@
 # Bash scripts
 
+## Intercept network traffict 
+
+```
+sudo tcpflow -i any -C -g port 8080
+```
+
 ## Copy a large file between two linux machines (using ```pv``` and ```netcat```)
 
 On the remote machine:
@@ -41,6 +47,12 @@ tar -cf - * | pv | nc $REMOTE_IP 7000
 * screen -r <session> - Reconnect to an existing screen session.
 * screen -ls - Lists the current screen sessions.
 * exit - Closes a screen session.
+
+Add this to your `~/.screenrc` to enable mouse scrolling and scroll bar history scrolling
+
+```
+termcapinfo xterm* ti@:te@
+```
 
 ## Get current IP from system
 

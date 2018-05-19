@@ -1,5 +1,12 @@
 # InfluxDB
 
+### Change timestamp format
+
+```
+# human friendly format
+precision rfc3339
+```
+
 ### Run InfluxDB in Docker
 
 ```
