@@ -14,6 +14,12 @@ brew install openshift-cli
 ```
 brew update
 brew cask install minishift
+
+# Setting Up Minishift to Use VirtualBox (permanently)
+minishift config set vm-driver virtualbox
+
+# Setting Up Minishift to Use VirtualBox (temporarily)
+minishift start --vm-driver virtualbox
 ```
 
 ## Cloud Foundry
