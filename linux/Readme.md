@@ -1,4 +1,20 @@
-# Linux Performance Tips
+# Linux Stuff
+
+### Change the booting Linux kernel 
+
+Find the list of configured Kernels in GRUB:
+```
+awk '/menuentry/ && /class/ {count++; print count-1"****"$0 }' /boot/grub/grub.cfg
+```
+
+Edit the `/etc/default/grub` via `sed`. Note: replace the X with the number you got from the awk command above:
+
+```
+sudo sed -i  's/GRUB_DEFAULT=0/GRUB_DEFAULT=X/g' /etc/default/grub; sudo update-grub
+```
+
+
+### Linux Optimization
 
 ### Get disk space (find largest files)
 
