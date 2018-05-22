@@ -50,10 +50,22 @@ brew tap cloudfoundry/tap
 brew install cf-cli
 ```
 
+### Creating users and roles in CF
+
+```
+# creates user 'Alice' with password 'wonderland'
+cf create-user alice wonderland
+ 
+# set the role developer 
+cf set-space-role alice pcfdev-org pcfdev-space "SpaceDeveloper"
+
+# change the password for user 'Alice'
+cf passwd
+```
+
 #### Useful docs and guides
 
 - [Using Docker in Cloud Foundry](https://docs.cloudfoundry.org/adminguide/docker.html)
--
 
 #### Deploying NodeJS apps
 
