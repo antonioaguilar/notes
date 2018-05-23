@@ -52,7 +52,7 @@ brew install cf-cli
 
 ### Creating users and roles in CF
 
-Note: I these examples the ORG: `pcfdev-org` and SPACE: `pcfdev-space`
+Note: In these examples the ORG: `pcfdev-org` and SPACE: `pcfdev-space`
 
 ```
 # creates user 'Alice' with password 'wonderland'
