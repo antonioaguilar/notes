@@ -126,3 +126,17 @@ Type or paste the following exactly into the Terminal window:
 
 ```killall Dock```
 
+## Disable SIP (System Integrity Protection) 
+
+Boot into recovery mode (e.g. restart the Mac and hold `CMD+R` while booting). Open a terminal under utilities menu
+
+```
+# check the status
+csrutil status
+
+# disable the feature
+csrutil disable
+
+# re-enable the feature
+csrutil enable
+```
