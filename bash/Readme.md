@@ -51,6 +51,7 @@ tar -cf - * | pv | nc $REMOTE_IP 7000
 Add this to your `~/.screenrc` to enable mouse scrolling and scroll bar history scrolling
 
 ```
+shell -$SHELL
 termcapinfo xterm* ti@:te@
 ```
 
