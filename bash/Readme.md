@@ -38,6 +38,20 @@ You can also use ```pv``` to monitor the progress of data through a pipe:
 tar -cf - * | pv | nc $REMOTE_IP 7000
 ```
 
+## Copy files locally to other volumes (faster than `cp`)
+
+```
+sudo rsync -vaE --progress /Volumes/SourceName /Volumes/DestinationName
+```
+The flags are:
+
+* `-v` increases verbosity.
+* `-a` applies archive settings to mirror the source files exactly, including symbolic links and permissions.
+* `-E` copies extended attributes and resource forks (OS X only).
+* `--progress` provides a count down and transfer statistics during the copy.
+* `--dry-run` simulates the copy
+
+
 ## Search for text patterns using `grep`
 
 ```
