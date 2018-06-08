@@ -38,6 +38,50 @@ You can also use ```pv``` to monitor the progress of data through a pipe:
 tar -cf - * | pv | nc $REMOTE_IP 7000
 ```
 
+## Search for text patterns using `grep`
+
+```
+grep -rnw '/path/to/folder/' -e 'pattern'
+
+-r or -R is recursive,
+-n is line number, and
+-w stands for match the whole word.
+-l (lower-case L) can be added to just give the file name of matching files.
+```
+
+Along with these, ```--exclude, --include, --exclude-dir``` flags could be used for efficient searching:
+
+This will only search through those files which have .c or .h extensions:
+
+```
+grep --include=\*.{c,h} -rnw '/path/to/somewhere/' -e "pattern"
+```
+
+This will exclude searching all the files ending with .o extension:
+
+```
+grep --exclude=*.o -rnw '/path/to/somewhere/' -e "pattern"
+```
+
+For directories it's possible to exclude a particular directory(ies) through --exclude-dir parameter. For example, this will exclude the dirs dir1/, dir2/ and all of them matching *.dst/:
+
+```
+grep --exclude-dir={dir1,dir2,*.dst} -rnw '/path/to/somewhere/' -e "pattern"
+```
+For more options check man grep.
+
+
+## Search and replace text patterns
+
+```
+# works for most Linux distros
+grep -rl someText somedir/ | xargs sed -i 's/someText/replacedText/g'
+
+# for Mac OS only
+grep -rl someText somedir/ | xargs sed -i "" "s/someText/replacedText/g"
+```
+
+
 ## Useful ```screen``` commands:
 
 * ctrl + a c - This command **c**reates a new screen session.
