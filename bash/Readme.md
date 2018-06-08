@@ -41,7 +41,7 @@ tar -cf - * | pv | nc $REMOTE_IP 7000
 ## Search for text patterns using `grep`
 
 ```
-grep -rnw '/path/to/folder/' -e 'pattern'
+grep -rwn '/path/to/folder/' -e 'pattern'
 
 -r or -R is recursive,
 -n is line number, and
@@ -68,7 +68,6 @@ For directories it's possible to exclude a particular directory(ies) through --e
 ```
 grep --exclude-dir={dir1,dir2,*.dst} -rnw '/path/to/somewhere/' -e "pattern"
 ```
-For more options check man grep.
 
 
 ## Search and replace text patterns
