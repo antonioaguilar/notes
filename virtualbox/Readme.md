@@ -1,5 +1,11 @@
 # VirtualBox tips
 
+### Remove virtualbox network adapters (host and NAT only)
+
+```
+VBoxManage hostonlyif remove vboxnet0
+```
+
 ## Install VirtualBox (Ubuntu)
 
 Edit ```/etc/apt/sources.list``` and include the following line:
