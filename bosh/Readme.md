@@ -148,3 +148,9 @@ yes | bosh -d cf deploy ~/workspace/cf-deployment/cf-deployment.yml \
 > You can enable debug mode in the Bosh director by exporting the following variable: `export BOSH_LOG_LEVEL=debug`
 
 > *We are using the [bosh-lite.com](http://bosh-lite.com) domain to route the CF apps to a public DNS domain so we can access the apps publicly*
+
+### Get the Cloud Foundry default admin password
+
+```
+export CF_DEFAULT_PASSWORD=$(bosh interpolate ~/deployments/vbox/deployment-vars.yml --path /cf_admin_password)
+```
