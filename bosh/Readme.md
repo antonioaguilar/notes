@@ -70,7 +70,7 @@ Export the enviromental variables:
 ```
 export BOSH_ENVIRONMENT=vbox && \
 export BOSH_CLIENT=admin && \
-export BOSH_CLIENT_SECRET=$(bosh int ~/deployments/vbox/creds.yml --path /admin_password) &&\
+export BOSH_CLIENT_SECRET=$(bosh int ~/deployments/vbox/creds.yml --path /admin_password) && \
 echo "export BOSH_ENVIRONMENT=$BOSH_ENVIRONMENT" >> ~/.bashrc && \
 echo "export BOSH_CLIENT=$BOSH_CLIENT" >> ~/.bashrc && \
 echo "export BOSH_CLIENT_SECRET=$BOSH_CLIENT_SECRET" >> ~/.bashrc
