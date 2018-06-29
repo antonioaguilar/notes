@@ -13,7 +13,6 @@ Clone the bosh deployment repo:
 
 ```
 git clone https://github.com/cloudfoundry/bosh-deployment ~/workspace/bosh-deployment && \
-
 mkdir -p ~/deployments/vbox
 ```
 
@@ -24,7 +23,7 @@ Configure the CPU and Memory for the VirtualBox VM. The default values are 2 CPU
 Edit the `virtualbox/cpi.yml` under `~/workspace/bosh-deployment` folder and increase the `cpus` and `memory` values:
 
 ```
-# ~/workspace/bosh-deployment/virtualbox/cpi.yml
+# nano ~/workspace/bosh-deployment/virtualbox/cpi.yml
 
 # Configure sizes
 - type: replace
@@ -63,9 +62,14 @@ Configure the enviroment and login to the Bosh director:
 
 ```
 bosh alias-env vbox -e 192.168.50.6 --ca-cert <(bosh int ~/deployments/vbox/creds.yml --path /director_ssl/ca)
+
 export BOSH_ENVIRONMENT=vbox
 export BOSH_CLIENT=admin
 export BOSH_CLIENT_SECRET=$(bosh int ~/deployments/vbox/creds.yml --path /admin_password)
+
+echo "export BOSH_ENVIRONMENT=$BOSH_ENVIRONMENT" > ~/.bashrc && \
+echo "export BOSH_CLIENT=$BOSH_CLIENT" > ~/.bashrc && \
+echo "export BOSH_CLIENT_SECRET=$BOSH_CLIENT_SECRET" > ~/.bashrc
 ```
 
 ### Setup local routes
@@ -77,7 +81,7 @@ sudo route add -net 10.244.0.0/16 gw 192.168.50.6 # Linux
 sudo route add -net 10.244.0.0/16     192.168.50.6 # Mac OS X
 ```
 
-### Delete Bosh environment.
+### Delete Bosh environment
 
 In case you need to restart the installation process or delete the Bosh director. You need to run this script from the `~/deployments/vbox/` folder.
 
@@ -105,6 +109,7 @@ Then, remove the IP routes:
 sudo route del -net 10.244.0.0/16 gw 192.168.50.6 # Linux
 sudo route delete -net 10.244.0.0/16  192.168.50.6 # Mac OS X
 ```
+
 > To view the existing `routes` in Linux use: `route -n` and Mac OS: `sudo netstat -rn`
 
 ## Install Cloud Foundry
