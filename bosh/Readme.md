@@ -61,7 +61,8 @@ bosh create-env ~/workspace/bosh-deployment/bosh.yml \
 Configure the enviroment and login to the Bosh director:
 
 ```
-bosh alias-env vbox -e 192.168.50.6 --ca-cert <(bosh int ~/deployments/vbox/creds.yml --path /director_ssl/ca)
+bosh alias-env vbox -e 192.168.50.6 \
+--ca-cert <(bosh int ~/deployments/vbox/creds.yml --path /director_ssl/ca)
 ```
 
 Export the enviromental variables: 
@@ -80,8 +81,11 @@ echo "export BOSH_CLIENT_SECRET=$BOSH_CLIENT_SECRET" >> ~/.bashrc
 Setup a local route for bosh ssh commands or accessing VMs directly:
 
 ```
-sudo route add -net 10.244.0.0/16 gw 192.168.50.6 # Linux
-sudo route add -net 10.244.0.0/16     192.168.50.6 # Mac OS X
+# Linux
+sudo route add -net 10.244.0.0/16 gw 192.168.50.6
+
+# Mac OS X
+sudo route add -net 10.244.0.0/16 192.168.50.6 
 ```
 
 ### Delete Bosh environment
