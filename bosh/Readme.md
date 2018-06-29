@@ -12,11 +12,9 @@
 Clone the bosh deployment repo:
 
 ```
-git clone https://github.com/cloudfoundry/bosh-deployment ~/workspace/bosh-deployment
+git clone https://github.com/cloudfoundry/bosh-deployment ~/workspace/bosh-deployment && \
 
 mkdir -p ~/deployments/vbox
-
-cd ~/deployments/vbox
 ```
 
 ### Configure VM specs
@@ -26,6 +24,8 @@ Configure the CPU and Memory for the VirtualBox VM. The default values are 2 CPU
 Edit the `virtualbox/cpi.yml` under `~/workspace/bosh-deployment` folder and increase the `cpus` and `memory` values:
 
 ```
+# ~/workspace/bosh-deployment/virtualbox/cpi.yml
+
 # Configure sizes
 - type: replace
   path: /resource_pools/name=vms/cloud_properties?
