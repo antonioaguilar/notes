@@ -164,5 +164,6 @@ yes | bosh -d cf deploy ~/workspace/cf-deployment/cf-deployment.yml \
 ### Get the Cloud Foundry default admin password
 
 ```
-export CF_DEFAULT_PASSWORD=$(bosh interpolate ~/deployments/vbox/deployment-vars.yml --path /cf_admin_password)
+export CF_ADMIN_PASSWORD=$(bosh interpolate ~/deployments/vbox/deployment-vars.yml --path /cf_admin_password) && \
+echo "export CF_ADMIN_PASSWORD=$CF_ADMIN_PASSWORD" >> ~/.bashrc
 ```
