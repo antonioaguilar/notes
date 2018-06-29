@@ -136,7 +136,7 @@ cd ~/workspace/cf-deployment
 Cloud Foundry needs a version of the BOSH Lite Warden stemcell in order to build the solution.  To upload this stemcell into the Blobstore, run the following commands:
 
 ```
-export STEMCELL_VERSION=$(bosh int cf-deployment.yml --path /stemcells/alias=default/version)
+export STEMCELL_VERSION=$(bosh int ~/workspace/cf-deployment/cf-deployment.yml --path /stemcells/alias=default/version)
 
 bosh upload-stemcell https://bosh.io/d/stemcells/bosh-warden-boshlite-ubuntu-trusty-go_agent?v=$STEMCELL_VERSION
 ```
@@ -144,7 +144,7 @@ bosh upload-stemcell https://bosh.io/d/stemcells/bosh-warden-boshlite-ubuntu-tru
 ### Setup the cloud config
 
 ```
-yes | bosh update-cloud-config iaas-support/bosh-lite/cloud-config.yml
+yes | bosh update-cloud-config ~/workspace/cf-deployment/iaas-support/bosh-lite/cloud-config.yml
 ```
 
 ### Build Cloud Foundry
