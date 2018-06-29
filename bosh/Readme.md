@@ -62,14 +62,17 @@ Configure the enviroment and login to the Bosh director:
 
 ```
 bosh alias-env vbox -e 192.168.50.6 --ca-cert <(bosh int ~/deployments/vbox/creds.yml --path /director_ssl/ca)
+```
 
-export BOSH_ENVIRONMENT=vbox
-export BOSH_CLIENT=admin
-export BOSH_CLIENT_SECRET=$(bosh int ~/deployments/vbox/creds.yml --path /admin_password)
+Export the enviromental variables: 
 
-echo "export BOSH_ENVIRONMENT=$BOSH_ENVIRONMENT" > ~/.bashrc && \
-echo "export BOSH_CLIENT=$BOSH_CLIENT" > ~/.bashrc && \
-echo "export BOSH_CLIENT_SECRET=$BOSH_CLIENT_SECRET" > ~/.bashrc
+```
+export BOSH_ENVIRONMENT=vbox && \
+export BOSH_CLIENT=admin && \
+export BOSH_CLIENT_SECRET=$(bosh int ~/deployments/vbox/creds.yml --path /admin_password) &&\
+echo "export BOSH_ENVIRONMENT=$BOSH_ENVIRONMENT" >> ~/.bashrc && \
+echo "export BOSH_CLIENT=$BOSH_CLIENT" >> ~/.bashrc && \
+echo "export BOSH_CLIENT_SECRET=$BOSH_CLIENT_SECRET" >> ~/.bashrc
 ```
 
 ### Setup local routes
