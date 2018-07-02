@@ -167,3 +167,13 @@ yes | bosh -d cf deploy ~/workspace/cf-deployment/cf-deployment.yml \
 export CF_ADMIN_PASSWORD=$(bosh interpolate ~/deployments/vbox/deployment-vars.yml --path /cf_admin_password) && \
 echo "export CF_ADMIN_PASSWORD=$CF_ADMIN_PASSWORD" >> ~/.bashrc
 ```
+
+### Suspend and Resume the Bosh director VM
+
+```
+# suspend the VM
+vboxmanage controlvm $(bosh int ~/deployments/vbox/state.json --path /current_vm_cid) savestate
+
+# resume the VM
+vboxmanage startvm $(bosh int ~/deployments/vbox/state.json --path /current_vm_cid) --type headless
+```
