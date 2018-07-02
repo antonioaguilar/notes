@@ -35,7 +35,7 @@ cf add-plugin-repo CF-Community https://plugins.cloudfoundry.org && \
     cf install-plugin -f -r CF-Community "wildcard_plugin"
 ```
 
-### Updating a buildpack
+### Updating a buildpack (NodeJS example)
 
 ```
 git clone https://github.com/cloudfoundry/nodejs-buildpack.git
@@ -73,6 +73,15 @@ cf delete-user alice -f
 
 # view all users in the ORG and SPACE
 cf space-users pcfdev-org pcfdev-space
+```
+
+### Push NodeJS app
+
+```
+# do a "npm install" on local folder to improve buildpack upload time 
+# use flag --no-bin-links to prevent bug: https://github.com/cloudfoundry/cli/issues/1299
+
+npm install --no-bin-links
 ```
 
 #### Useful docs and guides
