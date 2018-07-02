@@ -1,5 +1,20 @@
 # VirtualBox tips
 
+### Configure the default VirtualBox images folder
+
+Get the current folder: 
+
+```
+vboxmanage list systemproperties | grep folder
+```
+
+Change the folder: 
+
+```
+vboxmanage setproperty machinefolder /path/to/directory/
+```
+> This will not move already created VMs, it will affect only VMs which are created after the `machinefolder` property has been set.
+
 ### Remove virtualbox network adapters (host and NAT only)
 
 ```
