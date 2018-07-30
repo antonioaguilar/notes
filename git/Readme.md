@@ -1,5 +1,15 @@
 # Git commands and scripts
 
+### Delete a local and remote branch
+
+```
+# delete the remote branch
+git push origin --delete <branch-name> 
+
+# delete the local branch 
+git branch -D <branch-name>
+```
+
 ### Securely transfer a git repo 
 
 ```
