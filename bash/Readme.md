@@ -94,6 +94,12 @@ grep -rl someText somedir/ | xargs sed -i 's/someText/replacedText/g'
 grep -rl someText somedir/ | xargs sed -i "" "s/someText/replacedText/g"
 ```
 
+## Find and delete files recursively with extension
+
+```
+# deletes all the *.log files 
+find . -type f -name '*.log' -delete
+```
 
 ## Useful ```screen``` commands:
 
