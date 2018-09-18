@@ -1,5 +1,11 @@
 # Git commands and scripts
 
+### Enable local and remote branch push
+
+```
+git config push.default current
+```
+
 ### Delete a local and remote branch
 
 ```
