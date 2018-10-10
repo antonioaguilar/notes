@@ -1,5 +1,15 @@
 # VirtualBox tips
 
+### List virtual machines on system
+
+```
+# List all available virtual machines
+VBoxManage list vms
+
+# List all running available virtual machines
+VBoxManage list runningvms
+```
+
 ### Configure the default VirtualBox images folder
 
 Get the current folder: 
