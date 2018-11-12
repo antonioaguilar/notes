@@ -1,5 +1,12 @@
 # Command line tools and tips
 
+## Zip and exclude folders
+
+```
+# this will exlude the .git and node_modules folders
+zip -r my-folder.zip my-folder -x "*.git*" -x "*node_modules*"
+```
+
 ## Passing Bash variables in CURL command
 
 ```
