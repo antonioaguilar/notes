@@ -1,5 +1,19 @@
 # VirtualBox tips
 
+### List virtual machines on system
+
+```
+# List all available virtual machines
+VBoxManage list vms
+
+# List all running available virtual machines
+VBoxManage list runningvms
+
+# Clear unregistered or inaccessible virtual machines
+# VBoxManage unregistervm <uuid|vmname> [--delete]
+VBoxManage unregistervm {7aa11d6c-0fd2-43a9-6856-01c453712b7e}
+```
+
 ### Configure the default VirtualBox images folder
 
 Get the current folder: 

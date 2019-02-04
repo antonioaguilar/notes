@@ -1,2 +1,1 @@
-# Developer Notes and Scripts
 

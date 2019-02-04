@@ -1,5 +1,19 @@
 # Git commands and scripts
 
+### Print git log
+
+```
+git config --global alias.logline "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
+git logline
+```
+
+### Enable local and remote branch push
+
+```
+git config push.default current
+```
+
 ### Delete a local and remote branch
 
 ```

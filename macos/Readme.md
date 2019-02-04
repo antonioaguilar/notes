@@ -140,3 +140,9 @@ csrutil disable
 # re-enable the feature
 csrutil enable
 ```
+
+## Disable spotlight indexing
+
+```
+sudo mdutil -a -i off
+```
