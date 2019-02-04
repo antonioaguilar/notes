@@ -101,9 +101,9 @@
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>269 147 606 469 0 0 1440 877 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>168 263 796 486 0 0 1440 877 </string>
+	<string>167 263 796 486 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>724 0 714 877 0 0 1440 877 </string>
+	<string>724 451 650 426 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>174 70 650 427 0 0 1440 877 </string>
 	<key>NeverWarnAboutShortLivedSessions_A9B75A05-472E-494A-AE7E-C24A63BE04D7</key>
@@ -1381,7 +1381,7 @@
 		<key>Button,1,1,,</key>
 		<dict>
 			<key>Action</key>
-			<string>kPasteFromSelectionPointerAction</string>
+			<string>kPasteFromClipboardPointerAction</string>
 		</dict>
 		<key>Button,2,1,,</key>
 		<dict>
