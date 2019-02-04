@@ -1,16 +1,35 @@
-#   -------------------------------
-#   1.  ENVIRONMENT CONFIGURATION
-#   -------------------------------
+# save Bash history forever
+export HISTCONTROL=ignoredups:erasedups  # no duplicate entries
+export HISTSIZE=100000                   # big big history
+export HISTFILESIZE=100000               # big big history
+shopt -s histappend                      # append to history, don't overwrite it
+
+# Save and reload the history after each command finishes
+# export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+
 export PS1="\u@\h:\W\\$ "
 
+export GOPATH=$HOME/.go
+export GOBIN=$GOPATH/bin
+
+# export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]; then echo "$(date "+%Y-%m-%d.%H:%M:%S") $(pwd) $(history 1)" >> ~/.logs/bash-history-$(date "+%Y-%m-%d").log; fi'
+
 # Set Paths
-export PATH="/usr/local/git/bin:/sw/bin/:/usr/local/bin:/usr/local/sbin:$PATH"
+export PATH="/usr/local/git/bin:/sw/bin/:/usr/local/bin:/usr/local/sbin:$GOPATH/bin:$PATH"
 
 # Java environment
 export JAVA_HOME=$(/usr/libexec/java_home);
 
+alias webstorm='open -a /Applications/WebStorm.app'
+
+# Aliases for OpenShift
+alias ms='minishift'
+
 # Front-end development tools and shortcuts
-alias chrome-webrtc='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --use-fake-ui-for-media-stream --use-fake-device-for-media-stream'
+alias chrome-webrtc='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --argsocode --use-fake-device-for-media-stream'
+# alias chrome-webrtc='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --use-fake-ui-for-media-stream --use-fake-device-for-media-stream'
+alias chrome-memory='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --enable-precise-memory-info --disable-extensions --enable-memory-benchmarking --full-memory-crash-report'
+alias chrome-insecure='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --enable-precise-memory-info --disable-extensions --enable-memory-benchmarking --full-memory-crash-report --allow-running-insecure-content'
 alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
 
 #   Set Default Editor (change 'Nano' to the editor of your choice)
@@ -25,6 +44,9 @@ export BLOCKSIZE=1k
 #   from http://osxdaily.com/2012/02/21/add-color-to-the-terminal-in-mac-os-x/
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
+
+alias ccat='pygmentize -g'
+alias ds='docker stats $(docker ps --format {{.Names}})'
 
 #   -----------------------------
 #   2.  MAKE TERMINAL BETTER
@@ -59,11 +81,18 @@ alias DT='tee ~/Desktop/terminalOut.txt'    # DT:           Pipe content to file
 # edit: Opens any file in sublime editor
 #ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/sub
 
+code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}
+
 # JSON utils, underscore-cli
 alias json='underscore print --color'
+alias ccat='pygmentize -g'
+alias bb='brunch watch -s'
+alias grep='grep --color=auto'
+alias ns='sudo lsof -i -n -P | grep TCP'
+alias dev-server='browser-sync --port 8080 --no-open --no-ui -f'
 
 # http server
-alias serve='serve --compress -C'
+alias serve='serve'
 
 # Curl and WGET utils
 alias curl='curl -s'
@@ -167,7 +196,7 @@ alias ipInfo0='ipconfig getpacket en0'              # ipInfo0:      Get info on 
 alias ipInfo1='ipconfig getpacket en1'              # ipInfo1:      Get info on connections for en1
 alias openPorts='sudo lsof -i | grep LISTEN'        # openPorts:    All listening connections
 alias showBlocked='sudo ipfw list'                  # showBlocked:  All ipfw rules inc/ blocked IPs
-alias netstat='netstat -tap tcp'
+alias netstat='netstat -lunt'
 
 #   ii:  display useful host related informaton
 #   -------------------------------------------------------------------
@@ -218,3 +247,59 @@ PATH=$PATH:$NVM_DIR/nvm.sh
 if [ -f `brew --prefix`/etc/bash_completion ]; then
     . `brew --prefix`/etc/bash_completion
 fi
+
+[[ -s "/Users/aaguilar/.gvm/scripts/gvm" ]] && source "/Users/aaguilar/.gvm/scripts/gvm"
+###-begin-ng-completion###
+#
+
+# ng command completion script
+#   This command supports 3 cases.
+#   1. (Default case) It prints a common completion initialisation for both Bash and Zsh.
+#      It is the result of either calling "ng completion" or "ng completion -a".
+#   2. Produce Bash-only completion: "ng completion -b" or "ng completion --bash".
+#   3. Produce Zsh-only completion: "ng completion -z" or "ng completion --zsh".
+#
+# Usage: . <(ng completion --bash) # place it appropriately in .bashrc or
+#        . <(ng completion --zsh) # find a spot for it in .zshrc
+#
+_ng_completion() {
+  local cword pword opts
+
+  COMPREPLY=()
+  cword=${COMP_WORDS[COMP_CWORD]}
+  pword=${COMP_WORDS[COMP_CWORD - 1]}
+
+  case ${pword} in
+    ng|help) opts="--version -v b build completion doc e e2e eject g generate get help l lint n new s serve server set t test v version xi18n" ;;
+    b|build) opts="--aot --app --base-href --build-optimizer --bundle-dependencies --common-chunk --delete-output-path --deploy-url --environment --extract-css --extract-licenses --i18n-file --i18n-format --locale --missing-translation --named-chunks --output-hashing --output-path --poll --preserve-symlinks --progress --service-worker --show-circular-dependencies --skip-app-shell --sourcemaps --stats-json --subresource-integrity --target --vendor-chunk --verbose --watch -a -aot -bh -buildOptimizer -bundleDependencies -cc -d -dop -e -ec -extractLicenses -i18nFile -i18nFormat -locale -missingTranslation -nc -oh -op -poll -pr -preserveSymlinks -scd -skipAppShell -sm -sri -statsJson -sw -t -v -vc -w" ;;
+    completion) opts="--all --bash --zsh -a -b -z" ;;
+    doc) opts="--search -s" ;;
+    e|e2e) opts="--aot --app --base-href --build-optimizer --bundle-dependencies --common-chunk --config --delete-output-path --deploy-url --disable-host-check --element-explorer --environment --extract-css --extract-licenses --hmr --host --i18n-file --i18n-format --live-reload --locale --missing-translation --named-chunks --open --output-hashing --output-path --poll --port --preserve-symlinks --progress --proxy-config --public-host --serve --serve-path --service-worker --show-circular-dependencies --skip-app-shell --sourcemaps --specs --ssl --ssl-cert --ssl-key --subresource-integrity --target --vendor-chunk --verbose --watch --webdriver-update -H -a -aot -bh -buildOptimizer -bundleDependencies -c -cc -d -disableHostCheck -dop -e -ec -ee -extractLicenses -hmr -i18nFile -i18nFormat -live-reload-client -locale -lr -missingTranslation -nc -o -oh -op -p -pc -poll -pr -preserveSymlinks -s -scd -servePath -skipAppShell -sm -sp -sri -ssl -sslCert -sslKey -sw -t -v -vc -w -wu" ;;
+    eject) opts="--aot --app --base-href --build-optimizer --bundle-dependencies --common-chunk --delete-output-path --deploy-url --environment --extract-css --extract-licenses --force --i18n-file --i18n-format --locale --missing-translation --named-chunks --output-hashing --output-path --poll --preserve-symlinks --progress --service-worker --show-circular-dependencies --skip-app-shell --sourcemaps --subresource-integrity --target --vendor-chunk --verbose --watch -a -aot -bh -buildOptimizer -bundleDependencies -cc -d -dop -e -ec -extractLicenses -force -i18nFile -i18nFormat -locale -missingTranslation -nc -oh -op -poll -pr -preserveSymlinks -scd -skipAppShell -sm -sri -sw -t -v -vc -w" ;;
+    g|generate) opts="--app --collection --dry-run --force --lint-fix -a -c -d -f -lf" ;;
+    get) opts="--global -global" ;;
+    help) opts="--short -s" ;;
+    l|lint) opts="--fix --force --format --type-check -fix -force -t -typeCheck" ;;
+    n|new) opts="--collection --dry-run --link-cli --skip-commit --skip-install --verbose -c -d -lc -sc -si -v" ;;
+    s|serve|server) opts="--aot --app --base-href --build-optimizer --bundle-dependencies --common-chunk --delete-output-path --deploy-url --disable-host-check --environment --extract-css --extract-licenses --hmr --host --i18n-file --i18n-format --live-reload --locale --missing-translation --named-chunks --open --output-hashing --output-path --poll --port --preserve-symlinks --progress --proxy-config --public-host --serve-path --service-worker --show-circular-dependencies --skip-app-shell --sourcemaps --ssl --ssl-cert --ssl-key --subresource-integrity --target --vendor-chunk --verbose --watch -H -a -aot -bh -buildOptimizer -bundleDependencies -cc -d -disableHostCheck -dop -e -ec -extractLicenses -hmr -i18nFile -i18nFormat -live-reload-client -locale -lr -missingTranslation -nc -o -oh -op -p -pc -poll -pr -preserveSymlinks -scd -servePath -skipAppShell -sm -sri -ssl -sslCert -sslKey -sw -t -v -vc -w" ;;
+    set) opts="--global -g" ;;
+    t|test) opts="--app --browsers --code-coverage --colors --config --environment --log-level --poll --port --preserve-symlinks --progress --reporters --single-run --sourcemaps --watch -a -browsers -c -cc -colors -e -logLevel -poll -port -preserveSymlinks -progress -reporters -sm -sr -w" ;;
+    xi18n) opts="--app --i18n-format --locale --out-file --output-path --progress --verbose -a -f -l -of -op -progress -verbose" ;;
+    *) opts="" ;;
+  esac
+
+  COMPREPLY=( $(compgen -W '${opts}' -- $cword) )
+
+  return 0
+}
+
+complete -o default -F _ng_completion ng
+###-end-ng-completion###
+
+complete -C /usr/local/bin/nomad nomad
+
+export CF_PASS_BLUEMIX=79TDtytOO_
+export CF_PASS=acapulco
+
+eval "$(direnv hook bash)"
+
