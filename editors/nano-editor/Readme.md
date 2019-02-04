@@ -1,2 +1,0 @@
-# Nano export settings
-
