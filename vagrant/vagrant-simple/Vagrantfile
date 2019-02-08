@@ -1,0 +1,51 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+
+  (11..11).each do |i|
+    config.vm.define "vm-#{i}" do |machine|
+
+      machine.vm.box = "ubuntu/xenial64"
+      # machine.vm.box = "ubuntu/trusty64"
+      # machine.vm.box = "ubuntu/zesty64"
+      # machine.vm.box = "ubuntu/bionic64"
+
+      machine.vm.hostname = "vm-#{i}"
+      machine.vm.network "private_network", ip: "192.168.33.#{i}"
+
+      # config.vm.network "forwarded_port", guest: 8000, host: 8000, host_ip: "0.0.0.0"
+      # config.vm.network "forwarded_port", guest: 8080, host: 8080, host_ip: "0.0.0.0"
+      # config.vm.network "forwarded_port", guest: 8443, host: 8443, host_ip: "0.0.0.0"
+
+      # use incrementing port numbers
+      # config.vm.network :forwarded_port, guest: "220#{i}", host: "220#{i}", host_ip: "0.0.0.0", auto_correct: true
+
+      config.vm.network :forwarded_port, guest: 22, host: 2222, host_ip: "0.0.0.0", id: "ssh", auto_correct: true
+
+      config.ssh.username = "vagrant"
+      # config.ssh.password = "vagrant"
+
+      machine.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "~/.ssh/id_rsa.pub"
+      machine.vm.provision "shell", inline: "cat ~vagrant/.ssh/id_rsa.pub >> ~vagrant/.ssh/authorized_keys"
+
+      config.vm.provision "shell", inline: "echo \"127.0.0.1 localhost\n192.168.33.#{i} vm-#{i}\" > /etc/hosts"
+      config.vm.provision "shell", inline: "echo \"vm-#{i}\" > /etc/hostname"
+
+      # config.vm.provision "file", source: "hosts.txt", destination: "~/hosts.txt"
+      # config.vm.provision "file", source: "hostname.txt", destination: "~/hostname.txt"
+
+      machine.vm.provision "shell", path: "script.sh"
+
+      machine.vm.box_check_update = false
+
+      machine.vm.provider "virtualbox" do |vm|
+        vm.name = "vm-#{i}"
+        vm.gui = false
+        vm.cpus = 2
+        vm.memory = "512"
+      end
+    end
+  end
+
+end
