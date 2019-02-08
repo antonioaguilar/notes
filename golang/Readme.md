@@ -38,7 +38,33 @@ export GOBIN=$GOPATH/bin
 export GOOS=linux; export GOARCH=amd64; go build
 ```
 
-## Install Go in Mac OS
+# Install Go in Mac OS
+
+## Install using Homebrew
+
+### Update the `.bash_profile`
+
+Include the following lines in your `.bash_profile`:
+
+```bash
+export GOPATH="${HOME}/.go"
+export GOROOT="$(brew --prefix golang)/libexec"
+export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+test -d "${GOPATH}" || mkdir "${GOPATH}"
+test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
+```
+
+### Install Go using Homebrew
+
+```bash 
+brew install go
+
+# install some Go tools
+go get -v golang.org/x/tools/cmd/godoc
+go get -v github.com/golang/lint/golint
+```
+
+## Install Go using GVM
 
 ### Install [gvm](https://github.com/moovweb/gvm)
 
