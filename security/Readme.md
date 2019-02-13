@@ -38,6 +38,12 @@ Generate the cert using the config file as option
 openssl req -newkey rsa:4096 -days 3650 -nodes -x509 -sha256 -keyout key.pem -out cert.pem -config server.cnf
 ```
 
+## Connect and test TLS servers
+
+```
+openssl s_client -connect 0.0.0.0:8443 -tls1_2  -cert ./cert.pem -key ./key.pem
+```
+
 ## Encrypt / Decrypt files with OpenSSL
 
 ```
