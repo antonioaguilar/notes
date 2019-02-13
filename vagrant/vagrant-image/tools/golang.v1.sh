@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export GOLANG="1.10.2"
+export GOLANG="1.11.5"
 
 sudo apt-get update
 sudo apt-get -y install curl git make binutils bison gcc build-essential
