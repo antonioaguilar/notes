@@ -38,6 +38,15 @@ Generate the cert using the config file as option
 openssl req -newkey rsa:4096 -days 3650 -nodes -x509 -sha256 -keyout key.pem -out cert.pem -config server.cnf
 ```
 
+## Generate a one-line string from a key or certificate
+
+```bash
+awk 'NF {sub(/\r/, ""); printf "%s\\n",$0;}' cert.pem
+
+# paste string to memory
+awk 'NF {sub(/\r/, ""); printf "%s\\n",$0;}' key.pem | pbcopy
+```
+
 ## Connect and test TLS servers
 
 ```
