@@ -4,7 +4,7 @@
 
 ## Extract self-signed certificate from remote server
 
-```
+```bash
 # extract certificate in PEM format
 openssl s_client -connect 0.0.0.0:443 2>/dev/null </dev/null | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > cert.pem
 ```
