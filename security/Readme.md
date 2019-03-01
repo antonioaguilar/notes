@@ -285,5 +285,5 @@ For other algorithms you can replace: ```-sha256``` with ```-md5```, ```-sha1```
 ## Extract self-signed certificate from remote server
 
 ```
-s_client -connect 0.0.0.0:9443 2>/dev/null </dev/null | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > cert.pem
+s_client -connect 0.0.0.0:443 2>/dev/null </dev/null | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > cert.pem
 ```
