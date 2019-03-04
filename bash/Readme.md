@@ -1,5 +1,11 @@
 # Bash scripts
 
+## Find and remove folder within subfolders
+
+```
+find . -name "node_modules" -type d -exec rm -rf {} +
+```
+
 ## Intercept network traffict 
 
 ```
