@@ -15,6 +15,9 @@ rbenv global 2.6.2
 
 # set the ruby path in your bash profile
 echo 'if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi' >> ~/.bash_profile
+
+# install UAAC cli
+gem install cf-uaac
 ```
 
 #### Install the Cloud Foundry CLI
