@@ -2,6 +2,21 @@
 
 ## Cloud Foundry
 
+### Install UAA Command Line Interface (UAAC)
+
+```
+# using Mac OS, need to install latest ruby
+brew update
+brew install ruby-build
+brew install rbenv
+
+rbenv install 2.6.2
+rbenv global 2.6.2
+
+# set the ruby path in your bash profile
+echo 'if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi' >> ~/.bash_profile
+```
+
 #### Install the Cloud Foundry CLI
 
 ```
