@@ -1,5 +1,24 @@
 # Deploying Cloud Foundry via Bosh Lite in VirtualBox
 
+## Bosh commands
+
+```
+# list bosh releases
+bosh rs
+
+# list bosh VMs
+bosh -e vbox vms
+
+# list instances
+bosh -e vbox is -i
+
+# view logs
+bosh -e vbox -d cf logs diego-api/c003ee86-fde4-45f5-8657-d382f35039da -f
+
+# stop instance in deployment
+bosh -e vbox -d cf stop diego-api/c003ee86-fde4-45f5-8657-d382f35039da
+```
+
 ## Install Bosh director
 
 ### Requirements
