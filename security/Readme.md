@@ -288,3 +288,19 @@ echo -n "foobar" | openssl dgst -sha256
 ```
 
 For other algorithms you can replace: ```-sha256``` with ```-md5```, ```-sha1```, etc.
+
+## Generate a predictable random string
+
+```
+# using 64 characters
+date +%Y%d%m | sha256sum | head -c 64; echo
+
+# using 32 characters
+date +%Y%d%m | sha256sum | head -c 32; echo
+
+# with Base64 encoding
+date +%Y%d%m | sha256sum | base64 | head -c 32; echo
+
+# randomise the string down to minute changes
+date +%F-%M | sha256sum | head -c 64; echo
+```
