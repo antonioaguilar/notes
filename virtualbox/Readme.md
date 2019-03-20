@@ -3,6 +3,9 @@
 ### List virtual machines on system
 
 ```
+# power off vm
+VBoxManage controlvm vm-name poweroff
+
 # List all available virtual machines
 VBoxManage list vms
 
