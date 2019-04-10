@@ -3,45 +3,43 @@
 ## Custom Editor Settings
 
 ```json
-// Place your settings in this file to overwrite the default settings
 {
-  "editor.fontSize": 14,
-  "editor.tabSize": 2,
-  "editor.insertSpaces": true,
-  "files.exclude": {
-    "**/.git": true,
-    "**/.svn": true,
-    "**/.hg": true,
-    "**/.idea": true,
-    "**/.vscode": true,
-    "**/node_modules": true,
-    // "**/dist": true,
-    "**/production": true,
-    "**/public": true,
-    "**/vendor": true,
-    "**/.DS_Store": true
-  },
-  "window.zoomLevel": 0,
-  "editor.minimap.enabled": false,
-  "editor.scrollBeyondLastLine": false,
-  "explorer.openEditors.visible": 0,
-  "workbench.sideBar.location": "left",
-  "workbench.activityBar.visible": true,
-  "workbench.editor.showIcons": false,
-  "workbench.editor.enablePreview": false,
-  "workbench.startupEditor": "newUntitledFile",
-  "files.insertFinalNewline": true,
-  "files.trimFinalNewlines": true,
-  "files.trimTrailingWhitespace": true,
-  "terminal.external.osxExec": "iTerm.app",
-  "zenMode.fullScreen": false,
-  "telemetry.enableCrashReporter": false,
-  "telemetry.enableTelemetry": false,
-  "workbench.colorTheme": "Monokai",
-
-  "html.format.extraLiners": "",
-  "html-css-class-completion.includeGlobPattern": "**/*.{css,scss,html}"
-}
+    "editor.fontSize": 14,
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.scrollBeyondLastLine": false,
+    "editor.minimap.enabled": false,
+    "explorer.openEditors.visible": 0,
+    "workbench.sideBar.location": "left",
+    "workbench.activityBar.visible": false,
+    "workbench.editor.showIcons": true,
+    "workbench.editor.enablePreview": false,
+    "workbench.startupEditor": "newUntitledFile",
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/.idea": true,
+        "**/.vscode": true,
+        "**/.DS_Store": true,
+        "**/package-lock.json": true,
+        "**/node_modules": true,
+        "**/dist": true,
+        "**/production": true,
+        "**/public": true,
+        "**/vendor": true
+    },
+    "terminal.external.osxExec": "iTerm.app",
+    "zenMode.fullScreen": false,
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+    "update.showReleaseNotes": false,
+    "html.format.extraLiners": "",
+    "window.zoomLevel": 0
+  }
 ```
 
 ## Custom Keybindings
