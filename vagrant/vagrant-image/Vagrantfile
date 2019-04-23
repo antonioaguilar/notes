@@ -9,7 +9,7 @@ Vagrant.configure("2") do |config|
   memory = "1024"
   cpus = "4"
   ip_prefix = "192.168.33"
-  machines = *(11..11)
+  machines = *(10..11)
 
   machines.each do |i|
     config.vm.define "#{name}-#{i}" do |machine|
@@ -28,6 +28,7 @@ Vagrant.configure("2") do |config|
       # uncomment if using incrementing port numbers
       # config.vm.network :forwarded_port, guest: "220#{i}", host: "220#{i}", host_ip: "0.0.0.0", auto_correct: true
       # config.vm.network :forwarded_port, guest: "4222", host: "422#{i}", host_ip: "0.0.0.0", auto_correct: true
+      config.vm.network :forwarded_port, guest: "4222", host: "422#{i}", host_ip: "0.0.0.0", auto_correct: true
 
       config.ssh.username = "vagrant"
       machine.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "~/.ssh/id_rsa.pub"
@@ -46,6 +47,7 @@ Vagrant.configure("2") do |config|
       # machine.vm.provision "shell", path: "tools/packages.sh"
       # machine.vm.provision "shell", path: "tools/golang.sh"
       # machine.vm.provision "shell", path: "tools/nodejs.sh"
+      machine.vm.provision "shell", path: "tools/k3s.sh"
       # machine.vm.provision "shell", path: "tools/k6.sh"
       # machine.vm.provision "shell", path: "tools/docker.sh"
       # machine.vm.provision "shell", path: "tools/docker-compose.sh"
