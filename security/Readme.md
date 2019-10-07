@@ -303,4 +303,7 @@ date +%Y%d%m | sha256sum | base64 | head -c 32; echo
 
 # randomise the string down to minute changes
 date +%F-%M | sha256sum | head -c 64; echo
+
+# using openssl, 32 characters
+date +%Y%d%m | openssl sha256 | awk '{print $2}' | head -c 32; echo
 ```

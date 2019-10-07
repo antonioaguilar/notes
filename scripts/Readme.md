@@ -95,6 +95,12 @@ jq 'sort_by(.event.name)' file.json
 
 ```
 
+### Read a Chrome HAR file and search for the Websocket messages only
+
+```
+sed '/^{/,/^}/!d' < file.har | jq '.. |."_webSocketMessages"? | select(. != null)'
+```
+
 ## VirtualBox
 
 ### Resize virtualbox disk image
