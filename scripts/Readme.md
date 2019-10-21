@@ -1,5 +1,17 @@
 # Command line tools and tips
 
+## Generate random JSON
+
+```
+yes $(jo epoch=$(date +%s) user=$HOME)  | head -n 1000000 > users.json
+```
+
+## Stream file over Websockets
+
+```
+websocketd --port 8080 --devconsole awk '{ print $0; system("sleep 0.1"); }' users.json
+```
+
 ## Zip and exclude folders
 
 ```
