@@ -32,9 +32,25 @@ curl -H "Content-Type: application-json" -X POST http://localhost:8080/ \
 ## Generate Random Strings
 
 ```
+# generate random ID
 openssl rand -hex 12
+# 2f655aa342d54dfa8990e9d9
 
+# generate random ID in base64
 openssl rand -base64 12
+# 6I+t3cxCDqfDq0Rk
+
+# generate random ID and covert to upper case
+openssl rand -hex 12 | tr "[:lower:]" "[:upper:]"
+# D8124508349E51B224A64862
+
+# generate random ID, convert to upper case and replace characters with "_" underscore
+openssl rand -hex 12 | tr "[:alpha:]" "_"
+# 07_28199_2551__475____24
+
+# generate random ID, convert to upper case and replace digits with "*" asterisk
+openssl rand -hex 12 | tr "[:lower:]" "[:upper:]" | tr "[:digit:]" "*"
+# BE***C***EB*****E*DA*E**
 ```
 
 ## Generate Random numbers
