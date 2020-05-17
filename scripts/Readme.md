@@ -1,5 +1,14 @@
 # Command line tools and tips
 
+## Convert PNG to SVG image
+
+```bash
+sudo apt-get install imagemagick potrace
+
+convert file.png file.pnm        # PNG to PNM
+potrace file.pnm -s -o file.svg  # PNM to SVG
+```
+
 ## Generate random JSON
 
 ```
