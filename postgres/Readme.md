@@ -1,5 +1,14 @@
 # Postgres scripts and tips
 
+### Setup default password
+
+```
+sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'postgres';"
+
+# if you do not have a password for the User postgres ubuntu do
+sudo passwd postgres
+```
+
 ### Delete all tables in current database
 
 ```
