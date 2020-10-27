@@ -17,6 +17,11 @@ VBoxManage list runningvms
 VBoxManage unregistervm {7aa11d6c-0fd2-43a9-6856-01c453712b7e}
 ```
 
+### Clear all unused virtual media disks
+```
+vboxmanage setextradata global "GUI/RecentListCD"
+```
+
 ### Configure the default VirtualBox images folder
 
 Get the current folder: 
