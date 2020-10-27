@@ -1,9 +1,9 @@
 # Bash scripts
 
-## Find and remove folder within subfolders
+## Find and remove `node_modules` folder recursively 
 
 ```
-find . -name "node_modules" -type d -exec rm -rf {} +
+find . -name "node_modules" -type d -exec rm -vrf {} +
 ```
 
 ## Intercept network traffict 

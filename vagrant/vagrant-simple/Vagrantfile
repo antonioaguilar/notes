@@ -6,10 +6,10 @@ Vagrant.configure("2") do |config|
   (11..11).each do |i|
     config.vm.define "vm-#{i}" do |machine|
 
-      machine.vm.box = "ubuntu/xenial64"
+      # machine.vm.box = "ubuntu/xenial64"
       # machine.vm.box = "ubuntu/trusty64"
       # machine.vm.box = "ubuntu/zesty64"
-      # machine.vm.box = "ubuntu/bionic64"
+      machine.vm.box = "ubuntu/bionic64"
 
       machine.vm.hostname = "vm-#{i}"
       machine.vm.network "private_network", ip: "192.168.33.#{i}"
@@ -43,7 +43,7 @@ Vagrant.configure("2") do |config|
         vm.name = "vm-#{i}"
         vm.gui = false
         vm.cpus = 2
-        vm.memory = "512"
+        vm.memory = "1024"
       end
     end
   end
