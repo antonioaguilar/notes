@@ -12,6 +12,14 @@ Google Chrome
 * Use TAB +/- UP/DOWN keys to navigate between page results
 * Use CTRL+CMD+ENTER to open link in a tab (background)
 
+## Show hidden files
+
+```defaults write com.apple.finder AppleShowAllFiles YES```
+
+Finder, it is now possible to use the shortcut:
+
+``` CMD + SHIFT + .```
+
 ## Enable git / bash completion
 
 ```bash
@@ -103,8 +111,6 @@ defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
 ```
 The changes aren't applied until you log out and back in. KeyRepeat can't be set between 2 (30 ms) and 1 (15 ms) though.
 
-## Show hidden files
-```defaults write com.apple.finder AppleShowAllFiles YES```
 
 ## 2. System Preferences Shortcut
 To setup a keyboard shortcut to open System Preferences:
