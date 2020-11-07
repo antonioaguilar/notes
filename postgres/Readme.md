@@ -9,6 +9,23 @@ sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'postgres';"
 sudo passwd postgres
 ```
 
+### Configure host server access
+
+Add or edit the following line in your postgresql.conf :
+
+```
+listen_addresses = '*'
+```
+
+Add the following line as the first line of pg_hba.conf. It allows access to all databases for all users with an encrypted password:
+
+```
+host  all  all 0.0.0.0/0 md5
+```
+
+Restart Postgresql after adding this with service postgresql restart or the equivalent command for your setup.
+
+
 ### Delete all tables in current database
 
 ```
