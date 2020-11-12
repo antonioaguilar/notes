@@ -25,6 +25,14 @@ host  all  all 0.0.0.0/0 md5
 
 Restart Postgresql after adding this with service postgresql restart or the equivalent command for your setup.
 
+### Install pgmetrics tool
+
+```
+# download tool from repo
+https://pgmetrics.io/
+
+# use tool as psql
+```
 
 ### Delete all tables in current database
 
