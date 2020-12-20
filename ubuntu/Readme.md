@@ -29,7 +29,27 @@ sudo systemctl enable --now libvirtd
 # for intel processors we should see: "kvm_intel" else "kvm_amd" for AMD processors
 lsmod | grep -i kvm
 
+# configure KVM permissions
+sudo chmod 666 /dev/kvm
+
 # KVM should be now installed and ready
+```
+
+## Install Linux Alpine Distro in Qemu
+
+```bash
+# download the latest Alpine image
+wget https://dl-cdn.alpinelinux.org/alpine/v3.12/releases/x86_64/alpine-standard-3.12.3-x86_64.iso
+
+# create a disk image if you want to install Alpine Linux
+qemu-img create -f qcow2 alpine.qcow2 8G
+
+# start QEMU and load Alpine as an ISO image and install on the disk image created
+# tip: can use "-nographic" or "-curses"
+qemu-system-x86_64 -nographic -enable-kvm -m 512 -nic user -boot d -cdrom alpine-standard-3.12.3-x86_64.iso -hda alpine.qcow2
+
+qemu-system-x86_64 -curses -enable-kvm -m 512 -nic user -boot d -cdrom alpine-virt-3.12.3-x86_64.iso -hda alpine.qcow2
+
 ```
 
 ## Configure dnsmasq
