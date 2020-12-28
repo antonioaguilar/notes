@@ -3,10 +3,10 @@
 
 Vagrant.configure("2") do |config|
 
-  box = "ubuntu/bionic64"
+  box = "ubuntu/focal64"
   name = "vm"
   domain = "io"
-  memory = "1024" # 1024
+  memory = "8192" # 1024
   cpus = "4"
   ip_prefix = "192.168.33"
   machines = *(11..11)
@@ -24,7 +24,7 @@ Vagrant.configure("2") do |config|
       machine.vm.network "private_network", ip: "#{ip_prefix}.#{i}"
 
       config.vm.network :forwarded_port, guest: 22, guest_ip: "0.0.0.0", host: 2222, host_ip: "0.0.0.0", id: "ssh", auto_correct: true
-      config.vm.network :forwarded_port, guest: 5432, guest_ip: "0.0.0.0", host: 5432, host_ip: "0.0.0.0", id: "postgres", auto_correct: true
+      # config.vm.network :forwarded_port, guest: 5432, guest_ip: "0.0.0.0", host: 5432, host_ip: "0.0.0.0", id: "postgres", auto_correct: true
 
       # uncomment if using incrementing port numbers
       # config.vm.network :forwarded_port, guest: "220#{i}", host: "220#{i}", host_ip: "0.0.0.0", auto_correct: true
@@ -46,19 +46,23 @@ Vagrant.configure("2") do |config|
       #### Uncomment the shell scripts after the machine is up
       #### and use: vagrant up --provision
 
+      # main dev tools
+      machine.vm.provision "shell", path: "tools/docker.sh"
+      machine.vm.provision "shell", path: "tools/qemu.sh"
+      machine.vm.provision "shell", path: "tools/rust.sh"
+      machine.vm.provision "shell", path: "tools/golang.sh", privileged: true
+
       # machine.vm.provision "shell", path: "tools/packages.sh"
       # machine.vm.provision "shell", path: "tools/k3s.sh"
 
       # machine.vm.provision "shell", path: "tools/nodejs.sh"
       # machine.vm.provision "shell", path: "tools/k3s.sh"
-      # machine.vm.provision "shell", path: "tools/golang.sh"
       # machine.vm.provision "shell", path: "tools/k6.sh"
-      # machine.vm.provision "shell", path: "tools/docker.sh"
+
       # machine.vm.provision "shell", path: "tools/docker-compose.sh"
       # machine.vm.provision "shell", path: "tools/cloudfoundry.sh"
       # machine.vm.provision "shell", path: "tools/openshift.sh"
-      # machine.vm.provision "shell", path: "tools/golang.v1.sh", privileged: false
-      # machine.vm.provision "shell", path: "tools/golang.v2.sh", privileged: true
+
       # machine.vm.provision "shell", path: "tools/nomad-agent.sh"
       # machine.vm.provision "shell", path: "tools/nomad.sh"
       # machine.vm.provision "shell", path: "tools/consul.sh"
@@ -71,6 +75,7 @@ Vagrant.configure("2") do |config|
         vm.gui = false
         vm.cpus = "#{cpus}"
         vm.memory = "#{memory}"
+        vm.customize ["modifyvm", :id, "--nested-hw-virt", "on"]
       end
     end
   end
