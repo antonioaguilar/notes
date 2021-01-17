@@ -9,7 +9,7 @@ sudo service --status-all
 
 sudo ls /etc/init.d
  
-sudo systemctl --failedsystemctl --failed
+sudo systemctl --failed
 
 sudo netstat -tap | grep LISTEN
 
