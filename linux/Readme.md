@@ -1,5 +1,23 @@
 # Linux Stuff
 
+### Assorted linux commands 
+
+Find the max number of open files in your system:
+
+```
+
+sudo service --status-all
+
+ls /etc/init.d
+ 
+systemctl --failedsystemctl --failed
+
+netstat -tap | grep LISTEN
+
+
+
+```
+
 ### Change the booting Linux kernel 
 
 Find the list of configured Kernels in GRUB:
