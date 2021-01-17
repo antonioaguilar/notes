@@ -4,18 +4,25 @@
 
 Find the max number of open files in your system:
 
-```
-
+```bash
 sudo service --status-all
 
-ls /etc/init.d
+sudo ls /etc/init.d
  
-systemctl --failedsystemctl --failed
+sudo systemctl --failedsystemctl --failed
 
-netstat -tap | grep LISTEN
+sudo netstat -tap | grep LISTEN
 
+sudo smem -tap 
 
+sudo smem -ap 
 
+sudo smem -w
+
+# pacman search for package
+pacman -Ss net-tools
+
+sudo pactman -S net-tools
 ```
 
 ### Change the booting Linux kernel 
