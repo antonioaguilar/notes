@@ -1,5 +1,11 @@
 # Bash scripts
 
+## Find files but exclude some folders
+
+```
+find -name "*.ts" -not -path "./node_modules" 
+```
+
 ## Find and remove `node_modules` folder recursively 
 
 ```
