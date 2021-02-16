@@ -48,3 +48,43 @@ tar zxvf kafka_2.13-2.7.0.tgz --strip=1
 # get topic details
 ./bin/kafka-topics.sh --bootstrap-server=localhost:9092 --describe --topic topic-0
 ```
+
+### Monitor Kafka JMX metrics
+
+```bash
+# get jmxterm cli from: https://docs.cyclopsgroup.org/jmxterm
+java -jar jmxterm-1.0.2-uber.jar -h 
+
+
+java -jar jmxterm-1.0.2-uber.jar
+Delete /home/vagrant/.jmxterm_history if you encounter error right after launching me.
+Welcome to JMX terminal. Type "help" for available commands.
+$> open localhost:<JMX port>
+
+$> beans # list all the available beans
+
+$>info -b kafka.server:type=BrokerTopicMetrics,name=MessagesInPerSec
+
+$>bean kafka.server:type=BrokerTopicMetrics,name=MessagesInPerSec
+#bean is set to kafka.server:type=BrokerTopicMetrics,name=MessagesInPerSec
+
+$>get *
+#mbean = kafka.server:type=BrokerTopicMetrics,name=MessagesInPerSec:
+Count = 15;
+
+FifteenMinuteRate = 6.264897339698675E-4;
+
+RateUnit = SECONDS;
+
+MeanRate = 0.0034354099437672652;
+
+OneMinuteRate = 1.444972454140978E-18;
+
+FiveMinuteRate = 8.631314160226716E-6;
+
+EventType = messages;
+
+$>get FifteenMinuteRate
+#mbean = kafka.server:type=BrokerTopicMetrics,name=MessagesInPerSec:
+FifteenMinuteRate = 6.09326720126523E-4;
+```
