@@ -1,15 +1,21 @@
 # Bash scripts
 
-## Find files but exclude some folders
-
-```
-find -name "*.ts" -not -path "./node_modules" 
-```
-
-## Find and remove `node_modules` folder recursively 
+## Find and remove `node_modules` folder recursively
 
 ```
 find . -name "node_modules" -type d -exec rm -vrf {} +
+```
+
+Find and remove a file from all sub-folders recursively
+
+```
+find . -name ".DS_Store" -type f -exec rm -rvf {} +
+```
+
+## Find all files in subfolders and move them to another folder
+
+```
+find . -mindepth 2 -type f -print -exec mv {} ~/backup-subfolder \;
 ```
 
 ## Intercept network traffict 
