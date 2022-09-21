@@ -1,0 +1,96 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+
+  box = "ubuntu/focal64"
+  name = "vm"
+  domain = "io"
+  memory = "8192" # 1024, 2048
+  cpus = "4"
+  ip_prefix = "192.168.56"
+  machines = *(11..11)
+
+  machines.each do |i|
+    config.vm.define "#{name}-#{i}" do |machine|
+
+      machine.vm.box = "#{box}"
+      machine.vm.box_check_update = false
+
+      #### needs to install: vagrant plugin install vagrant-disksize
+      # config.disksize.size = "10GB"
+
+      machine.vm.hostname = "#{name}-#{i}"
+      machine.vm.network "private_network", ip: "#{ip_prefix}.#{i}"
+
+      config.vm.network :forwarded_port, guest: 22, guest_ip: "0.0.0.0", host: 2222, host_ip: "0.0.0.0", id: "ssh", auto_correct: true
+      #config.vm.network :forwarded_port, guest: 5432, guest_ip: "0.0.0.0", host: 5432, host_ip: "0.0.0.0", id: "postgres", auto_correct: true
+
+      # uncomment if using incrementing port numbers
+      # config.vm.network :forwarded_port, guest: "220#{i}", host: "220#{i}", host_ip: "0.0.0.0", auto_correct: true
+      # config.vm.network :forwarded_port, guest: "4222", host: "422#{i}", host_ip: "0.0.0.0", auto_correct: true
+      # config.vm.network :forwarded_port, guest: "4222", host: "422#{i}", host_ip: "0.0.0.0", auto_correct: true
+
+      # config.vm.network :forwarded_port, guest: "4222", host: "4222", host_ip: "0.0.0.0", auto_correct: true
+      # config.vm.network :forwarded_port, guest: "8222", host: "8222", host_ip: "0.0.0.0", auto_correct: true
+      # config.vm.network :forwarded_port, guest: "6379", host: "6379", host_ip: "0.0.0.0", auto_correct: true
+
+      config.ssh.username = "vagrant"
+      machine.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "~/.ssh/id_rsa.pub"
+      machine.vm.provision "shell", inline: "cat ~vagrant/.ssh/id_rsa.pub >> ~vagrant/.ssh/authorized_keys"
+
+      config.vm.provision "shell", inline: "echo \"127.0.0.1 localhost\n#{ip_prefix}.#{i} #{name}-#{i} #{name}-#{i}.#{domain}\" > /etc/hosts"
+      config.vm.provision "shell", inline: "echo \"#{name}-#{i}\" > /etc/hostname"
+
+      machine.vm.provision "file", source: "config/bash.conf", destination: "~/.bashrc"
+      machine.vm.provision "file", source: "config/nano.conf", destination: "~/.nanorc"
+      machine.vm.provision "file", source: "config/screen.conf", destination: "~/.screenrc"
+
+      #### Uncomment the shell scripts after the machine is up
+      #### and use: vagrant up --provision
+
+      # machine.vm.provision "shell", path: "tools/packages.sh"
+
+      # machine.vm.provision "shell", path: "tools/jenkins.sh"
+      # machine.vm.provision "shell", path: "tools/pack-cli.sh"
+      # machine.vm.provision "shell", path: "tools/pulumi-cli.sh"
+      # machine.vm.provision "shell", path: "tools/azure-cli.sh"
+      # machine.vm.provision "shell", path: "tools/gcloud-cli.sh"
+      # machine.vm.provision "shell", path: "tools/aws-cli.sh"
+      # machine.vm.provision "shell", path: "tools/podman-cli.sh"
+      # machine.vm.provision "shell", path: "tools/grype-cli.sh"
+      # machine.vm.provision "shell", path: "tools/syft-cli.sh"
+
+      # machine.vm.provision "shell", path: "tools/zig.sh"
+      # machine.vm.provision "shell", path: "tools/nats.sh"
+      # machine.vm.provision "shell", path: "tools/redis.sh"
+      # machine.vm.provision "shell", path: "tools/postgres.sh"
+      # machine.vm.provision "shell", path: "tools/nodejs.sh"
+      # machine.vm.provision "shell", path: "tools/kvm.sh"
+      # machine.vm.provision "shell", path: "tools/k3s.sh"
+      # machine.vm.provision "shell", path: "tools/golang.sh"
+      # machine.vm.provision "shell", path: "tools/k6.sh"
+      # machine.vm.provision "shell", path: "tools/docker.sh"
+      # machine.vm.provision "shell", path: "tools/docker-compose.sh"
+      # machine.vm.provision "shell", path: "tools/cloudfoundry.sh"
+      # machine.vm.provision "shell", path: "tools/openshift.sh"
+      # machine.vm.provision "shell", path: "tools/golang.v1.sh", privileged: false
+      # machine.vm.provision "shell", path: "tools/golang.v2.sh", privileged: true
+      # machine.vm.provision "shell", path: "tools/nomad-agent.sh"
+      # machine.vm.provision "shell", path: "tools/nomad.sh"
+      # machine.vm.provision "shell", path: "tools/consul.sh"
+      # machine.vm.provision "shell", path: "tools/python.sh"
+
+      # machine.vm.synced_folder "repos", "/home/vagrant/repos"
+
+      machine.vm.provider "virtualbox" do |vm|
+        vm.name = "#{name}-#{i}"
+        vm.gui = false
+        vm.cpus = "#{cpus}"
+        vm.memory = "#{memory}"
+        vm.customize ['modifyvm', :id, '--nested-hw-virt', 'on']
+      end
+    end
+  end
+
+end
