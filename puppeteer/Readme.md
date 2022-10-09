@@ -2,28 +2,38 @@
 
 ## To halt or delay execution of script
 
-Use a custom promise function,
+You can use one of the following options to wait for one second:
 
 ```javascript
-function delay(time) {
-   return new Promise(function(resolve) { 
-       setTimeout(resolve, time)
-   });
-}
+await page.waitFor(1000);
+await frame.waitFor(1000);
+await new Promise(r => setTimeout(r, 1000));
 ```
 
-Then, call it whenever you want a delay.
+Alternatively, there are many Puppeteer functions that include a built-in delay option, which may come in handy for waiting between certain events:
 
 ```javascript
-console.log('before waiting');
-await delay(4000);
-console.log('after waiting');
-```
+// Click Delay
+// Time to wait between mousedown and mouseup in milliseconds. Defaults to 0.
 
-If you must use puppeteer use the builtin `waitForTimeout` function.
+await page.click('#example', {delay: 1000});
+await frame.click('#example', {delay: 1000});
+await elementHandle.click({delay: 1000});
+await page.mouse.click(0, 0, {delay: 1000});
 
-```javascript
-await page.waitForTimeout(4000)
+// Type Delay
+// Time to wait between key presses in milliseconds. Defaults to 0.
+
+await page.type('#example', 'Hello, world!', {delay: 1000});
+await frame.type('#example', 'Hello, world!', {delay: 1000});
+await elementHandle.type('Hello, world!', {delay: 1000});
+await page.keyboard.type('Hello, world!', {delay: 1000});
+
+// Press Delay
+// Time to wait between keydown and keyup in milliseconds. Defaults to 0.
+
+await elementHandle.press('Backspace', {delay: 1000});
+await page.keyboard.press('Backspace', {delay: 1000});
 ```
 
 If you still want to use `page.evaluate`, resolve it after 4 seconds.
