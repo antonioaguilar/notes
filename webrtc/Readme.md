@@ -76,3 +76,37 @@ Starting firefox with logging (for data channels and sctp in this case):
 ```
 NSPR_LOG_MODULES=datachannel:5,sctp:5 /opt/browsers/firefox/stable/firefox http://localhost:9966/
 ```
+
+# WebRTC and Puppeteer automation with vanilla Javascript
+  
+Link to the full article [here](https://www.browserless.io/blog/2022/06/10/webrtc-video-automation/)
+
+```javascript
+const puppeteer = require("puppeteer");
+
+(async () => {
+  try {
+    let browser = await puppeteer.launch({
+      headless: false,
+      args: [
+        `--use-fake-device-for-media-stream`,
+        `--use-fake-ui-for-media-stream`,
+        `--no-sandbox`,
+        `--use-file-for-fake-video-capture=/your/full/path/to/the/video.mjpeg`,
+      ],
+    });
+    const page = await browser.newPage();
+
+    await page.goto(
+      `https://yari-demos.prod.mdn.mozit.cloud/en-US/docs/Web/API/Media_Streams_API/Taking_still_photos/_sample_.demo.html`,
+    );
+    
+    // Won't disconnect it, since we want to see it happening
+  } catch (err) {
+    console.error(err);
+  }
+})();  
+```  
+  
+  
+  
