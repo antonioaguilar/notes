@@ -12,6 +12,14 @@ Find and remove a file from all sub-folders recursively
 find . -name ".DS_Store" -type f -exec rm -rvf {} +
 ```
 
+## Find list of outdated NPM packages in all projects under a folder
+
+Run this command in your `./repos` or `./project` folder
+```
+find . -name "package.json" -type f -execdir ncu --packageFile {} +
+```
+> Note: passing `ncu -u` will automatically update the `package.json` file
+
 ## Find all files in subfolders and move them to another folder
 
 ```
