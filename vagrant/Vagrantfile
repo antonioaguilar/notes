@@ -37,7 +37,7 @@ Vagrant.configure("2") do |config|
 
       config.vm.provision "shell", inline: "echo \"127.0.0.1 localhost\n#{ip_prefix}.#{i} #{name}-#{i} #{name}-#{i}.#{domain}\" > /etc/hosts"
       config.vm.provision "shell", inline: "echo \"#{name}-#{i}\" > /etc/hostname"
-      config.vm.provision "shell", inline: "touch /home/vagrant/.hushlogin"
+      config.vm.provision "shell", inline: "touch /home/vagrant/.hushlogin && chown vagrant:vagrant /home/vagrant/.hushlogin"
       config.vm.provision "shell", inline: "mkdir -p /home/vagrant/shared && chown vagrant:vagrant /home/vagrant/shared"
 
       machine.vm.provision "file", source: "scripts/bash.conf", destination: "~/.bashrc"
@@ -48,7 +48,7 @@ Vagrant.configure("2") do |config|
       #### Uncomment the shell scripts after the machine is up
       #### vagrant up --provision
 
-      # machine.vm.provision "shell", path: "scripts/packages.sh"
+      machine.vm.provision "shell", path: "scripts/packages.sh"
       # machine.vm.provision "shell", path: "scripts/jenkins.sh"
       # machine.vm.provision "shell", path: "scripts/pack-cli.sh"
       # machine.vm.provision "shell", path: "scripts/pulumi-cli.sh"
@@ -58,8 +58,8 @@ Vagrant.configure("2") do |config|
       # machine.vm.provision "shell", path: "scripts/podman-cli.sh"
       # machine.vm.provision "shell", path: "scripts/grype-cli.sh"
       # machine.vm.provision "shell", path: "scripts/syft-cli.sh"
-      # machine.vm.provision "shell", path: "scripts/zig.sh"
-      # machine.vm.provision "shell", path: "scripts/nats.sh"
+      machine.vm.provision "shell", path: "scripts/zig.sh"
+      machine.vm.provision "shell", path: "scripts/nats.sh"
       # machine.vm.provision "shell", path: "scripts/redis.sh"
       # machine.vm.provision "shell", path: "scripts/postgres.sh"
       # machine.vm.provision "shell", path: "scripts/nodejs.sh"
@@ -68,7 +68,7 @@ Vagrant.configure("2") do |config|
       # machine.vm.provision "shell", path: "scripts/kubectl.sh"
       # machine.vm.provision "shell", path: "scripts/golang.sh"
       # machine.vm.provision "shell", path: "scripts/k6.sh"
-      # machine.vm.provision "shell", path: "scripts/docker.sh"
+      machine.vm.provision "shell", path: "scripts/docker.sh"
       # machine.vm.provision "shell", path: "scripts/docker-compose.sh"
       # machine.vm.provision "shell", path: "scripts/cloudfoundry.sh"
       # machine.vm.provision "shell", path: "scripts/openshift.sh"
