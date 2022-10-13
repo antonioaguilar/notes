@@ -12,3 +12,5 @@ unzip nats-server.zip -d nats-server
 rm -rf nats-server.zip
 
 mv -if nats-server/nats-server-$NATS_VERSION-linux-amd64/nats-server /usr/bin
+
+rm -rf /home/vagrant/nats-server
