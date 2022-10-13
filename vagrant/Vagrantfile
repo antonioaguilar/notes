@@ -1,0 +1,85 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+
+  box = "ubuntu/focal64" # 20.04 LTS
+  name = "vm"
+  domain = "io"
+  memory = "8192" # 1024, 2048, 8192
+  cpus = "4"
+  ip_prefix = "192.168.56"
+  machines = *(11..11)
+
+  machines.each do |i|
+    config.vm.define "#{name}-#{i}" do |machine|
+
+      machine.vm.box = "#{box}"
+      machine.vm.box_check_update = false
+
+      machine.vm.hostname = "#{name}-#{i}"
+      machine.vm.network "private_network", ip: "#{ip_prefix}.#{i}"
+
+      config.vm.network :forwarded_port, guest: 22, guest_ip: "0.0.0.0", host: 2222, host_ip: "0.0.0.0", id: "ssh", auto_correct: true
+      # config.vm.network :forwarded_port, guest: "220#{i}", host: "220#{i}", host_ip: "0.0.0.0", auto_correct: true
+      # config.vm.network :forwarded_port, guest: 5432, guest_ip: "0.0.0.0", host: 5432, host_ip: "0.0.0.0", id: "postgres", auto_correct: true
+
+      config.ssh.username = "vagrant"
+      machine.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "~/.ssh/id_rsa.pub"
+      machine.vm.provision "shell", inline: "cat ~vagrant/.ssh/id_rsa.pub >> ~vagrant/.ssh/authorized_keys"
+
+      config.vm.provision "shell", inline: "echo \"127.0.0.1 localhost\n#{ip_prefix}.#{i} #{name}-#{i} #{name}-#{i}.#{domain}\" > /etc/hosts"
+      config.vm.provision "shell", inline: "echo \"#{name}-#{i}\" > /etc/hostname"
+      config.vm.provision "shell", inline: "touch /home/vagrant/.hushlogin"
+
+      machine.vm.provision "file", source: "scripts/bash.conf", destination: "~/.bashrc"
+      machine.vm.provision "file", source: "scripts/nano.conf", destination: "~/.nanorc"
+      machine.vm.provision "file", source: "scripts/screen.conf", destination: "~/.screenrc"
+
+      #### Uncomment the shell scripts after the machine is up
+      #### vagrant up --provision
+
+      # machine.vm.provision "shell", path: "scripts/packages.sh"
+      # machine.vm.provision "shell", path: "scripts/jenkins.sh"
+      # machine.vm.provision "shell", path: "scripts/pack-cli.sh"
+      # machine.vm.provision "shell", path: "scripts/pulumi-cli.sh"
+      # machine.vm.provision "shell", path: "scripts/azure-cli.sh"
+      # machine.vm.provision "shell", path: "scripts/gcloud-cli.sh"
+      # machine.vm.provision "shell", path: "scripts/aws-cli.sh"
+      # machine.vm.provision "shell", path: "scripts/podman-cli.sh"
+      # machine.vm.provision "shell", path: "scripts/grype-cli.sh"
+      # machine.vm.provision "shell", path: "scripts/syft-cli.sh"
+      # machine.vm.provision "shell", path: "scripts/zig.sh"
+      # machine.vm.provision "shell", path: "scripts/nats.sh"
+      # machine.vm.provision "shell", path: "scripts/redis.sh"
+      # machine.vm.provision "shell", path: "scripts/postgres.sh"
+      # machine.vm.provision "shell", path: "scripts/nodejs.sh"
+      # machine.vm.provision "shell", path: "scripts/kvm.sh"
+      # machine.vm.provision "shell", path: "scripts/k3s.sh"
+      # machine.vm.provision "shell", path: "scripts/kubectl.sh"
+      # machine.vm.provision "shell", path: "scripts/golang.sh"
+      # machine.vm.provision "shell", path: "scripts/k6.sh"
+      # machine.vm.provision "shell", path: "scripts/docker.sh"
+      # machine.vm.provision "shell", path: "scripts/docker-compose.sh"
+      # machine.vm.provision "shell", path: "scripts/cloudfoundry.sh"
+      # machine.vm.provision "shell", path: "scripts/openshift.sh"
+      # machine.vm.provision "shell", path: "scripts/golang.v1.sh", privileged: false
+      # machine.vm.provision "shell", path: "scripts/golang.v2.sh", privileged: true
+      # machine.vm.provision "shell", path: "scripts/nomad-agent.sh"
+      # machine.vm.provision "shell", path: "scripts/nomad.sh"
+      # machine.vm.provision "shell", path: "scripts/consul.sh"
+      # machine.vm.provision "shell", path: "scripts/python.sh"
+
+      machine.vm.synced_folder "./shared", "/home/vagrant"
+
+      machine.vm.provider "virtualbox" do |vm|
+        vm.name = "#{name}-#{i}"
+        vm.gui = false
+        vm.cpus = "#{cpus}"
+        vm.memory = "#{memory}"
+        vm.customize ['modifyvm', :id, '--nested-hw-virt', 'on']
+      end
+    end
+  end
+
+end
