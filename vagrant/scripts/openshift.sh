@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # install openshift CLI tool
+
 wget -q https://github.com/openshift/origin/releases/download/v3.9.0/openshift-origin-client-tools-v3.9.0-191fece-linux-64bit.tar.gz
 
 tar zxvf ./openshift-origin-client-tools-v3.9.0-191fece-linux-64bit.tar.gz
