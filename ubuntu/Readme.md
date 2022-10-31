@@ -1,5 +1,30 @@
 # Ubuntu
 
+## Disable IPv6 in Ubuntu
+
+Open /etc/sysctl.conf and add following lines.
+
+```bash
+net.ipv6.conf.all.disable_ipv6 = 1
+net.ipv6.conf.default.disable_ipv6 = 1
+net.ipv6.conf.lo.disable_ipv6 = 1
+```
+
+Then run `sudo sysctl -p`
+
+```bash
+cat /proc/sys/net/ipv6/conf/all/disable_ipv6
+```
+
+If it returns 0, then ipv6 is not completely disabled. May be you need to reboot OS which is something not desired on server.
+
+So just run following command to disable manually.
+
+```bash
+echo "1" > /proc/sys/net/ipv6/conf/all/disable_ipv6
+You can test again to see if its disabled.
+```
+
 ## Install KVM
 
 ```bash
