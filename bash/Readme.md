@@ -294,8 +294,8 @@ ls -allh *.bin | awk '{print $5 "\t" $9}'
 
 # example output
 16M   1000000_cbor.bin
-57M.  1000000_json.bin
-1.6M. 100000_cbor.bin
-5.7M. 100000_json.bin
+57M   1000000_json.bin
+1.6M  100000_cbor.bin
+5.7M  100000_json.bin
 ```
 
