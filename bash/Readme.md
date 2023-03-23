@@ -299,3 +299,11 @@ ls -allh *.bin | awk '{print $5 "\t" $9}'
 5.7M  100000_json.bin
 ```
 
+## Create a large file for testing
+
+```bash
+seq 1000000 > file.bin
+
+# check the file size
+du -sh file.bin
+```
