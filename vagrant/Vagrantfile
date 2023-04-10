@@ -6,9 +6,9 @@ Vagrant.configure("2") do |config|
   box = "ubuntu/focal64" # 20.04 LTS
   name = "vm"
   domain = "io"
-  memory = "8192" # 1024, 2048, 8192
-  cpus = "4"
-  ip_prefix = "192.168.56"
+  memory = "1024" # 1024, 2048, 8192
+  cpus = "1"
+  ip_prefix = "192.168.33"
   machines = *(11..11)
 
   machines.each do |i|
@@ -48,7 +48,7 @@ Vagrant.configure("2") do |config|
       #### Uncomment the shell scripts after the machine is up
       #### vagrant up --provision
 
-      machine.vm.provision "shell", path: "scripts/packages.sh"
+       machine.vm.provision "shell", path: "scripts/packages.sh"
       # machine.vm.provision "shell", path: "scripts/jenkins.sh"
       # machine.vm.provision "shell", path: "scripts/pack-cli.sh"
       # machine.vm.provision "shell", path: "scripts/pulumi-cli.sh"
@@ -59,7 +59,8 @@ Vagrant.configure("2") do |config|
       # machine.vm.provision "shell", path: "scripts/grype-cli.sh"
       # machine.vm.provision "shell", path: "scripts/syft-cli.sh"
       # machine.vm.provision "shell", path: "scripts/zig.sh"
-      # machine.vm.provision "shell", path: "scripts/nats.sh"
+       machine.vm.provision "shell", path: "scripts/nats.sh"
+       machine.vm.provision "shell", path: "scripts/nats-cli.sh"
       # machine.vm.provision "shell", path: "scripts/redis.sh"
       # machine.vm.provision "shell", path: "scripts/postgres.sh"
       # machine.vm.provision "shell", path: "scripts/nodejs.sh"

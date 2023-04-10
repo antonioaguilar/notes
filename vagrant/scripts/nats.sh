@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export NATS_VERSION="v2.9.3"
+export NATS_VERSION="v2.9.15"
 
 apt-get update
 apt-get install -y curl unzip
