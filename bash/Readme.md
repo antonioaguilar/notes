@@ -1,5 +1,33 @@
 # Bash scripts
 
+## Simulate Network Bandwidth and Latency
+
+Copy the [slow.sh](./slow.sh) bash script to the `/usr/bin` folder in your linux distro
+
+```bash
+sudo cp slow.sh /usr/bin/slow
+```
+
+Use the `slow` command to simulate various network speeds and latency conditions:
+> Note: all commands require `root` permissions.
+
+```bash
+# see list of commands
+sudo slow --help
+
+# simulate a slow 56kbps connection in eth0
+sudo slow -d eth0 -b 56kbps -l 40ms
+
+# simulate a 3G network speed with latency on eth0
+sudo slow 3G -d eth0
+
+# get the status of the network connection
+sudo slow status -d eth0
+
+# reset the network interface to defaults
+sudo slow reset -d eth0
+```
+
 ## Find and remove `node_modules` folder recursively
 
 ```
@@ -26,7 +54,7 @@ find . -name "package.json" -type f -execdir ncu --packageFile {} +
 find . -mindepth 2 -type f -print -exec mv {} ~/backup-subfolder \;
 ```
 
-## Intercept network traffict 
+## Intercept network traffict
 
 ```
 sudo tcpflow -i any -C -g port 8080
@@ -123,7 +151,7 @@ grep -rl someText somedir/ | xargs sed -i "" "s/someText/replacedText/g"
 ## Find and delete files recursively with extension
 
 ```
-# deletes all the *.log files 
+# deletes all the *.log files
 find . -type f -name '*.log' -delete
 ```
 
@@ -187,7 +215,7 @@ Print message multiple times:
 perl -E 'say "Hola mundo!\n" x 1000'
 ```
 
-Print message with increment: 
+Print message with increment:
 
 ```bash
 for i in {01..09} {11..100}
@@ -215,7 +243,7 @@ exit
 Script done, file is terminal-session.txt
 ```
 
-## Get primary IP address 
+## Get primary IP address
 
 ```bash
 ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'
@@ -286,10 +314,10 @@ for ext in jpg png gif; do
 done
 ```
 
-## List file names and size only 
+## List file names and size only
 
 ```bash
-# bash on MacOS, adjust to Ubuntu linux 
+# bash on MacOS, adjust to Ubuntu linux
 ls -allh *.bin | awk '{print $5 "\t" $9}'
 
 # example output
