@@ -1,24 +1,14 @@
-# save Bash history forever
+### CUSTOM SCRIPTS
 export HISTCONTROL=ignoredups:erasedups  # no duplicate entries
 export HISTSIZE=100000                   # big big history
 export HISTFILESIZE=100000               # big big history
 shopt -s histappend                      # append to history, don't overwrite it
 
-# Save and reload the history after each command finishes
-# export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
-
-export PS1="\u@\h:\W\\$ "
-
-export GOPATH=$HOME/.go
-export GOBIN=$GOPATH/bin
-
-# export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]; then echo "$(date "+%Y-%m-%d.%H:%M:%S") $(pwd) $(history 1)" >> ~/.logs/bash-history-$(date "+%Y-%m-%d").log; fi'
-
 # Set Paths
-export PATH="/usr/local/git/bin:/sw/bin/:/usr/local/bin:/usr/local/sbin:$GOPATH/bin:$PATH"
+export PATH="/usr/local/git/bin:/sw/bin/:/usr/local/bin:/usr/local/sbin:$PATH"
 
-# Java environment
-export JAVA_HOME=$(/usr/libexec/java_home);
+# insecure ssh
+alias issh='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 
 alias webstorm='open -a /Applications/WebStorm.app'
 
@@ -27,6 +17,8 @@ alias chrome-webrtc='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chr
 alias chrome-memory='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --enable-precise-memory-info --disable-extensions --enable-memory-benchmarking --full-memory-crash-report'
 alias chrome-insecure='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --enable-precise-memory-info --disable-extensions --enable-memory-benchmarking --full-memory-crash-report --allow-running-insecure-content'
 alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
+alias chrome-cors='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --disable-features=CrossSiteDocumentBlockingAlways,CrossSiteDocumentBlockingIfIsolating'
+alias brave='/Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser --args --disable-web-security --user-data-dir=~/.brave'
 
 #   Set Default Editor (change 'Nano' to the editor of your choice)
 export EDITOR=/usr/bin/nano
@@ -38,8 +30,8 @@ export BLOCKSIZE=1k
 #   Add color to terminal
 #   (this is all commented out as I use Mac Terminal Profiles)
 #   from http://osxdaily.com/2012/02/21/add-color-to-the-terminal-in-mac-os-x/
-export CLICOLOR=1
-export LSCOLORS=ExFxBxDxCxegedabagacad
+#export CLICOLOR=1
+#export LSCOLORS=ExFxBxDxCxegedabagacad
 
 alias ds='docker stats $(docker ps --format {{.Names}})'
 
@@ -82,16 +74,16 @@ alias dev-server='browser-sync --port 8080 --no-open --no-ui -f'
 # Curl and WGET utils
 alias curl='curl -s'
 
-#   lr:  Full Recursive Directory Listing
+# lr:  Full Recursive Directory Listing
 alias lr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\'' -e '\''s/^/   /'\'' -e '\''s/-/|/'\'' | less'
 
-#   mans:   Search manpage given in agument '1' for term given in argument '2' (case insensitive)
-#           displays paginated result with colored search terms and two lines surrounding each hit.
+# mans:   Search manpage given in agument '1' for term given in argument '2' (case insensitive)
+#         displays paginated result with colored search terms and two lines surrounding each hit.
 mans () {
-    man $1 | grep -iC2 --color=always $2 | less
+  man $1 | grep -iC2 --color=always $2 | less
 }
 
-#   showa: to remind yourself of an alias (given some part of it)
+# showa: to remind yourself of an alias (given some part of it)
 showa () { /usr/bin/grep --color=always -i -a1 $@ ~/Library/init/bash/aliases.bash | grep -v '^\s*$' | less -FSRXc ; }
 
 zipf () { zip -r "$1".zip "$1" ; }          # zipf:         To create a ZIP archive of a folder
@@ -101,16 +93,15 @@ ff () { /usr/bin/find . -name "$@" ; }      # ff:       Find file under the curr
 ffs () { /usr/bin/find . -name "$@"'*' ; }  # ffs:      Find file whose name starts with a given string
 ffe () { /usr/bin/find . -name '*'"$@" ; }  # ffe:      Find file whose name ends with a given string
 
-#   spotlight: Search for a file using MacOS Spotlight's metadata
+# spotlight: Search for a file using MacOS Spotlight's metadata
 spotlight () { mdfind "kMDItemDisplayName == '$@'wc"; }
 
 
-#   findPid: find out the pid of a specified process
+# findPid: find out the pid of a specified process
 findPid () { lsof -t -c "$@" ; }
 
-#   my_ps: List processes owned by my user:
+# my_ps: List processes owned by my user:
 my_ps() { ps $@ -u $USER -o pid,%cpu,%mem,start,time,bsdtime,command ; }
-
 
 alias netCons='lsof -i'                             # netCons:      Show all open TCP/IP sockets
 alias flushDNS='dscacheutil -flushcache'            # flushDNS:     Flush out the DNS Cache
@@ -122,27 +113,62 @@ alias ipInfo1='ipconfig getpacket en1'              # ipInfo1:      Get info on 
 alias openPorts='sudo lsof -i | grep LISTEN'        # openPorts:    All listening connections
 alias showBlocked='sudo ipfw list'                  # showBlocked:  All ipfw rules inc/ blocked IPs
 alias netstat='netstat -lunt'
+alias m='multipass'
 
 ii() {
-    echo -e "\nYou are logged on ${RED}$HOST"
-    echo -e "\nAdditionnal information:$NC " ; uname -a
-    echo -e "\n${RED}Users logged on:$NC " ; w -h
-    echo -e "\n${RED}Current date :$NC " ; date
-    echo -e "\n${RED}Machine stats :$NC " ; uptime
-    echo -e "\n${RED}Current network location :$NC " ; scselect
-    echo
+  echo -e "\nYou are logged on ${RED}$HOST"
+  echo -e "\nAdditionnal information:$NC " ; uname -a
+  echo -e "\n${RED}Users logged on:$NC " ; w -h
+  echo -e "\n${RED}Current date :$NC " ; date
+  echo -e "\n${RED}Machine stats :$NC " ; uptime
+  echo -e "\n${RED}Current network location :$NC " ; scselect
+  echo
 }
 
-alias cleanupDS="find . -type f -name '*.DS_Store' -ls -delete"
+alias cleanDS="find . -type f -name '*.DS_Store' -ls -delete"
+alias cleanIDEA="find . -name '.idea' -type d -exec rm -vrf {} +"
+alias cleanNPM="find . -name 'node_modules' -type d -exec rm -vrf {} +"
+alias cleanGIT="find . -name '.git' -type d -exec rm -vrf {} +"
 
-# NodeJS tools and shortcuts
-export NVM_DIR="/Users/aaguilar/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+gif() {
+  git fetch --all --prune
+}
 
-PATH=$PATH:$NVM_DIR/nvm.sh
+tig() {
+  git add -A && git commit -m "$1" && git push
+}
 
-# Mac OS Brew variables
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-    . `brew --prefix`/etc/bash_completion
-fi
+export PATH="/usr/local/opt/ruby/bin:$PATH"
 
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
+# set the VirtualBox VMs folder to something else
+#vboxmanage setproperty machinefolder $HOME/vms
+
+export GOPATH="$HOME/.go"
+export GOROOT="$(brew --prefix golang)/libexec"
+export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# . $(pack completion)
+
+export PATH="/usr/local/opt/libpq/bin:$PATH"
+PATH=$(pyenv root)/shims:$PATH
+
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+export HOMEBREW_NO_ENV_HINTS=1
+export HOMEBREW_NO_INSTALL_CLEANUP=1
+
+eval "$(direnv hook bash)"
