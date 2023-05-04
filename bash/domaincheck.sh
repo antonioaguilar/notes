@@ -15,9 +15,9 @@ while (( "$#" )); do
       whois $1${DOMAINS[${i}]} | egrep -q \
       '^No match|^NOT FOUND|^Not fo|AVAILABLE|^No Data Fou|has not been regi|No entri|Domain not found'
 	  if [ $? -eq 0 ]; then
-	    echo -e "$1${DOMAINS[${i}]} \t available"
+	    echo -e "$1${DOMAINS[${i}]}\t available"
 	  else
-      echo -e "$1${DOMAINS[${i}]} \t not available"
+      echo -e "$1${DOMAINS[${i}]}\t not available"
     fi
   done
 
