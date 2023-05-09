@@ -26,8 +26,9 @@ git branch -D <branch-name>
 
 ### Change or fix previous commit messages (including author)
 
+The first step is to identify the last "good" commit and provide its hash to the rebase command:
+
 ```
-# the first step is to identify the last "good" commit and provide its hash to the rebase command:
 git rebase -i -p <commit-id>
 ```
 
