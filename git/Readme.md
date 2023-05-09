@@ -24,6 +24,35 @@ git push origin --delete <branch-name>
 git branch -D <branch-name>
 ```
 
+### Change or fix previous commit messages (including author)
+
+```
+# the first step is to identify the last "good" commit and provide its hash to the rebase command:
+git rebase -i -p <commit-id>
+```
+
+Your default editor will open, requesting you to mark all the commits you want to change with the "edit" keyword. Git will now walk you through each commit, giving you the chance modify previous commits.
+
+You can amend the commit now, with:
+
+```
+git commit --amend
+```
+
+Once you are satisfied with your changes, run:
+
+```
+git rebase --continue
+```
+
+You can now correct the author information and then continue to the next concerned commit object until you've edited all the commits you just marked:
+
+```
+git commit --amend --author="Antonio Aguilar <antonio@aguilar.org>" --no-edit
+
+git rebase --continue
+```
+
 ### Securely transfer a git repo 
 
 ```
