@@ -1,6 +1,22 @@
 # Git commands and scripts
 
-### Print git log
+### Pre-configured `.gitconfig` file
+
+```
+[user]
+  name = Antonio Aguilar
+  email = antonioaguilar@users.noreply.github.com
+[push]
+  default = current
+[core]
+  editor = nano
+[pull]
+  rebase = false
+[alias]
+  ll = log --pretty=format:'%C(red)[%h] %C(bold blue)%an %C(reset)| %C(magenta)%ah %C(green)(%cr) %C(reset)| %C(yellow)%s' --numstat
+```
+
+### Configure alias and print git log
 
 ```
 git config --global alias.ll "log --pretty=format:'%C(red)[%h] %C(bold blue)%an %C(reset)| %C(magenta)%ah %C(green)(%cr) %C(reset)| %C(yellow)%s' --numstat"
