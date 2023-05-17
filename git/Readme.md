@@ -39,7 +39,7 @@
   colorMoved = default
 ```
 
-### `cat` command with syntax highlight
+### Use the `cat` command with syntax highlight
 
 ```bash
 brew install bat
