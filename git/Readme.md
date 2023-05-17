@@ -3,9 +3,7 @@
 ### Print git log
 
 ```
-git config --global alias.logline "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-
-git logline
+git config --global alias.ll "log --pretty=format:'%C(red)[%h] %C(bold blue)%an %C(reset)| %C(magenta)%ah %C(green)(%cr) %C(reset)| %C(yellow)%s' --numstat"
 ```
 
 ### Enable local and remote branch push
