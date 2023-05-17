@@ -2,24 +2,50 @@
 
 ### Pre-configured `.gitconfig` file
 
+> Install `git-delta` plugin for better `git diff` via Homebrew `brew install git-delta`
+
 ```
 [user]
   name = Antonio Aguilar
-  email = antonioaguilar@users.noreply.github.com
+  email = antonioaguilar@users.noreply.gitlab.com
+
 [push]
   default = current
+
 [core]
   editor = nano
+  pager = delta
+
 [pull]
   rebase = false
+
 [alias]
   ll = log --pretty=format:'%C(red)[%h] %C(bold blue)%an %C(reset)| %C(magenta)%ah %C(green)(%cr) %C(reset)| %C(yellow)%s' --numstat
+  reset = reset --hard HEAD
+
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  side-by-side = true
+  line-numbers = true
+  navigate = true
+  light = false
+
+[merge]
+  conflictstyle = diff3
+
+[diff]
+  colorMoved = default
 ```
 
-### Configure alias and print git log
+### `cat` command with syntax highlight
 
-```
-git config --global alias.ll "log --pretty=format:'%C(red)[%h] %C(bold blue)%an %C(reset)| %C(magenta)%ah %C(green)(%cr) %C(reset)| %C(yellow)%s' --numstat"
+```bash
+brew install bat
+
+# create an alias for cat
+alias cat="bat -p"
 ```
 
 ### Enable local and remote branch push
