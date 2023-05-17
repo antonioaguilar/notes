@@ -45,7 +45,7 @@
 brew install bat
 
 # create an alias for cat
-alias cat="bat -p"
+alias cat='echo -e "" && bat -p'
 ```
 
 ### Enable local and remote branch push
