@@ -34,6 +34,9 @@ https://pgmetrics.io/
 # use tool as psql
 ```
 
+> Use [pgDash](https://pgdash.io/) as complementary tool to visualized the collected metrics.
+
+
 ### Delete all tables in current database
 
 ```
