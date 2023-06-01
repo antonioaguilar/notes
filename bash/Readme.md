@@ -6,7 +6,7 @@
 sudo apt-get install -y nethogs
 
 nethogs -help
-usage: nethogs [-V] [-h] [-b] [-d seconds] [-v mode] [-c count] [-t] [-p] [-s] [-a] [-l] [-f filter] [-C][device [device [device ...]]]
+usage: nethogs [-V] [-h] [-b] [-d seconds] [-v mode] [-c count] [-t] [-p] [-s] [-a] [-l] [-f filter]
 		-V : prints version.
 		-h : prints this help.
 		-b : bughunt mode - implies tracemode.
@@ -19,9 +19,6 @@ usage: nethogs [-V] [-h] [-b] [-d seconds] [-v mode] [-c count] [-t] [-p] [-s] [
 		-l : display command line.
 		-a : monitor all devices, even loopback/stopped ones.
 		-C : capture TCP and UDP.
-		-f : EXPERIMENTAL: specify string pcap filter (like tcpdump). This may be removed or changed in a future version.
-		device : device(s) to monitor. default is all interfaces up and running excluding loopback
-
 When nethogs is running, press:
  q: quit
  s: sort by SENT traffic
