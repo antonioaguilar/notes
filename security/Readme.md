@@ -1,5 +1,18 @@
 # Security
 
+## Create LetsEncrypt Certificates
+
+```
+# install certbot and dns plugin
+pip3 install certbot certbot-dns-standalone
+
+# add the python binaries path, e.g. /home/ubuntu/.local/bin
+# to the /etc/sudoers file, append to 'secure_path' variable
+
+# generate the DNS challenge to obtain the cert
+sudo certbot certonly --manual --preferred-challenges=dns
+```
+
 ## Create SSL/X509 Self-signed Certificates
 
 ## Extract self-signed certificate from remote server
