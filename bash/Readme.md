@@ -1,5 +1,35 @@
 # Bash scripts
 
+## Monitor network traffic using `nethogs`
+
+```
+sudo apt-get install -y nethogs
+
+nethogs -help
+usage: nethogs [-V] [-h] [-b] [-d seconds] [-v mode] [-c count] [-t] [-p] [-s] [-a] [-l] [-f filter] [-C][device [device [device ...]]]
+		-V : prints version.
+		-h : prints this help.
+		-b : bughunt mode - implies tracemode.
+		-d : delay for update refresh rate in seconds. default is 1.
+		-v : view mode (0 = KB/s, 1 = total KB, 2 = total B, 3 = total MB, 4 = MB/s, 5 = GB/s). default is 0.
+		-c : number of updates. default is 0 (unlimited).
+		-t : tracemode.
+		-p : sniff in promiscious mode (not recommended).
+		-s : sort output by sent column.
+		-l : display command line.
+		-a : monitor all devices, even loopback/stopped ones.
+		-C : capture TCP and UDP.
+		-f : EXPERIMENTAL: specify string pcap filter (like tcpdump). This may be removed or changed in a future version.
+		device : device(s) to monitor. default is all interfaces up and running excluding loopback
+
+When nethogs is running, press:
+ q: quit
+ s: sort by SENT traffic
+ r: sort by RECEIVE traffic
+ l: display command line
+ m: switch between total (KB, B, MB) and throughput (KB/s, MB/s, GB/s) mode
+```
+
 ## Simulate Network Bandwidth and Latency
 
 Copy the [slow.sh](./slow.sh) bash script to the `/usr/bin` folder in your linux distro
