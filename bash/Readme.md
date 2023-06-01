@@ -7,18 +7,18 @@ sudo apt-get install -y nethogs
 
 nethogs -help
 usage: nethogs [-V] [-h] [-b] [-d seconds] [-v mode] [-c count] [-t] [-p] [-s] [-a] [-l] [-f filter]
-				-V : prints version.
-				-h : prints this help.
-				-b : bughunt mode - implies tracemode.
-				-d : delay for update refresh rate in seconds. default is 1.
-				-v : view mode (0 = KB/s, 1 = total KB, 2 = total B, 3 = total MB, 4 = MB/s, 5 = GB/s). default is 0.
-				-c : number of updates. default is 0 (unlimited).
-				-t : tracemode.
-				-p : sniff in promiscious mode (not recommended).
-				-s : sort output by sent column.
-				-l : display command line.
-				-a : monitor all devices, even loopback/stopped ones.
-				-C : capture TCP and UDP.
+        -V : prints version.
+        -h : prints this help.
+        -b : bughunt mode - implies tracemode.
+        -d : delay for update refresh rate in seconds. default is 1.
+        -v : view mode (0 = KB/s, 1 = total KB, 2 = total B, 3 = total MB, 4 = MB/s, 5 = GB/s). default is 0.
+        -c : number of updates. default is 0 (unlimited).
+        -t : tracemode.
+        -p : sniff in promiscious mode (not recommended).
+        -s : sort output by sent column.
+        -l : display command line.
+        -a : monitor all devices, even loopback/stopped ones.
+        -C : capture TCP and UDP.
 When nethogs is running, press:
  q: quit
  s: sort by SENT traffic
