@@ -1,5 +1,9 @@
 # Security
 
+## Block abuse IPs using iptables
+
+Download and install the following [script](./iptables-abuseipdb.sh).
+
 ## Create LetsEncrypt Certificates
 
 ```
@@ -13,22 +17,20 @@ pip3 install certbot certbot-dns-standalone
 sudo certbot certonly --manual --preferred-challenges=dns
 ```
 
-## Create SSL/X509 Self-signed Certificates
-
-## Extract self-signed certificate from remote server
+## Extract TLS certificate from remote server
 
 ```bash
 # extract certificate in PEM format
 openssl s_client -connect 0.0.0.0:443 2>/dev/null </dev/null | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > cert.pem
 ```
 
-### Generate key and cert using single command:
+## Generate TLS key and cert using single command:
 
 ```bash
 openssl req -new -newkey rsa:4096 -days 3650 -nodes -x509 -sha256 -keyout key.pem -out cert.pem
 ```
 
-### Generate cert using config file
+## Generate cert using config file
 
 Create a ```server.cnf``` configuration file:
 
