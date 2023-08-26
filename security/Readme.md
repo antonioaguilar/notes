@@ -4,6 +4,14 @@
 
 Download and install the following [script](./iptables-abuseipdb.sh).
 
+## Allow non-sudo servers access to lower network ports
+
+Use `CAP_NET_BIND_SERVICE` and the `setcap` command to grant low-numbered port access to a process or binary:
+
+```bash
+sudo setcap CAP_NET_BIND_SERVICE=+eip /path/to/binary
+```
+
 ## Create LetsEncrypt Certificates
 
 ```
