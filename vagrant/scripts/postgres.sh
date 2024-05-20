@@ -12,6 +12,4 @@ wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-
 
 apt-get -y update
 
-apt-get install -y postgresql-14
-
-apt-get install -y pgcli
+apt-get install -y postgresql-16 pgcli postgresql-client-16 postgresql-doc-16 libpq-dev postgresql-server-dev-16
