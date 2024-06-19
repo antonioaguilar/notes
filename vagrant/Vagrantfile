@@ -7,7 +7,7 @@ Vagrant.configure("2") do |config|
   name = "vm"
   domain = "io"
   memory = "4094" # 1024, 2048, 4094, 8192
-  cpus = "4"
+  cpus = "1"
   ip_prefix = "33" # use prefix "33" in MacOS, "56" in Linux
   ip_range_start = "11"
   ip_range_end = "11"
