@@ -88,6 +88,7 @@ Vagrant.configure("2") do |config|
       # machine.vm.provision "shell", path: "scripts/nomad.sh"
       # machine.vm.provision "shell", path: "scripts/consul.sh"
       # machine.vm.provision "shell", path: "scripts/python.sh"
+      machine.vm.provision "shell", path: "scripts/gcc.sh"
 
       machine.vm.provider "virtualbox" do |vm|
         vm.name = "#{hostname}"
