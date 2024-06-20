@@ -6,9 +6,9 @@ Vagrant.configure("2") do |config|
   box = "ubuntu/jammy64" # 22.04 LTS (April 2022)
   name = "vm"
   domain = "io"
-  memory = "1024" # 1024, 2048, 4094, 8192
+  memory = "4094" # 1024, 2048, 4094, 8192
   cpus = "1"
-  ip_prefix = "56" # use prefix "33" in MacOS, "56" in Linux
+  ip_prefix = "33" # use prefix "33" in MacOS, "56" in Linux
   ip_range_start = "11"
   ip_range_end = "11"
   machines = *(ip_range_start..ip_range_end)
@@ -18,7 +18,7 @@ Vagrant.configure("2") do |config|
 
       ip = "192.168.#{ip_prefix}.#{i}"
       hostname = "#{name}-#{i}"
-      
+
       machine.vm.box = "#{box}"
       machine.vm.box_check_update = false
 
@@ -43,10 +43,10 @@ Vagrant.configure("2") do |config|
       config.vm.provision "shell", inline: "echo \"127.0.0.1 localhost\n#{ip} #{hostname} #{hostname}.#{domain}\" > /etc/hosts"
       config.vm.provision "shell", inline: "echo \"#{hostname}\" > /etc/hostname"
       config.vm.provision "shell", inline: "touch /home/vagrant/.hushlogin && chown vagrant:vagrant /home/vagrant/.hushlogin"
-      
+
       # Uncomment these lines if you are sharing a local folder
       # config.vm.provision "shell", inline: "mkdir -p /home/vagrant/shared && chown vagrant:vagrant /home/vagrant/shared"
-      # machine.vm.synced_folder "./shared", "/home/vagrant/shared"
+      machine.vm.synced_folder "./shared", "/home/vagrant/repos"
 
       machine.vm.provision "file", source: "scripts/bash.conf", destination: "~/.bashrc"
       machine.vm.provision "file", source: "scripts/nano.conf", destination: "~/.nanorc"
