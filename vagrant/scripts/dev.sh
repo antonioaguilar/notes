@@ -2,7 +2,7 @@
 
 apt update
 apt install -y \
-tree htop ncdu git wget curl pkg-config \
+tree htop ncdu git wget curl pkg-config bat \
 make cmake gcc g++ ccache nasm build-essential doxygen gdb valgrind \
 libjpeg-dev libtiff-dev libopenjp2-7 libopenjp2-tools \
 libnats-dev libssl-dev libpthread-stubs0-dev \
