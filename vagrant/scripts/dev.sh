@@ -3,7 +3,7 @@
 apt update
 apt install -y \
 tree htop ncdu git wget curl pkg-config bat \
-make cmake gcc g++ ccache nasm build-essential doxygen gdb valgrind autoconf automake libtool \
+make cmake gcc g++ ccache nasm build-essential doxygen gdb valgrind autoconf automake libtool meson ninja-build \
 libjpeg-dev libtiff-dev libopenjp2-7 libopenjp2-tools \
 libnats-dev libssl-dev libpthread-stubs0-dev \
 libomp-dev libopenblas-dev libopenblas-openmp-dev libatlas-base-dev liblapack-dev ocl-icd-opencl-dev \
