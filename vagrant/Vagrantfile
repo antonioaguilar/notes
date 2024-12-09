@@ -6,8 +6,8 @@ Vagrant.configure("2") do |config|
   box = "ubuntu/mantic64" # 24.04 LTS (April 2036)
   name = "vm"
   domain = "io"
-  memory = "4094" # 1024, 2048, 4094, 8192
-  cpus = "4"
+  memory = "8192" # 1024, 2048, 4094, 8192
+  cpus = "2"
   ip_prefix = "33" # use prefix "33" in MacOS, "56" in Linux
   ip_range_start = "11"
   ip_range_end = "11"
@@ -95,6 +95,7 @@ Vagrant.configure("2") do |config|
         vm.gui = false
         vm.cpus = "#{cpus}"
         vm.memory = "#{memory}"
+        vm.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
         vm.customize ['modifyvm', :id, '--nested-hw-virt', 'on']
         vm.check_guest_additions = false
       end

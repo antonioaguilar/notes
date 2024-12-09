@@ -4,7 +4,7 @@ apt update
 apt install -y \
 tree htop ncdu git wget curl pkg-config bat \
 make cmake gcc g++ ccache nasm build-essential doxygen gdb valgrind autoconf automake libtool flex bison \
-libjpeg-dev libtiff-dev libopenjp2-7 libopenjp2-tools libbz2-dev \
+libncurses-dev libjpeg-dev libtiff-dev libopenjp2-7 libopenjp2-tools libbz2-dev \
 libnats-dev libssl-dev libpthread-stubs0-dev \
 libomp-dev libopenblas-dev libopenblas-openmp-dev libatlas-base-dev liblapack-dev ocl-icd-opencl-dev \
 python3 python3-pip python3-pipdeptree python3-opencv python3-venv python3-pygments python3-bs4 python3-dev libcairo2-dev \
