@@ -3,24 +3,28 @@
 
 Vagrant.configure("2") do |config|
 
-  box = "ubuntu/jammy64" # 22.04 LTS
+  # select box based on the current processor architecture
+  if `arch`.strip() == 'arm64'
+    # works on Apple silicon
+    box = "net9/ubuntu-24.04-arm64"
+  else
+    # works on Intel
+    box = "ubuntu/jammy64"
+  end
+
   name = "vm"
   domain = "io"
-<<<<<<< HEAD
-  memory = "8192" # 1024, 2048, 4094, 8192
-  cpus = "2"
-||||||| 9f282ee
-  memory = "4094" # 1024, 2048, 4094, 8192
-  cpus = "4"
-=======
-  memory = "4094" # 1024, 2048, 4094, 8192
-  cpus = "2"
->>>>>>> 0ffa6fa5247dee8c2b5e68153eff8cc72ccc1c2d
+  memory = "1024" # 1024, 2048, 4094, 8192
+  cpus = "1"
+
   ip_prefix = "33" # use prefix "33" in MacOS, "56" in Linux
   ip_range_start = "11"
   ip_range_end = "11"
+
+  # select the number of machines based on the range given
   machines = *(ip_range_start..ip_range_end)
 
+  # create the machines
   machines.each do |i|
     config.vm.define "#{name}-#{i}" do |machine|
 
@@ -103,8 +107,13 @@ Vagrant.configure("2") do |config|
         vm.gui = false
         vm.cpus = "#{cpus}"
         vm.memory = "#{memory}"
-        vm.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
-        vm.customize ['modifyvm', :id, '--nested-hw-virt', 'on']
+
+        # apply to x86 machines only
+        if `arch`.strip() != 'arm64'
+          vm.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
+          vm.customize ['modifyvm', :id, '--nested-hw-virt', 'on']
+        end
+
         vm.check_guest_additions = false
       end
     end
