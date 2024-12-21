@@ -44,6 +44,7 @@ Vagrant.configure("2") do |config|
 
       # config.vm.network :forwarded_port, guest: "220#{i}", host: "220#{i}", host_ip: "0.0.0.0", auto_correct: true
       # config.vm.network :forwarded_port, guest: 5432, guest_ip: "0.0.0.0", host: 5432, host_ip: "0.0.0.0", id: "postgres", auto_correct: true
+      # config.vm.network :forwarded_port, guest: 3306, guest_ip: "0.0.0.0", host: 3306, host_ip: "0.0.0.0", id: "mariadb", auto_correct: true
 
       # config.ssh.username = "vagrant"
       # machine.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "~/.ssh/id_rsa.pub"
