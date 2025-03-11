@@ -10,6 +10,7 @@ export PATH="/usr/local/git/bin:/sw/bin/:/usr/local/bin:/usr/local/sbin:$PATH"
 # insecure ssh
 alias issh='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 
+alias goland='open -na "GoLand.app" --args'
 alias webstorm='open -a /Applications/WebStorm.app'
 
 # Front-end development tools and shortcuts
