@@ -1,6 +1,70 @@
 # Kafka
 
-### Install 
+## Using Docker Compose
+
+Create a docker compose file ```broker.yml` using the configuration below:
+
+```yml
+# kafka broker without zookeeper (using KRaft)
+services:
+  kafka:
+    image: "bitnami/kafka:latest"
+    container_name: kafka-broker
+    environment:
+      - KAFKA_ENABLE_KRAFT=yes
+      - ALLOW_PLAINTEXT_LISTENER=yes
+      - KAFKA_CFG_NODE_ID=1
+      - KAFKA_CFG_PROCESS_ROLES=broker,controller
+      - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
+      - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=CLIENT
+      - KAFKA_CFG_LISTENERS=CLIENT://:29092,EXTERNAL://:9092,CONTROLLER://:9093
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,CLIENT:PLAINTEXT,EXTERNAL:PLAINTEXT
+      - KAFKA_CFG_ADVERTISED_LISTENERS=CLIENT://kafka:29092,EXTERNAL://localhost:9092
+      - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=1@127.0.0.1:9093
+    ports:
+      - "9092:9092"
+volumes:
+  kafka_data:
+    driver: local
+```
+
+Run as:
+
+```bash
+docker-compose -f broker.yml up 
+```
+
+### Use the Kafka CLI via Docker
+
+Configure the following aliases in ```.bashrc``:
+
+```bash
+export DOCKER_CLI_HINTS=false
+
+alias kafka-topics.sh="docker exec -it kafka-broker kafka-topics.sh --bootstrap-server localhost:9092"
+alias kafka-console-consumer.sh="docker exec -it kafka-broker kafka-console-consumer.sh --bootstrap-server localhost:9092"
+alias kafka-console-producer.sh="docker exec -it kafka-broker kafka-console-producer.sh --bootstrap-server localhost:9092"
+```
+
+Use the Kafka CLI commands as follows:
+
+```bash
+kafka-topics.sh --create --topic accounts --partitions 3
+
+kafka-topics.sh --describe --topic accounts
+
+kafka-topics.sh --list
+
+kafka-topics.sh --delete --topic accounts
+
+kafka-console-consumer.sh --topic accounts
+
+kafka-console-consumer.sh --topic accounts --from-beginning
+
+kafka-console-consumer.sh --topic accounts --partition 1
+```
+
+### Install using Java (outdated)
 
 ```bash
 # install Java
@@ -27,7 +91,7 @@ tar zxvf kafka_2.13-2.7.0.tgz --strip=1
 ~/kafka/bin/kafka-server-stop.sh ~/kafka/config/server.properties
 ```
 
-### Usage
+### Usage (needs ZooKeeper)
 
 ```bash
 # create topic
