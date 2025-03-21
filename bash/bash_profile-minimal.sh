@@ -141,6 +141,7 @@ tig() {
 
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 
+export DOCKER_CLI_HINTS=false
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # set the VirtualBox VMs folder to something else
