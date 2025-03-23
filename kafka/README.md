@@ -2,7 +2,7 @@
 
 ## Using Docker Compose
 
-Create a docker compose file ```broker.yml` using the configuration below:
+Create a docker compose file `broker.yml` using the configuration below:
 
 ```yml
 # kafka broker without zookeeper (using KRaft)
@@ -23,6 +23,16 @@ services:
       - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=1@127.0.0.1:9093
     ports:
       - "9092:9092"
+
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    container_name: kafka-dashboard
+    environment:
+      KAFKA_CLUSTERS_0_NAME: local
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:29092
+    ports:
+      - 3000:8080
+
 volumes:
   kafka_data:
     driver: local
@@ -36,7 +46,7 @@ docker-compose -f broker.yml up
 
 ### Use the Kafka CLI via Docker
 
-Configure the following aliases in ```.bashrc``:
+Configure the following aliases in `.bashrc` or `.bash_profile`:
 
 ```bash
 # docker kafka scripts
@@ -72,6 +82,10 @@ kafka-console-consumer.sh --topic accounts
 kafka-console-consumer.sh --topic accounts --from-beginning
 
 kafka-console-consumer.sh --topic accounts --partition 1
+
+kafka-consumer-groups.sh --group console-group --delete
+
+kafka-consumer-groups.sh --group console-group --reset-offsets --to-earliest --topic accounts -execute
 ```
 
 ### Install using Java (outdated)
