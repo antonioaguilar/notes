@@ -39,11 +39,17 @@ docker-compose -f broker.yml up
 Configure the following aliases in ```.bashrc``:
 
 ```bash
+# docker kafka scripts
 export DOCKER_CLI_HINTS=false
 
 alias kafka-topics.sh="docker exec -it kafka-broker kafka-topics.sh --bootstrap-server localhost:9092"
 alias kafka-console-consumer.sh="docker exec -it kafka-broker kafka-console-consumer.sh --bootstrap-server localhost:9092"
 alias kafka-console-producer.sh="docker exec -it kafka-broker kafka-console-producer.sh --bootstrap-server localhost:9092"
+alias kafka-tty-consumer.sh="docker exec -i kafka-broker kafka-console-consumer.sh --bootstrap-server localhost:9092"
+alias kafka-tty-producer.sh="docker exec -i kafka-broker kafka-console-producer.sh --bootstrap-server localhost:9092"
+
+# docker kafka functions
+kafka-redirect() { kafka-tty-consumer.sh --topic $1 --from-beginning | kafka-tty-producer.sh --topic $2; }
 ```
 
 Use the Kafka CLI commands as follows:
