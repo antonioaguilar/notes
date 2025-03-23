@@ -40,11 +40,15 @@ Configure the following aliases in ```.bashrc``:
 
 ```bash
 # docker kafka scripts
+export KAFKAJS_NO_PARTITIONER_WARNING=1
 export DOCKER_CLI_HINTS=false
 
+# kafka cli aliases
 alias kafka-topics.sh="docker exec -it kafka-broker kafka-topics.sh --bootstrap-server localhost:9092"
 alias kafka-console-consumer.sh="docker exec -it kafka-broker kafka-console-consumer.sh --bootstrap-server localhost:9092"
 alias kafka-console-producer.sh="docker exec -it kafka-broker kafka-console-producer.sh --bootstrap-server localhost:9092"
+alias kafka-delete-records.sh="docker exec -it kafka-broker kafka-delete-records.sh --bootstrap-server localhost:9092"
+alias kafka-consumer-groups.sh="docker exec -it kafka-broker kafka-consumer-groups.sh --bootstrap-server localhost:9092"
 alias kafka-tty-consumer.sh="docker exec -i kafka-broker kafka-console-consumer.sh --bootstrap-server localhost:9092"
 alias kafka-tty-producer.sh="docker exec -i kafka-broker kafka-console-producer.sh --bootstrap-server localhost:9092"
 
