@@ -41,10 +41,63 @@ volumes:
 Run as:
 
 ```bash
-docker-compose -f broker.yml up 
+docker-compose -f broker.yml up
 ```
 
-### Use the Kafka CLI via Docker
+## Test Kafka Broker with Testcontainers / Vitest
+
+```javascript
+import { afterAll, afterEach, beforeAll, describe, expect, it, vi } from 'vitest';
+import { DockerComposeEnvironment } from 'testcontainers';
+import { type EachMessagePayload, Kafka, type KafkaConfig, logLevel } from 'kafkajs';
+
+const PATH = '../';
+const FILE = 'broker.yml';
+
+describe('Test Kafka Broker', () => {
+
+  let environment: any;
+
+  // allow kafka broker to initialize
+  vi.setConfig({ hookTimeout: 60_000, testTimeout: 60_000 });
+
+  beforeAll(async () => {
+    environment = await new DockerComposeEnvironment(PATH, FILE).withProjectName('my-broker').up();
+  });
+
+  afterAll(async () => {
+    environment.down();
+  });
+
+  it('Test consumer service', async () => {
+    // write the unit test
+  })
+});
+```
+
+## Use KafkaJS default logger service
+
+```javascript
+import { EachMessagePayload, Kafka, KafkaConfig, logLevel } from 'kafkajs';
+
+const CLIENT_CONFIG: KafkaConfig = {
+  clientId: 'my-client',
+  brokers: ['localhost:9092'],
+  logLevel: logLevel.INFO
+};
+
+const kafka = new Kafka(CLIENT_CONFIG);
+const producer = kafka.producer();
+const consumer = kafka.consumer({ groupId: 'my-client' });
+
+await producer.connect();
+producer.logger().info('Producer connected');
+
+await consumer.connect();
+consumer.logger().info('Consumer connected');
+```
+
+## Use the Kafka CLI via Docker
 
 Configure the following aliases in `.bashrc` or `.bash_profile`:
 
@@ -141,7 +194,7 @@ tar zxvf kafka_2.13-2.7.0.tgz --strip=1
 
 ```bash
 # get jmxterm cli from: https://docs.cyclopsgroup.org/jmxterm
-java -jar jmxterm-1.0.2-uber.jar -h 
+java -jar jmxterm-1.0.2-uber.jar -h
 
 
 java -jar jmxterm-1.0.2-uber.jar
