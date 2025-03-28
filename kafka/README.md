@@ -117,7 +117,7 @@ alias kafka-tty-producer.sh="docker exec -i kafka-broker kafka-console-producer.
 alias kafka-streams-application-reset.sh="docker exec -i kafka-broker kafka-streams-application-reset.sh --bootstrap-server localhost:9092"
 
 # docker kafka functions
-kafka-redirect() { kafka-tty-consumer.sh --topic $1 --from-beginning | kafka-tty-producer.sh --topic $2; }
+kafka-redirect() { kafka-tty-consumer.sh --from-beginning --topic $1 | pv | kafka-tty-producer.sh --topic $2; }
 ```
 
 Use the Kafka CLI commands as follows:
