@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export NATS_CLI_VERSION="0.0.35"
+export NATS_CLI_VERSION="0.2.2"
 
 apt-get update
 apt-get install -y curl unzip
