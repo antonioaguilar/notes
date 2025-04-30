@@ -32,6 +32,7 @@ git push --force --branches --prune
 git push --force --tags --prune
 
 # run git log and check if the user/email changes are updated
+git log --all --pretty="%h %an %cE"
 ```
 
 ### Pre-configured `.gitconfig` file
@@ -56,6 +57,10 @@ git push --force --tags --prune
 [alias]
   ll = log --pretty=format:'%C(red)[%h] %C(bold blue)%an %C(reset)| %C(magenta)%ah %C(green)(%cr) %C(reset)| %C(yellow)%s' --numstat
   reset = reset --hard HEAD
+  last = log -1 HEAD --stat
+  search = !git rev-list --all | xargs git grep --heading --break -n -F -2
+  emails = log --all --pretty='%h %an %cE'
+  df = !git rev-list --objects --all --missing=print | git cat-file --batch-check='%(objecttype) %(objectname) %(objectsize) %(rest)' | sed -n 's/^blob //p' | sort --numeric-sort --key=2 | cut -c 1-12,41- | $(command -v gnumfmt || echo numfmt) --field=2 --to=iec-i --suffix=B --padding=7 --round=nearest
 
 [interactive]
   diffFilter = delta --color-only
@@ -71,6 +76,9 @@ git push --force --tags --prune
 
 [diff]
   colorMoved = default
+
+[help]
+  autocorrect = 20
 ```
 
 ### Use the `cat` command with syntax highlight
