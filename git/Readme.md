@@ -1,5 +1,39 @@
 # Git commands and scripts
 
+### Display all author and commit emails address in all branches
+
+```bash
+
+# show hash, author email, commit email
+git log --all --pretty="%h %aE %cE"
+
+# list only commit email
+git log --all --pretty="%cE"
+```
+
+### Remove sensitive information, update email addresses in commits
+
+```bash
+# install git-filter-repo (MacOS)
+brew install git-filter-repo
+
+# create a file details.txt with the following:
+Antonio Aguilar <antonioaguilar@users.noreply.github.com> Antonio Aguilar <sensitive-email@example.com>
+
+# checkout repo and use git filter-repo plugin to modify all commits
+# Note: 'origin' remote will be removed to prevent errors
+git filter-repo --mailmap ~/details.txt
+
+# re-create and push back origin
+git remote add origin $ORIGINAL-GIT-REPO-URL
+
+# perform a force push for all branches and tags
+git push --force --branches --prune
+git push --force --tags --prune
+
+# run git log and check if the user/email changes are updated
+```
+
 ### Pre-configured `.gitconfig` file
 
 > Install `git-delta` plugin for better `git diff` via Homebrew `brew install git-delta`
@@ -58,9 +92,9 @@ git config push.default current
 
 ```
 # delete the remote branch
-git push origin --delete <branch-name> 
+git push origin --delete <branch-name>
 
-# delete the local branch 
+# delete the local branch
 git branch -D <branch-name>
 ```
 
@@ -94,7 +128,7 @@ git commit --amend --author="Antonio Aguilar <antonio@aguilar.org>" --no-edit
 git rebase --continue
 ```
 
-### Securely transfer a git repo 
+### Securely transfer a git repo
 
 ```
 # create the git bundle
@@ -122,7 +156,7 @@ git bundle create repo.bundle -b develop
 git clone repo.bundle -b develop
 ```
 
-### Store user credentails 
+### Store user credentails
 
 ```
 git config credential.helper store
@@ -139,4 +173,3 @@ git config --global credential.helper osxkeychain
 ```
 git reset --hard HEAD
 ```
-
