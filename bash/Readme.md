@@ -1,5 +1,16 @@
 # Bash scripts
 
+## Find binary executable files
+```
+# install the find utils package
+brew install findutils
+
+# search for binary ELF / 64-bit binary files
+gfind . -type f -executable -exec file '{}' \; | grep -i 64-bit
+
+gfind . -type f -executable -exec file '{}' \; | grep -i ELF
+```
+
 ## Monitor network traffic using `nethogs`
 
 ```
