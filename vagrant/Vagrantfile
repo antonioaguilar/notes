@@ -61,7 +61,7 @@ Vagrant.configure("2") do |config|
 
       # Uncomment these lines if you are sharing a local folder
       # config.vm.provision "shell", inline: "mkdir -p /home/vagrant/shared && chown vagrant:vagrant /home/vagrant/shared"
-      # machine.vm.synced_folder "./shared", "/home/vagrant/repos"
+      # machine.vm.synced_folder "./shared", "/home/vagrant/shared"
 
       machine.vm.provision "file", source: "scripts/bash.conf", destination: "~/.bashrc"
       machine.vm.provision "file", source: "scripts/nano.conf", destination: "~/.nanorc"
@@ -117,6 +117,17 @@ Vagrant.configure("2") do |config|
           vm.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
           vm.customize ['modifyvm', :id, '--nested-hw-virt', 'on']
         end
+
+        # enable USB controller
+        # vm.customize ["modifyvm", :id, "--usb", "on"]
+        # vm.customize ["modifyvm", :id, "--usbehci", "on"]
+        # vm.customize [
+        #   "usbfilter", "add", "0",
+        #   "--target", :id,
+        #   "--name", "USB_DRIVE",
+        #   "--manufacturer", "SanDisk",
+        #   "--product", "SanDisk USB Drive"
+        # ]
 
         vm.check_guest_additions = false
       end
