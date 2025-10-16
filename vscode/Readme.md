@@ -4,64 +4,61 @@
 
 ```json
 {
-  "editor.fontSize": 14,
+  "window.zoomLevel": 1.5,
+  "window.closeWhenEmpty": true,
+  "window.density.editorTabHeight": "default",
+  "window.commandCenter": false,
+  "window.confirmBeforeClose": "never",
+  "chat.extensionTools.enabled": false,
+  "chat.disableAIFeatures": true,
+  "editor.fontSize": 13,
   "editor.tabSize": 2,
+  "editor.autoIndent": "full",
   "editor.insertSpaces": true,
   "editor.detectIndentation": true,
   "editor.scrollBeyondLastLine": false,
   "editor.minimap.enabled": false,
   "editor.accessibilitySupport": "off",
   "editor.renderControlCharacters": true,
-  "explorer.openEditors.visible": 0,
+  "editor.stickyScroll.enabled": false,
+  "explorer.openEditors.visible": 1,
+  "workbench.activityBar.location": "top",
+  "workbench.startupEditor": "none",
   "workbench.sideBar.location": "left",
-  "workbench.activityBar.visible": false,
   "workbench.editor.showIcons": true,
   "workbench.editor.enablePreview": false,
-  "workbench.startupEditor": "newUntitledFile",
+  "workbench.remoteIndicator.showExtensionRecommendations": false,
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
   "files.exclude": {
-      "**/.git": true,
-      "**/.svn": true,
-      "**/.hg": true,
-      "**/.idea": true,
-      "**/.vscode": true,
-      "**/.cache": true,
-      "**/.nyc": true,
-      "**/.DS_Store": true,
-      "**/package-lock.json": true,
-      "**/node_modules": true,
-      "**/dist": false,
-      "**/production": true,
-      "**/public": false,
-      "**/vendor": true
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/.idea": true,
+    "**/.vscode": true,
+    "**/.cache": true,
+    "**/.nyc": true,
+    "**/.DS_Store": true,
+    "**/package-lock.json": true,
+    "**/node_modules": true,
+    "**/dist": false,
+    "**/production": true,
+    "**/public": false,
+    "**/vendor": true
   },
+  "git.openRepositoryInParentFolders": "never",
+  "extensions.ignoreRecommendations": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "terminal.external.osxExec": "iTerm.app",
-  "zenMode.fullScreen": false,
+  "zenMode.hideStatusBar": true,
+  "zenMode.fullScreen": true,
   "telemetry.telemetryLevel": "off",
   "update.showReleaseNotes": false,
   "html.format.extraLiners": "",
-  "window.zoomLevel": 1,
-  "css.lint.unknownAtRules": "ignore",
-  "less.lint.unknownAtRules": "ignore",
-  "scss.lint.unknownAtRules": "ignore",
-  "css.lint.unknownProperties": "ignore",
-  "[html]": {
-      "editor.defaultFormatter": "vscode.html-language-features"
-  },
-  "[css]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescriptreact]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[javascript]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
+  "zig.zls.enabled": "on",
   "svelte.enable-ts-plugin": true,
-  "svelte.plugin.svelte.note-new-transformation": false
+  "editor.formatOnSave": true,
 }
 ```
 
