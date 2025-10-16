@@ -27,6 +27,7 @@
   "workbench.sideBar.location": "left",
   "workbench.editor.showIcons": true,
   "workbench.editor.enablePreview": false,
+  "workbench.panel.opensMaximized": "always",
   "workbench.remoteIndicator.showExtensionRecommendations": false,
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
