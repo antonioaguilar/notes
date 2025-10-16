@@ -11,7 +11,7 @@
   "window.confirmBeforeClose": "never",
   "chat.extensionTools.enabled": false,
   "chat.disableAIFeatures": true,
-  "editor.fontSize": 13,
+  "editor.fontSize": 14,
   "editor.tabSize": 2,
   "editor.autoIndent": "full",
   "editor.insertSpaces": true,
@@ -50,7 +50,7 @@
   "git.openRepositoryInParentFolders": "never",
   "extensions.ignoreRecommendations": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
-  "terminal.external.osxExec": "iTerm.app",
+  "terminal.integrated.fontSize": 12,
   "zenMode.hideStatusBar": true,
   "zenMode.fullScreen": true,
   "telemetry.telemetryLevel": "off",
@@ -59,6 +59,8 @@
   "zig.zls.enabled": "on",
   "svelte.enable-ts-plugin": true,
   "editor.formatOnSave": true,
+  "workbench.colorTheme": "Monokai",
+  "terminal.integrated.stickyScroll.enabled": false,
 }
 ```
 
