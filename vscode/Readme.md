@@ -41,6 +41,8 @@
     "**/.vscode": true,
     "**/dist": false,
     "**/production": true,
+    "**/package-lock.json": true,
+    "**/node_modules": true,
     "**/public": false,
     "**/vendor": true
   },
