@@ -83,13 +83,23 @@ awk 'NF {sub(/\r/, ""); printf "%s\\n",$0;}' key.pem | pbcopy
 openssl s_client -connect 0.0.0.0:8443 -tls1_2  -cert ./cert.pem -key ./key.pem
 ```
 
+## Encrypt / Decrypt files with age
+
+```
+# encrypt file
+age -p file.txt > file.bin
+
+# decrypt the file
+age -d file.bin > file.txt
+```
+
 ## Encrypt / Decrypt files with OpenSSL
 
 ```
 # encrypt file
 openssl enc -blowfish -in file.txt -out file.blowfish
 
-#decrypt the file
+# decrypt the file
 openssl enc -d -blowfish -in file.blowfish -out file.txt
 ```
 
