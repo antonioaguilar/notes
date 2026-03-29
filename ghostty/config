@@ -9,10 +9,14 @@ unfocused-split-fill = #000
 unfocused-split-opacity = 1
 split-divider-color = grey
 right-click-action = paste
-theme = 0x96f
 macos-titlebar-proxy-icon = hidden
 title = " "
 confirm-close-surface = false
+bell-features = false
+
+background-opacity = 1
+
+theme = 0x96f
 
 # theme = 0x96f
 # theme = Atom
@@ -20,4 +24,3 @@ confirm-close-surface = false
 # theme = Borland
 # theme = Box
 # theme = Brogrammer
-
