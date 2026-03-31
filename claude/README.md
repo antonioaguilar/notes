@@ -3,17 +3,29 @@
 ## Skills
 
 ```bash
-npx skills add better-auth/skills -y
+# better auth skills
+npx skills add better-auth/skills -g -y
 
-npx skills add google-labs-code/stitch-skills -y
+# google stitch
+npx skills add google-labs-code/stitch-skills -g -y
 
-npx get-shit-done-cc@latest -y
+# framework skills
+npx get-shit-done-cc@latest -g -y
 
-npx skills@latest add mattpocock/skills/write-a-prd -y
-npx skills@latest add mattpocock/skills/prd-to-plan -y
-npx skills@latest add mattpocock/skills/prd-to-issues -y
-npx skills@latest add mattpocock/skills/grill-me -y
-npx skills@latest add mattpocock/skills/request-refactor-plan -y
+# usefult skills
+npx skills@latest add mattpocock/skills/write-a-prd -g -y
+npx skills@latest add mattpocock/skills/prd-to-plan -g -y
+npx skills@latest add mattpocock/skills/prd-to-issues -g -y
+npx skills@latest add mattpocock/skills/grill-me -g -y
+npx skills@latest add mattpocock/skills/request-refactor-plan -g -y
+
+# debug skills
+npx skills add addyosmani/agent-skills@debugging-and-error-recovery -g -y
+
+# superpowers and GSD
+superpowers:systematic-debugging
+gsd:debug
+
 ```
 
 ## Claude Settings
