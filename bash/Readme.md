@@ -1,6 +1,7 @@
 # Bash scripts
 
 ## Find binary executable files
+
 ```
 # install the find utils package
 brew install findutils
