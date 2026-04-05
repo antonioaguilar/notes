@@ -98,6 +98,9 @@ kafka-redirect() { kafka-tty-consumer.sh --from-beginning --topic $1 | pv | kafk
 mcd () { mkdir -p "$1" && cd "$1"; }
 zipf () { zip -r "$1".zip "$1" ; }
 
+# VSCode shortcut
+code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}
+
 # Git aliases and shortcuts
 g() { git fetch --all --prune && git pull; }
 ppr() { gh pr create --fill; }
