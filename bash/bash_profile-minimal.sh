@@ -1,4 +1,4 @@
- # disable bash warnings
+# disable bash warnings
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # no duplicate entries in history
@@ -97,9 +97,26 @@ kafka-redirect() { kafka-tty-consumer.sh --from-beginning --topic $1 | pv | kafk
 # local bash functions
 mcd () { mkdir -p "$1" && cd "$1"; }
 zipf () { zip -r "$1".zip "$1" ; }
+
+# Git aliases and shortcuts
 g() { git fetch --all --prune && git pull; }
 ppr() { gh pr create --fill; }
 tig() { git add -A && git commit -m "$1" && git push; }
+tug() {
+  BASE_REPO_URL=`git config --get remote.origin.url`
+  git filter-repo --mailmap ~/gitmailmap.txt && \
+  git remote add origin $BASE_REPO_URL && \
+  git push --force --branches --prune && git push --force --tags --prune && \
+  git emails
+}
+
+# Kubernetes shortcuts
+kcd() {
+  kubectl create deployment $1 --image $1 --dry-run=client -o yaml
+}
+
+# KiCad CLI and tools
+export PATH=$PATH:/Applications/KiCad/KiCad.app/Contents/MacOS
 
 # export global path variable
 export PATH="$HOMEBREW_PATH/libpq/bin:$HOMEBREW_PATH/gnu-sed/libexec/gnubin:$HOMEBREW_PATH/grep/libexec/gnubin:$HOMEBREW_PATH/curl/bin:$HOMEBREW_PATH/zip/bin:$GOBIN:$PATH:$HOME/.local/bin:$HOMEBREW_PATH/mysql-client@8.4/bin"
@@ -126,3 +143,11 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # cargo
 export CARGO_INSTALL="$HOME/.cargo"
 export PATH="$CARGO_INSTALL/bin:$PATH"
+
+# brew install bat
+# brew install eza
+# brew install rg
+# brew install kubecolor
+# brew install starship
+# brew install gnu-sed
+# brew install git-delta
