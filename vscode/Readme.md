@@ -59,7 +59,6 @@
   "telemetry.telemetryLevel": "off",
   "update.showReleaseNotes": false,
   "html.format.extraLiners": "",
-  "zig.zls.enabled": "on",
   "svelte.enable-ts-plugin": true,
   "editor.formatOnSave": true,
   "terminal.integrated.stickyScroll.enabled": false,
@@ -67,7 +66,10 @@
   "workbench.layoutControl.enabled": false,
   "zenMode.centerLayout": false,
   "zenMode.hideLineNumbers": false,
-  "editor.fontSize": 10,
+  "workbench.colorTheme": "Quiet Light",
+  "workbench.editorAssociations": {
+    "*.md": "vscode.markdown.preview.editor"
+  }
 }
 ```
 
