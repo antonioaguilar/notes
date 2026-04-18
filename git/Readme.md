@@ -46,6 +46,7 @@ git log --all --pretty="%h %an %cE"
 
 [push]
   default = current
+  autoSetupRemote = true
 
 [core]
   editor = nano
