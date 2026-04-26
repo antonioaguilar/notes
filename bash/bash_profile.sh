@@ -1,4 +1,12 @@
-# disable bash warnings
+# brew install bat
+# brew install eza
+# brew install rg
+# brew install kubecolor
+# brew install starship
+# brew install gnu-sed
+# brew install git-delta
+
+ # disable bash warnings
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # no duplicate entries in history
@@ -62,7 +70,7 @@ alias kl='kubectl logs --max-log-requests=10 -l'
 alias ffmpeg="ffmpeg -hide_banner"
 alias ffplay="ffplay -hide_banner -autoexit -alwaysontop"
 alias ffprobe="ffprobe -hide_banner"
-alias claude="claude --dangerously-skip-permissions --permission-mode=plan"
+alias claude="claude --verbose --dangerously-skip-permissions --permission-mode=plan"
 
 # special macos aliases
 alias ic='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs'
@@ -97,39 +105,13 @@ kafka-redirect() { kafka-tty-consumer.sh --from-beginning --topic $1 | pv | kafk
 # local bash functions
 mcd () { mkdir -p "$1" && cd "$1"; }
 zipf () { zip -r "$1".zip "$1" ; }
-
-# VSCode shortcut
-code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}
-
-# Git aliases and shortcuts
 g() { git fetch --all --prune && git pull; }
 ppr() { gh pr create --fill; }
+gcr() { gh repo create "$1" --private --clone --disable-wiki; }
 tig() { git add -A && git commit -m "$1" && git push; }
-tug() {
-  BASE_REPO_URL=`git config --get remote.origin.url`
-  git filter-repo --mailmap ~/gitmailmap.txt && \
-  git remote add origin $BASE_REPO_URL && \
-  git push --force --branches --prune && git push --force --tags --prune && \
-  git emails
-}
-
-# Kubernetes shortcuts
-kcd() {
-  kubectl create deployment $1 --image $1 --dry-run=client -o yaml
-}
-
-# KiCad CLI and tools
-export PATH=$PATH:/Applications/KiCad/KiCad.app/Contents/MacOS
 
 # export global path variable
 export PATH="$HOMEBREW_PATH/libpq/bin:$HOMEBREW_PATH/gnu-sed/libexec/gnubin:$HOMEBREW_PATH/grep/libexec/gnubin:$HOMEBREW_PATH/curl/bin:$HOMEBREW_PATH/zip/bin:$GOBIN:$PATH:$HOME/.local/bin:$HOMEBREW_PATH/mysql-client@8.4/bin"
-
-# declare the NVM folder
-export NVM_DIR="$HOME/.nvm"
-# This loads nvm
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-# This loads nvm bash_completion
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 # run local scripts on terminal start
 eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -143,14 +125,6 @@ eval "$(starship init bash)"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-# cargo
-export CARGO_INSTALL="$HOME/.cargo"
-export PATH="$CARGO_INSTALL/bin:$PATH"
-
-# brew install bat
-# brew install eza
-# brew install rg
-# brew install kubecolor
-# brew install starship
-# brew install gnu-sed
-# brew install git-delta
+# bun aliases
+alias serve='bunx serve'
+s
