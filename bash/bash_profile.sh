@@ -48,7 +48,6 @@ alias goland='open -na "GoLand.app" --args'
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias mkdir='mkdir -pv'
-#alias ll='ls -FGlAhp --color'
 alias ls='eza'
 alias ll='ls -all'
 alias l='ll'
@@ -116,15 +115,23 @@ export PATH="$HOMEBREW_PATH/libpq/bin:$HOMEBREW_PATH/gnu-sed/libexec/gnubin:$HOM
 # run local scripts on terminal start
 eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(starship init bash)"
-# eval "$(starship preset nerd-font-symbols -o ~/.config/starship.toml)"
 
 # needed by uv package manager
 . "$HOME/.local/bin/env"
+
+# declare the NVM folder
+export NVM_DIR="$HOME/.nvm"
+# This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+# This loads nvm bash_completion
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 # bun aliases
-alias serve='bunx serve'
-s
+alias bunx='bunx --silent'
+
+# Gemini CLI
+alias gg='gemini --approval-mode=yolo'
