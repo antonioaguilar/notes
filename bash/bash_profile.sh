@@ -1,12 +1,4 @@
-# brew install bat
-# brew install eza
-# brew install rg
-# brew install kubecolor
-# brew install starship
-# brew install gnu-sed
-# brew install git-delta
-
- # disable bash warnings
+# disable bash warnings
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # no duplicate entries in history
@@ -62,7 +54,7 @@ alias search="grep -r -wine "
 alias python="uv run python"
 alias pip="uv pip"
 alias kubectl='kubecolor'
-alias k=kubectl
+alias k='kubectl'
 alias kt='kubectl get all -A'
 alias kw='watch -n1 -c -t kubectl get all -A'
 alias kl='kubectl logs --max-log-requests=10 -l'
@@ -86,28 +78,19 @@ alias cleanAll="cleanDS && cleanVS && cleanIDEA && cleanNPM"
 alias docker-compose-up='docker compose up --remove-orphans --build --watch'
 alias docker-compose-down='docker compose down --remove-orphans -t 5 -v'
 
-# docker kafka aliases
-export KAFKAJS_NO_PARTITIONER_WARNING=1
-export DOCKER_CLI_HINTS=false
-alias kafka-topics.sh="docker exec -it kafka-broker kafka-topics.sh --bootstrap-server localhost:9092"
-alias kafka-console-consumer.sh="docker exec -it kafka-broker kafka-console-consumer.sh --bootstrap-server localhost:9092"
-alias kafka-console-producer.sh="docker exec -it kafka-broker kafka-console-producer.sh --bootstrap-server localhost:9092"
-alias kafka-delete-records.sh="docker exec -it kafka-broker kafka-delete-records.sh --bootstrap-server localhost:9092"
-alias kafka-consumer-groups.sh="docker exec -it kafka-broker kafka-consumer-groups.sh --bootstrap-server localhost:9092"
-alias kafka-tty-consumer.sh="docker exec -i kafka-broker kafka-console-consumer.sh --bootstrap-server localhost:9092"
-alias kafka-tty-producer.sh="docker exec -i kafka-broker kafka-console-producer.sh --bootstrap-server localhost:9092"
-alias kafka-streams-application-reset.sh="docker exec -i kafka-broker kafka-streams-application-reset.sh --bootstrap-server localhost:9092"
-
-# docker kafka functions
-kafka-redirect() { kafka-tty-consumer.sh --from-beginning --topic $1 | pv | kafka-tty-producer.sh --topic $2; }
+# Kubernetes shortcuts
+kcd() { kubectl create deployment $1 --image $1 --dry-run=client -o yaml }
 
 # local bash functions
 mcd () { mkdir -p "$1" && cd "$1"; }
 zipf () { zip -r "$1".zip "$1" ; }
+
+# Git shortcuts
 g() { git fetch --all --prune && git pull; }
 ppr() { gh pr create --fill; }
 gcr() { gh repo create "$1" --private --clone --disable-wiki; }
 tig() { git add -A && git commit -m "$1" && git push; }
+tug() { BASE_REPO_URL=`git config --get remote.origin.url`; git filter-repo --mailmap ~/gitmailmap.txt && git remote add origin $BASE_REPO_URL && git push --force --branches --prune && git push --force --tags --prune && git emails; }
 
 # export global path variable
 export PATH="$HOMEBREW_PATH/libpq/bin:$HOMEBREW_PATH/gnu-sed/libexec/gnubin:$HOMEBREW_PATH/grep/libexec/gnubin:$HOMEBREW_PATH/curl/bin:$HOMEBREW_PATH/zip/bin:$GOBIN:$PATH:$HOME/.local/bin:$HOMEBREW_PATH/mysql-client@8.4/bin"
@@ -135,3 +118,11 @@ alias bunx='bunx --silent'
 
 # Gemini CLI
 alias gg='gemini --approval-mode=yolo'
+
+# brew install bat
+# brew install eza
+# brew install rg
+# brew install kubecolor
+# brew install starship
+# brew install gnu-sed
+# brew install git-delta
