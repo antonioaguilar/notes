@@ -64,6 +64,9 @@ alias ffplay="ffplay -hide_banner -autoexit -alwaysontop"
 alias ffprobe="ffprobe -hide_banner"
 alias claude="claude --verbose --dangerously-skip-permissions --permission-mode=plan"
 
+# VSCode shortcut
+code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}
+
 # special macos aliases
 alias ic='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs'
 
