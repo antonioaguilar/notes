@@ -23,6 +23,7 @@ export HOMEBREW_NO_INSTALL_CLEANUP=1
 export HOMEBREW_NO_ENV_HINTS=1
 export HOMEBREW_NO_INSTALL_CLEANUP=1
 export HOMEBREW_PATH="/opt/homebrew/opt"
+export HOMEBREW_BIN="$(which brew)"
 
 # application variable exports
 export GOPATH="$HOME/.go"
@@ -79,7 +80,7 @@ alias docker-compose-up='docker compose up --remove-orphans --build --watch'
 alias docker-compose-down='docker compose down --remove-orphans -t 5 -v'
 
 # Kubernetes shortcuts
-kcd() { kubectl create deployment $1 --image $1 --dry-run=client -o yaml }
+kcd() { kubectl create deployment $1 --image $1 --dry-run=client -o yaml; }
 
 # local bash functions
 mcd () { mkdir -p "$1" && cd "$1"; }
@@ -96,11 +97,11 @@ tug() { BASE_REPO_URL=`git config --get remote.origin.url`; git filter-repo --ma
 export PATH="$HOMEBREW_PATH/libpq/bin:$HOMEBREW_PATH/gnu-sed/libexec/gnubin:$HOMEBREW_PATH/grep/libexec/gnubin:$HOMEBREW_PATH/curl/bin:$HOMEBREW_PATH/zip/bin:$GOBIN:$PATH:$HOME/.local/bin:$HOMEBREW_PATH/mysql-client@8.4/bin"
 
 # run local scripts on terminal start
-eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$($HOMEBREW_BIN shellenv)"
 eval "$(starship init bash)"
 
 # needed by uv package manager
-. "$HOME/.local/bin/env"
+# . "$HOME/.local/bin/env"
 
 # declare the NVM folder
 export NVM_DIR="$HOME/.nvm"
