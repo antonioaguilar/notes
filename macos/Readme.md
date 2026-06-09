@@ -1,5 +1,12 @@
 ## Mac OS Tips
 
+## Change File Creation and Mofication Time
+
+```bash
+# change the creation date with modification date to June 5th, 2025
+SetFile -d '06/05/2025 10:00:00' -m '06/05/2025 10:00:00' test.mp4
+```
+
 ## Install MacOS on USB drive
 
 Follow the official Apple instructions [here](https://support.apple.com/en-us/HT201372)
