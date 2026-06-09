@@ -81,6 +81,8 @@ alias cleanAll="cleanDS && cleanVS && cleanIDEA && cleanNPM"
 # docker scripts
 alias docker-compose-up='docker compose up --remove-orphans --build --watch'
 alias docker-compose-down='docker compose down --remove-orphans -t 5 -v'
+export DOCKER_PATH=$HOME/.docker
+export PATH="$DOCKER_PATH/bin:$PATH"
 
 # Kubernetes shortcuts
 kcd() { kubectl create deployment $1 --image $1 --dry-run=client -o yaml; }
@@ -93,6 +95,7 @@ zipf () { zip -r "$1".zip "$1" ; }
 g() { git fetch --all --prune && git pull; }
 ppr() { gh pr create --fill; }
 gcr() { gh repo create "$1" --private --clone --disable-wiki; }
+gdr() { gh repo delete --yes "$1"; }
 tig() { git add -A && git commit -m "$1" && git push; }
 tug() { BASE_REPO_URL=`git config --get remote.origin.url`; git filter-repo --mailmap ~/gitmailmap.txt && git remote add origin $BASE_REPO_URL && git push --force --branches --prune && git push --force --tags --prune && git emails; }
 
