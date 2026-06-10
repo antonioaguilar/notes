@@ -44,16 +44,19 @@ git log --all --pretty="%h %an %cE"
   name = Antonio Aguilar
   email = antonioaguilar@users.noreply.gitlab.com
 
+[init]
+  defaultBranch = main
+
 [push]
   default = current
   autoSetupRemote = true
 
+[pull]
+  rebase = false
+
 [core]
   editor = nano
   pager = delta
-
-[pull]
-  rebase = false
 
 [alias]
   ll = log --pretty=format:'%C(red)[%h] %C(bold blue)%an %C(reset)| %C(magenta)%ah %C(green)(%cr) %C(reset)| %C(yellow)%s' --numstat
@@ -77,6 +80,9 @@ git log --all --pretty="%h %an %cE"
 
 [diff]
   colorMoved = default
+
+[safe]
+  directory = *
 
 [help]
   autocorrect = 20
