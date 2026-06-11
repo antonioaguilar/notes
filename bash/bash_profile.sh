@@ -93,10 +93,15 @@ zipf () { zip -r "$1".zip "$1" ; }
 
 # Git shortcuts
 g() { git fetch --all --prune && git pull; }
+tig() { git add -A && git commit -m "$1" && git push; }
+gff() { git checkout main -b feat/"$1"; }
+gfx() { git checkout main -b fix/"$1"; }
+gdd() { git branch -D $1; }
+gtt() { git reset --hard HEAD; }
+grr() { git push origin --delete $1; }
 ppr() { gh pr create --fill; }
 gcr() { gh repo create "$1" --private --clone --disable-wiki; }
 gdr() { gh repo delete --yes "$1"; }
-tig() { git add -A && git commit -m "$1" && git push; }
 tug() { BASE_REPO_URL=`git config --get remote.origin.url`; git filter-repo --mailmap ~/gitmailmap.txt && git remote add origin $BASE_REPO_URL && git push --force --branches --prune && git push --force --tags --prune && git emails; }
 
 # export global path variable

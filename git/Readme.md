@@ -1,5 +1,19 @@
 # Git commands and scripts
 
+## Bash autocomplete git functions
+```bash
+g() { git fetch --all --prune && git pull; }
+tig() { git add -A && git commit -m "$1" && git push; }
+gff() { git checkout main -b feat/"$1"; }
+gfx() { git checkout main -b fix/"$1"; }
+gdd() { git branch -D $1; }
+gtt() { git reset --hard HEAD; }
+grr() { git push origin --delete $1; }
+ppr() { gh pr create --fill; }
+gcr() { gh repo create "$1" --private --clone --disable-wiki; }
+gdr() { gh repo delete --yes "$1"; }
+```
+
 ### Display all author and commit emails address in all branches
 
 ```bash
@@ -39,10 +53,10 @@ git log --all --pretty="%h %an %cE"
 
 > Install `git-delta` plugin for better `git diff` via Homebrew `brew install git-delta`
 
-```
+```bash
 [user]
   name = Antonio Aguilar
-  email = antonioaguilar@users.noreply.gitlab.com
+  email = antonioaguilar@users.noreply.github.com
 
 [init]
   defaultBranch = main
@@ -86,6 +100,12 @@ git log --all --pretty="%h %an %cE"
 
 [help]
   autocorrect = 20
+
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
 ```
 
 ### Use the `cat` command with syntax highlight
