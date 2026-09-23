@@ -135,7 +135,7 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 alias bunx='bunx --silent'
 
 # Gemini CLI
-alias gg='gemini --approval-mode=yolo'
+alias gg='gemini --yolo --skip-trust -o text'
 export GOOGLE_CLOUD_PROJECT=""
 
 # brew install bat

@@ -1,0 +1,85 @@
+{
+  "model": {
+    "name": "gemini-3.5-flash"
+  },
+  "security": {
+    "auth": {
+      "selectedType": "oauth-personal"
+    }
+  },
+  "keybindings": [
+    {
+      "key": "ctrl+y",
+      "command": null
+    }
+  ],
+  "ide": {
+    "hasSeenNudge": true
+  },
+  "general": {
+    "topicUpdateNarration": false,
+    "maxAttempts": 3
+  },
+  "ui": {
+    "inlineThinkingMode": "off",
+    "dynamicWindowTitle": false,
+    "showStatusInTitle": false,
+    "hideWindowTitle": true,
+    "autoThemeSwitching": false,
+    "theme": "ANSI",
+    "hideTips": true,
+    "escapePastedAtSymbols": true,
+    "showShortcutsHint": false,
+    "compactToolOutput": true,
+    "hideBanner": true,
+    "hideContextSummary": true,
+    "footer": {
+      "hideCWD": true,
+      "hideSandboxStatus": true,
+      "hideModelInfo": true
+    },
+    "hideFooter": true,
+    "showMemoryUsage": false,
+    "showLineNumbers": false,
+    "showUserIdentity": false,
+    "renderProcess": false,
+    "terminalBuffer": true,
+    "showSpinner": false,
+    "errorVerbosity": "low"
+  },
+  "output": {
+    "format": "text"
+  },
+  "customThemes": {
+    "ZenMinimalist": {
+      "text": {
+        "primary": "#d1d5db",
+        "secondary": "#6b7280",
+        "link": "#9ca3af",
+        "accent": "#f3f4f6",
+        "response": "#e5e7eb"
+      },
+      "background": {
+        "primary": "#111827"
+      },
+      "border": {
+        "default": "#374151",
+        "focused": "#4b5563"
+      },
+      "status": {
+        "success": "#9ca3af",
+        "warning": "#9ca3af",
+        "error": "#ef4444"
+      },
+      "ui": {
+        "comment": "#4b5563",
+        "symbol": "#9ca3af"
+      }
+    }
+  },
+  "agents": {
+    "browser": {
+      "blockFileUploads": true
+    }
+  }
+}
