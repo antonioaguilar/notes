@@ -4,6 +4,9 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 # no duplicate entries in history
 export HISTCONTROL=ignoredups:erasedups
 
+# for compatibility
+export TERM=xterm-256color
+
 # save all history into big file
 export HISTSIZE=10000
 export HISTFILESIZE=10000
@@ -41,6 +44,7 @@ alias goland='open -na "GoLand.app" --args'
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias mkdir='mkdir -pv'
+#alias ll='ls -FGlAhp --color'
 alias ls='eza'
 alias ll='ls -all'
 alias l='ll'
@@ -63,6 +67,7 @@ alias ffmpeg="ffmpeg -hide_banner"
 alias ffplay="ffplay -hide_banner -autoexit -alwaysontop"
 alias ffprobe="ffprobe -hide_banner"
 alias claude="claude --verbose --dangerously-skip-permissions --permission-mode=plan"
+alias npx="npx -y"
 
 # VSCode shortcut
 code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}
@@ -94,6 +99,7 @@ zipf () { zip -r "$1".zip "$1" ; }
 # Git shortcuts
 g() { git fetch --all --prune && git pull; }
 tig() { git add -A && git commit -m "$1" && git push; }
+gbb() { git branch -v; }
 gff() { git checkout main -b feat/"$1"; }
 gfx() { git checkout main -b fix/"$1"; }
 gdd() { git branch -D $1; }
@@ -102,7 +108,7 @@ grr() { git push origin --delete $1; }
 ppr() { gh pr create --fill; }
 gcr() { gh repo create "$1" --private --clone --disable-wiki; }
 gdr() { gh repo delete --yes "$1"; }
-tug() { BASE_REPO_URL=`git config --get remote.origin.url`; git filter-repo --mailmap ~/gitmailmap.txt && git remote add origin $BASE_REPO_URL && git push --force --branches --prune && git push --force --tags --prune && git emails; }
+gmp() { gh pr merge -m --auto "$1"; }
 
 # export global path variable
 export PATH="$HOMEBREW_PATH/libpq/bin:$HOMEBREW_PATH/gnu-sed/libexec/gnubin:$HOMEBREW_PATH/grep/libexec/gnubin:$HOMEBREW_PATH/curl/bin:$HOMEBREW_PATH/zip/bin:$GOBIN:$PATH:$HOME/.local/bin:$HOMEBREW_PATH/mysql-client@8.4/bin"
@@ -130,6 +136,7 @@ alias bunx='bunx --silent'
 
 # Gemini CLI
 alias gg='gemini --approval-mode=yolo'
+export GOOGLE_CLOUD_PROJECT=""
 
 # brew install bat
 # brew install eza
