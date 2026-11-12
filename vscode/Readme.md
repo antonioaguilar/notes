@@ -4,10 +4,9 @@
 
 ```json
 {
-  "window.zoomLevel": 1.5,
+  "window.zoomLevel": 2,
   "window.closeWhenEmpty": true,
   "window.density.editorTabHeight": "default",
-  "window.commandCenter": false,
   "window.confirmBeforeClose": "never",
   "chat.extensionTools.enabled": false,
   "chat.disableAIFeatures": true,
@@ -33,13 +32,12 @@
   "files.trimTrailingWhitespace": true,
   "files.exclude": {
     ".claude/": true,
+    ".cloudflare/": true,
     ".superpowers/": true,
     ".tanstack/": true,
-    ".cloudflare/": true,
     "**/.cache": true,
     "**/.DS_Store": true,
     "**/.git": true,
-    "**/.gitignore": true,
     "**/.hg": true,
     "**/.idea": true,
     "**/.nyc": true,
@@ -63,7 +61,7 @@
   "update.showReleaseNotes": false,
   "html.format.extraLiners": "",
   "svelte.enable-ts-plugin": true,
-  "editor.formatOnSave": true,
+  "editor.formatOnSave": false,
   "terminal.integrated.stickyScroll.enabled": false,
   "workbench.activityBar.location": "top",
   "workbench.statusBar.visible": false,
@@ -76,8 +74,29 @@
   "workbench.browser.showInTitleBar": true,
   "workbench.preferredLightColorTheme": "Quiet Light",
   "workbench.preferredDarkColorTheme": "Tomorrow Night Blue",
-  "multiCommand.commands": [],
-  "workbench.colorTheme": "Quiet Light",
+  "security.workspace.trust.untrustedFiles": "open",
+  "[svelte]": {
+    "editor.defaultFormatter": "svelte.svelte-vscode"
+  },
+  "svelte.plugin.svelte.format.config.printWidth": 1000,
+  "svelte.plugin.svelte.format.config.singleQuote": true,
+  "prettier.enable": true,
+  "prettier.bracketSameLine": true,
+  "prettier.printWidth": 1000,
+  "prettier.singleAttributePerLine": true,
+  "prettier.singleQuote": true,
+  "prettier.objectWrap": "preserve",
+  "prettier.htmlWhitespaceSensitivity": "ignore",
+  "svelte.plugin.svelte.format.config.svelteStrictMode": true,
+  "prettier.vueIndentScriptAndStyle": true,
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "workbench.colorTheme": "Tomorrow Night Blue",
+  "application.shellEnvironmentResolutionTimeout": 1,
 }
 ```
 
